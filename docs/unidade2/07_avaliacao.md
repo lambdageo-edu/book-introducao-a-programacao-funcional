@@ -7,6 +7,7 @@ Esta atividade avaliativa consiste em construir um projeto completo em Haskell m
 
     **[Construindo e Testando uma Biblioteca Haskell: JSON, Pretty Printing e QuickCheck](https://lambdageo-edu.github.io/lambdageo-tutorials/haskell/)**
 
+
 ---
 
 ## 📋 Especificações do Projeto
