@@ -5,7 +5,7 @@ Este capítulo apresenta o **segundo projeto avaliativo da Unidade 3**: construi
 !!! success "Tutorial completo no site de tutoriais"
     O passo a passo detalhado — com todos os comandos, códigos e explicações — está publicado como tutorial no site de tutoriais do LambdaGEO:
 
-    **[Elixir e Phoenix LiveView: Construindo uma Aplicação Todo List do Zero](https://lambdageo.github.io/tutoriais/elixir/)**
+    **[Elixir e Phoenix LiveView: Construindo uma Aplicação Todo List do Zero](https://lambdageo-edu.github.io/lambdageo-tutorials/elixir/)**
 
     Este capítulo é apenas a introdução e o contrato de entrega; siga o tutorial para desenvolver o projeto.
 

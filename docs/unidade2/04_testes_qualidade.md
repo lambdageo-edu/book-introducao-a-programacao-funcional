@@ -5,7 +5,7 @@ Neste capítulo, aprenderemos a metodologia de **Testes Baseados em Propriedades
 !!! success "Tutorial completo no site de tutoriais"
     O passo a passo — configuração da suíte no arquivo `.cabal`, todas as propriedades, a instância `Arbitrary` do `JValue` e a medição de cobertura — está na **Parte 2** do tutorial no site de tutoriais do LambdaGEO:
 
-    **[Construindo e Testando uma Biblioteca Haskell: JSON, Pretty Printing e QuickCheck](https://lambdageo.github.io/tutoriais/haskell/)**
+    **[Construindo e Testando uma Biblioteca Haskell: JSON, Pretty Printing e QuickCheck](https://lambdageo-edu.github.io/lambdageo-tutorials/haskell/)**
 
     Este capítulo apresenta os conceitos; siga o tutorial para implementar a suíte completa.
 

@@ -39,7 +39,7 @@ Ao final desta unidade, o estudante deverá ser capaz de:
 
 A unidade é orientada a projeto: os conceitos das aulas 1–4 convergem para a construção incremental da biblioteca JSON (aulas 5–7), que é também o objeto da avaliação. As aulas 8 e 9 são capítulos de leitura e demonstração — mostram o paradigma funcional aplicado a projetos reais e completos (não são pré-requisito para o trabalho prático, mas ilustram para onde os conceitos da unidade levam fora de um exercício de livro). A aula 10 é laboratório de desenvolvimento e apresentação.
 
-Os capítulos 11 e 12 apresentam os conceitos e as decisões de projeto da biblioteca JSON; o desenvolvimento passo a passo é guiado pelo tutorial **[Construindo e Testando uma Biblioteca Haskell: JSON, Pretty Printing e QuickCheck](https://lambdageo.github.io/tutoriais/haskell/)**, no site de tutoriais do LambdaGEO.
+Os capítulos 11 e 12 apresentam os conceitos e as decisões de projeto da biblioteca JSON; o desenvolvimento passo a passo é guiado pelo tutorial **[Construindo e Testando uma Biblioteca Haskell: JSON, Pretty Printing e QuickCheck](https://lambdageo-edu.github.io/lambdageo-tutorials/haskell/)**, no site de tutoriais do LambdaGEO.
 
 ## Avaliação
 
