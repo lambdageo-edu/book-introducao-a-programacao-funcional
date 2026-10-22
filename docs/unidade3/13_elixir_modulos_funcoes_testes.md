@@ -112,16 +112,18 @@ end
 
 Como alteramos a estrutura de arquivos, precisamos garantir que o Mix encontre tudo.
 
-1. No terminal, dentro da pasta do projeto, inicie o ambiente interativo:Bash
+1. No terminal, dentro da pasta do projeto, inicie o ambiente interativo:
     
     `iex -S mix`
     
     *(O `-S mix` diz: "Carregue o IEx, mas antes compile e traga todo o meu projeto Mix junto".)*
     
-2. Chame a função pelo seu **endereço completo** (Namespace):Elixir
+2. Chame a função pelo seu **endereço completo** (Namespace):
     
-    `iex> EscolaElixir.Boletim.calcular_media(10, 5, 6)
-    7.0`
+    ```elixir
+    iex> EscolaElixir.Boletim.calcular_media(10, 5, 6)
+    7.0
+    ```
     
 
 No vscode:
@@ -207,13 +209,14 @@ Se você colocar a regra do "Reprovado" (que aceita qualquer coisa) no topo do a
 
 No terminal (IEx), você não precisa sair e entrar de novo. Use o comando `recompile()`:
 
-1. Recompile o projeto:Elixir
+1. Recompile o projeto:
     
     `iex> recompile()`
     
 2. Teste as diferentes “portas”:
     
-    `iex> EscolaElixir.Boletim.verificar_situacao(10.0)
+    ```elixir
+    iex> EscolaElixir.Boletim.verificar_situacao(10.0)
     "Aprovado com Louvor"
     
     iex> EscolaElixir.Boletim.verificar_situacao(7.5)
@@ -223,7 +226,8 @@ No terminal (IEx), você não precisa sair e entrar de novo. Use o comando `reco
     "Recuperação"
     
     iex> EscolaElixir.Boletim.verificar_situacao(3.0)
-    "Reprovado"`
+    "Reprovado"
+    ```
     
 
 Veja como o código fica limpo? Sem chaves aninhadas `{{}}`, sem `else if`, apenas uma lista de regras de negócio claras.
@@ -278,15 +282,19 @@ end
 Essa é a hora de provar que o `defp` funciona.
 
 1. Recompile: `recompile()`
-2. Tente chamar a função pública (deve funcionar):Elixir
+2. Tente chamar a função pública (deve funcionar):
     
-    `iex> EscolaElixir.Boletim.gerar_relatorio(8, 8, 8)
-    "Aprovado"`
+    ```elixir
+    iex> EscolaElixir.Boletim.gerar_relatorio(8, 8, 8)
+    "Aprovado"
+    ```
     
-3. Agora, tente chamar a função privada (deve falhar):Elixir
+3. Agora, tente chamar a função privada (deve falhar):
     
-    `iex> EscolaElixir.Boletim.verificar_situacao(5.0)
-    ** (UndefinedFunctionError) function EscolaElixir.Boletim.verificar_situacao/1 is undefined or private`
+    ```elixir
+    iex> EscolaElixir.Boletim.verificar_situacao(5.0)
+    ** (UndefinedFunctionError) function EscolaElixir.Boletim.verificar_situacao/1 is undefined or private
+    ```
     
 
 Viu? O erro diz **"undefined or private"**. Você encapsulou a lógica com sucesso.
@@ -376,17 +384,17 @@ end
 
 Enquanto você está programando, você não quer sair do terminal para ler um PDF ou site. O Elixir tem o helper **`h`** (help) embutido.
 
-1. Vá ao seu terminal e rode o projeto:Bash
+1. Vá ao seu terminal e rode o projeto:
     
     `iex -S mix`
     
-2. Para ler a documentação do **Módulo** (`@moduledoc`), digite:Elixir
+2. Para ler a documentação do **Módulo** (`@moduledoc`), digite:
     
     `iex> h EscolaElixir.Boletim`
     
     *O terminal vai imprimir o texto que você escreveu no `@moduledoc`, formatado e colorido.*
     
-3. Para ler a documentação da **Função** (`@doc`), digite:Elixir
+3. Para ler a documentação da **Função** (`@doc`), digite:
     
     `iex> h EscolaElixir.Boletim.gerar_relatorio`
     
@@ -415,11 +423,11 @@ Abra o arquivo `mix.exs` na raiz do projeto. Procure a função `deps` (lá no f
 **2. Instalando e Gerando**
 Volte ao terminal (saia do IEx com CTRL+C, CTRL+C) e execute:
 
-1. Baixar a biblioteca nova:Bash
+1. Baixar a biblioteca nova:
     
     `mix deps.get`
     
-2. Compilar e gerar a documentação:Bash
+2. Compilar e gerar a documentação:
     
     `mix docs`
     
@@ -463,7 +471,7 @@ Se o código retornar qualquer outra coisa, o teste falha. Isso garante que a su
 
 ### 6.5. Ativando os Testes (Onde colocar o `doctest`?)
 
-Se você rodar `mix test` agora, vai perceber que o Elixir **ainda não está testando** o seu Módulo Boletim. Ele provavelmente mostará apenas 1 teste (o padrão do projeto).
+Se você rodar `mix test` agora, vai perceber que o Elixir **ainda não está testando** o seu Módulo Boletim. Ele provavelmente mostrará apenas 1 teste (o padrão do projeto).
 
 Por quê? Porque precisamos avisar ao framework de testes (ExUnit) para ler a documentação daquele módulo específico.
 
@@ -486,7 +494,7 @@ defmodule EscolaElixir.BoletimTest do
 end
 ```
 
-1. Agora, vá ao terminal e rode:Bash
+1. Agora, vá ao terminal e rode:
     
     `mix test`
     
@@ -507,7 +515,7 @@ Para isso, usamos os **Testes de Unidade** padrão. É o equivalente ao que voc�
 
 ### Passo 7.1: Criando Cenários de Teste
 
-Vamos expandir o arquivo `test/escola_elixir/boletim_test.exs` que acabamos de criar. Vamos adicionar testes para garantir que as regras de limite (notas 5 e 7) funcionam exatmente como esperado.
+Vamos expandir o arquivo `test/escola_elixir/boletim_test.exs` que acabamos de criar. Vamos adicionar testes para garantir que as regras de limite (notas 5 e 7) funcionam exatamente como esperado.
 
 Edite o arquivo:
 
@@ -598,10 +606,12 @@ defmodule EscolaElixir.Boletim do
 end
 ```
 
-1. **Teste no IEx (`recompile()`):**Elixir
+1. **Teste no IEx (`recompile()`):**
     
-    `iex> EscolaElixir.Boletim.copyright()
-    "Sistema Escolar v1.0 - Todos os direitos reservados"`
+    ```elixir
+    iex> EscolaElixir.Boletim.copyright()
+    "Sistema Escolar v1.0 - Todos os direitos reservados"
+    ```
     
     Veja: A função nasceu dentro do Boletim, mesmo sem termos escrito ela lá explicitamente.
     
@@ -618,8 +628,8 @@ Para entender o `import` do Elixir, compare com o que você já conhece:
 
 | **Linguagem** | **Sintaxe** | **O equivalente em Elixir** |
 | --- | --- | --- |
-| **Java** | `import static java.lang.Math.*;` | `import Math` *(Importa tudo – perigoso)* |
-| **Java** | `import static java.lang.Math.sqrt;` | `import Math, only: [sqrt: 1]` *(Importa só um – recomendado)* |
+| **Java** | `import static java.lang.Integer.*;` | `import Integer` *(Importa tudo – perigoso)* |
+| **Java** | `import static java.lang.Integer.parseInt;` | `import Integer, only: [parse: 1]` *(Importa só um – recomendado)* |
 | **Python** | `from math import *` | `import :math` |
 | **Python** | `from math import sqrt` | `import :math, only: [sqrt: 1]` |
 
@@ -716,7 +726,7 @@ Ninguém quer digitar isso toda vez que for chamar uma função.
 
 Para isso existe o alias (Apelido).
 
-### 8.1. O que ele faz?
+### O que ele faz?
 
 Ele cria um "atalho" para o nome do módulo dentro do arquivo atual.
 
@@ -726,12 +736,11 @@ Importante: Ele NÃO traz as funções para o escopo (como o import). Ele apenas
 
 | **Linguagem** | **Sintaxe Original** | **O equivalente em Elixir** |
 | --- | --- | --- |
-| **Java** | `import java.util.List;` 
- *(Agora posso escrever `List` em vez de `java.util.List`)* | `alias Java.Util.List` |
-| **Python** | `import pandas as pd` | `alias Pandas, as: Pd` |
-| **C#** | `using List = System.Collections.Generic.List;` | `alias System.Collections.Generic.List` |
+| **Java** | `import java.util.List;` *(agora posso escrever `List` em vez de `java.util.List`)* | `alias MeuApp.Util.Lista` *(agora posso escrever `Lista`)* |
+| **Python** | `import meuapp.util.lista as l` | `alias MeuApp.Util.Lista, as: L` |
+| **C#** | `using Lista = MeuApp.Util.Lista;` | `alias MeuApp.Util.Lista, as: Lista` |
 
-### Passo 8.1: Simplificando Nomes
+### Passo 8.4: Simplificando Nomes
 
 Vamos supor que, no nosso teste, estejamos cansados de digitar `EscolaElixir.Boletim` toda hora.
 
@@ -753,7 +762,7 @@ defmodule EscolaElixir.BoletimTest do
 end
 ```
 
-### 8.2. Formas de usar o Alias
+### Formas de usar o Alias
 
 Existem três maneiras comuns de escrever um alias:
 
@@ -809,7 +818,7 @@ Para organizar sua cabeça de engenheiro, aqui está a hierarquia de acoplamento
 
 **Próximo Passo:** Agora que entendemos como criar código (Módulos/Funções), garantir qualidade (Testes/Docs) e reutilizar estruturas (`use`/`import`), estamos prontos para o **Grand Finale**: O Desafio Prático "Motor de Compras".
 
-# Desafio Final: O Motor de E-commerce (GeekStore)
+## Desafio Final: O Motor de E-commerce (GeekStore)
 
 **O Cenário:**
 Você foi contratado para criar o módulo de "Checkout" da *GeekStore*. O sistema recebe uma lista de produtos e precisa cuspir a nota fiscal final.
@@ -890,13 +899,11 @@ Tente implementar antes de ver a resposta. Lembre-se:
 2. **Guards:** Use `when valor >= 500` nas funções privadas de desconto.
 3. **Pipeline:** Conecte tudo na função pública.
 
-- Gabarito Comentado (A Solução do Professor)
+??? note "Gabarito Comentado (A Solução do Professor)"
     
     Aqui está como um engenheiro Elixir resolveria, aplicando todos os conceitos da aula.
     
     **Arquivo:** `lib/geek_store/caixa.ex`
-    
-    Elixir
     
     ```elixir
     defmodule GeekStore.Caixa do
@@ -1001,8 +1008,6 @@ Tente implementar antes de ver a resposta. Lembre-se:
     
     Vá ao terminal e execute o comando supremo:
     
-    Bash
-    
     `mix test`
     
     **O que deve acontecer:**
@@ -1014,7 +1019,7 @@ Tente implementar antes de ver a resposta. Lembre-se:
     
     Se você vir as letras verdes, **Parabéns!**
     
-    ### Recaptulando o que você construiu:
+    ### Recapitulando o que você construiu:
     
     - [x]  **Projeto Mix:** Estrutura profissional.
     - [x]  **Namespace:** `GeekStore.Caixa`.

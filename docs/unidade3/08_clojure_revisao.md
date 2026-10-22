@@ -55,11 +55,30 @@ Clojure oferece uma abordagem ao polimorfismo que é mais flexível e poderosa d
 | **Multimethods** | Um sistema de despacho (*dispatch*) genérico e extremamente poderoso. A lógica de despacho não se limita ao tipo do primeiro argumento, como na orientação a objetos. Em vez disso, ela pode ser baseada em qualquer função arbitrária dos argumentos, permitindo despacho múltiplo baseado em **valores, tipos, metadados ou qualquer outra característica** que se possa extrair deles. |
 | **Protocols** | Um mecanismo de despacho de alta performance baseado em tipos. São conceitualmente semelhantes às interfaces Java, mas com uma vantagem crucial: podem ser estendidos para tipos **já existentes** (incluindo classes Java ou de bibliotecas de terceiros) sem a necessidade de modificar seu código-fonte. Isso resolve de forma elegante o "Expression Problem", permitindo adicionar novas funcionalidades a tipos de dados existentes. |
 
+Um exemplo pequeno de multimethod: a função de despacho é a própria keyword `:forma`, aplicada ao mapa recebido.
+
+```clojure
+(defmulti area :forma)   ; despacha pelo valor de (:forma argumento)
+
+(defmethod area :circulo [{:keys [raio]}]
+  (* Math/PI raio raio))
+
+(defmethod area :retangulo [{:keys [largura altura]}]
+  (* largura altura))
+
+(area {:forma :retangulo :largura 2 :altura 3})
+;=> 6
+(area {:forma :circulo :raio 1})
+;=> 3.141592653589793
+```
+
+Compare com o tipo soma `Forma` do capítulo de declaração de tipos em Haskell: lá, os casos são fixados na definição do tipo e verificados pelo compilador; aqui, qualquer parte do programa pode acrescentar um novo `defmethod` (para `:triangulo`, por exemplo) sem tocar no código existente.
+
 Essas ferramentas proporcionam uma maneira de desacoplar o código da estrutura de dados, oferecendo uma flexibilidade que vai muito além dos limites da herança de classes.
 
 ### 2.2. O Poder das Sequências Preguiçosas (Lazy Sequences)
 
-Uma das características mais eficientes e elegantes do Clojure é o uso de sequências preguiçosas (*lazy sequences*). O princípio da **avaliação preguiçosa (*lazy evaluation*)** significa que os elementos de uma sequência são computados apenas no momento em que são realmente necessários. As principais funções de transformação, como `map`, `filter` e `reduce`, produzem sequências preguiçosas por padrão.
+Uma das características mais eficientes e elegantes do Clojure é o uso de sequências preguiçosas (*lazy sequences*). O princípio da **avaliação preguiçosa (*lazy evaluation*)** significa que os elementos de uma sequência são computados apenas no momento em que são realmente necessários. As principais funções de transformação, como `map` e `filter`, produzem sequências preguiçosas por padrão. Já `reduce` é **gulosa**: para produzir um único valor, ela precisa consumir a sequência inteira — e é justamente ela que, no fim de um pipeline, "puxa" os elementos das etapas preguiçosas.
 
 Isso permite a criação e manipulação de **sequências infinitas**. Por exemplo, uma função que gera a sequência de Fibonacci pode ser definida para representar todos os números de Fibonacci, sem consumir memória infinita. A macro `lazy-seq` não avalia seu corpo imediatamente; ela retorna um objeto que se comporta como uma sequência e que só calculará o próximo valor quando for solicitado, armazenando o resultado em cache para usos subsequentes.
 

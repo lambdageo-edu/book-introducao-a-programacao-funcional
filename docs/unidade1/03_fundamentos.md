@@ -82,7 +82,7 @@ Se a avaliação de uma expressão falhar, o valor de `it` não muda — então 
 
 ## 3. Aritmética Básica no GHCi
 
-Ao abrir o GHCi executando `ghci` no seu terminal (ou `cabal repl`, se estiver dentro de um projeto Cabal — veremos isso no próximo capítulo), você será recebido pelo prompt `Prelude>` (o módulo base de funções carregadas por padrão). Podemos usar o interpretador diretamente como uma calculadora de alta precisão:
+Ao abrir o GHCi executando `ghci` no seu terminal (ou `cabal repl`, se estiver dentro de um projeto Cabal, como vimos no capítulo anterior), você será recebido por um prompt — `Prelude>` nas versões mais antigas do GHC (o nome do módulo base, carregado por padrão), `ghci>` nas versões 9.x. Os exemplos deste livro usam as duas formas; o comportamento é o mesmo. Podemos usar o interpretador diretamente como uma calculadora de alta precisão:
 
 ```haskell
 Prelude> 2 + 15
@@ -193,13 +193,13 @@ A aplicação de função em Haskell possui a **maior prioridade de todas**. Iss
 Se desejarmos passar o resultado de uma operação como argumento para uma função, devemos delimitar explicitamente o argumento com parênteses:
 
 ```haskell
-Prelude> succ 5 + 1
-7
--- Avaliado como: (succ 5) + 1 = 6 + 1 = 7
+Prelude> succ 9 * 10
+100
+-- Avaliado como: (succ 9) * 10 = 10 * 10 = 100
 
-Prelude> succ (5 + 1)
-7
--- Avaliado como: succ 6 = 7
+Prelude> succ (9 * 10)
+91
+-- Avaliado como: succ 90 = 91
 ```
 
 ---

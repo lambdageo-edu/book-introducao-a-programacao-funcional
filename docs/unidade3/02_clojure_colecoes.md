@@ -186,7 +186,7 @@ estoque
 !!! tip "Rebinding, não mutação"
     Embora pareça que a "variável" `estoque` tenha mudado de valor, o que realmente aconteceu aqui foi um **rebinding** — ou seja, o símbolo `estoque` foi **reassociado** a um novo valor.
 
-    Em Clojure, os valores são imutáveis: o vetor original (`["Mochila"]`) continua existindo, intacto. O que mudou foi apenas a **referência**: agora o nome `estoque` aponta para um novo vetor (`["Mochila" "Tênis"]`).
+    Em Clojure, os valores são imutáveis: o vetor original (`["Mochila" "Camiseta"]`) continua existindo, intacto. O que mudou foi apenas a **referência**: agora o nome `estoque` aponta para um novo vetor (`["Mochila" "Camiseta" "Tênis"]`).
 
     Isso é diferente de linguagens imperativas onde variáveis são caixas mutáveis. Em Clojure, estamos apenas **atualizando o mapeamento entre um nome e um valor**, sem modificar os dados em si.
 
@@ -337,7 +337,7 @@ Exercício
 ;; 4. Imprima cada chave com seu valor correspondente.
 ```
 
-### 3.3 Recaptulando
+### 3.3 Recapitulando
 
 Assim como em vetores, há várias formas de acessar valores em um mapa em Clojure. Cada abordagem tem seu uso ideal. A seguir, exploramos as três formas principais.
 
@@ -462,94 +462,121 @@ Observações Didáticas
 - Você pode usar `assoc` e `dissoc` em sequência para construir lógicas de atualização mais complexas.
 - Ambas funcionam com mapas simples ou aninhados (em combinação com `assoc-in`, `update-in`, etc.).
     
-    ### 4.2 A Função Universal: Atualizando Valores com `update`
-    
-    A função `update` permite modificar um valor **existente** aplicando-lhe uma função, seja num **vetor** (por índice) ou num **mapa** (por chave).
-    
-    Essa abordagem evita código imperativo como:
-    
-    ```clojure
-    ;; Imperativo (errado em Clojure)
-    (let [atual (get mapa :x)
-          novo (inc atual)]
-      (assoc mapa :x novo))
-    
-    ```
-    
-    Com `update`, tudo isso vira uma linha só.
-    
-    ---
-    
-    1. Usando `update` com Mapas
-    
-    A função recebe:
-    
-    ```clojure
-    (update mapa :chave funcao)
-    
-    ```
-    
-    Exemplo – Atualizar estoque de produtos
-    
-    ```clojure
-    (def estoque {:mochila 10 :camiseta 5})
-    
-    ;; Aumentando em 1 a quantidade de mochilas
-    (update estoque :mochila inc)
-    ;; => {:mochila 11, :camiseta 5}
-    
-    ;; Dobrando a quantidade de camisetas
-    (update estoque :camiseta #(* 2 %))
-    ;; => {:mochila 10, :camiseta 10}
-    
-    ```
-    
-    > Dica: O % representa o valor atual da chave. É como dizer: "pegue esse valor, faça isso com ele e retorne".
-    > 
-    
-    ---
-    
-    2. Usando `update` com Vetores
-    
-    A lógica é a mesma, mas o primeiro argumento agora é um **índice numérico**.
-    
-    Exemplo – Aplicar desconto em um produto
-    
-    ```clojure
-    (def precos [100.0 200.0 150.0])
-    
-    ;; Aplicar 10% de desconto no segundo item (índice 1)
-    (update precos 1 #(Math/round (* 0.9 %)))
-    ;; => [100.0 180 150.0]
-    ;; Atenção: Math/round converte apenas o elemento atualizado para long;
-    ;; os demais elementos permanecem Double, pois update só toca no índice indicado.
-    
-    ```
-    
-    ---
-    
-    3. `update` com argumentos adicionais
-    
-    Você pode passar **argumentos extras** para a função que está sendo aplicada:
-    
-    ```clojure
-    (update estoque :mochila + 5)
-    ;; => {:mochila 15, :camiseta 5}
-    
-    ```
-    
-    > Aqui, estamos somando 5 ao valor atual da chave :mochila.
-    > 
-    
-    ---
-    
-    Recapitulando
-    
-    - `update` é a forma idiomática de **ler → transformar → reescrever**, tudo em uma única operação.
-    - Funciona tanto com **mapas** (por chave) quanto com **vetores** (por índice).
-    - É **imutável**: o valor original não é modificado.
+### 4.2 A Função Universal: Atualizando Valores com `update`
 
-## 5.0 Hora da Prática!
+A função `update` permite modificar um valor **existente** aplicando-lhe uma função, seja num **vetor** (por índice) ou num **mapa** (por chave).
+
+Essa abordagem evita código imperativo como:
+
+```clojure
+;; Imperativo (errado em Clojure)
+(let [atual (get mapa :x)
+      novo (inc atual)]
+  (assoc mapa :x novo))
+
+```
+
+Com `update`, tudo isso vira uma linha só.
+
+---
+
+1. Usando `update` com Mapas
+
+A função recebe:
+
+```clojure
+(update mapa :chave funcao)
+
+```
+
+Exemplo – Atualizar estoque de produtos
+
+```clojure
+(def estoque {:mochila 10 :camiseta 5})
+
+;; Aumentando em 1 a quantidade de mochilas
+(update estoque :mochila inc)
+;; => {:mochila 11, :camiseta 5}
+
+;; Dobrando a quantidade de camisetas
+(update estoque :camiseta #(* 2 %))
+;; => {:mochila 10, :camiseta 10}
+
+```
+
+!!! note "O que é `#(* 2 %)`?"
+    É uma **função anônima** escrita de forma abreviada: `#(* 2 %)` equivale a `(fn [x] (* 2 x))`, e o `%` representa o argumento recebido. Veremos funções anônimas em detalhe no próximo capítulo, sobre funções de alta ordem.
+
+> Dica: O % representa o valor atual da chave. É como dizer: "pegue esse valor, faça isso com ele e retorne".
+> 
+
+---
+
+2. Usando `update` com Vetores
+
+A lógica é a mesma, mas o primeiro argumento agora é um **índice numérico**.
+
+Exemplo – Aplicar desconto em um produto
+
+```clojure
+(def precos [100.0 200.0 150.0])
+
+;; Aplicar 10% de desconto no segundo item (índice 1)
+(update precos 1 #(Math/round (* 0.9 %)))
+;; => [100.0 180 150.0]
+;; Atenção: Math/round converte apenas o elemento atualizado para long;
+;; os demais elementos permanecem Double, pois update só toca no índice indicado.
+
+```
+
+---
+
+3. `update` com argumentos adicionais
+
+Você pode passar **argumentos extras** para a função que está sendo aplicada:
+
+```clojure
+(update estoque :mochila + 5)
+;; => {:mochila 15, :camiseta 5}
+
+```
+
+> Aqui, estamos somando 5 ao valor atual da chave :mochila.
+> 
+
+---
+
+Recapitulando
+
+- `update` é a forma idiomática de **ler → transformar → reescrever**, tudo em uma única operação.
+- Funciona tanto com **mapas** (por chave) quanto com **vetores** (por índice).
+- É **imutável**: o valor original não é modificado.
+
+## 5.0 Quando o Estado Precisa Mudar: `atom`
+
+Tudo o que vimos até aqui é imutável — e é assim que a maior parte de um programa Clojure deve ser. Mas um programa real às vezes precisa de **uma** coisa que muda ao longo do tempo: o estoque atual de uma loja, a lista de tarefas de um aplicativo. Para isso, Clojure oferece **referências**, e a mais simples delas é o `atom`: uma caixa que guarda um valor imutável e pode ter seu conteúdo **trocado** de forma segura, mesmo com várias threads.
+
+```clojure
+(def contador (atom 0))       ; cria a caixa com o valor inicial 0
+
+@contador                     ; lê o valor atual (o mesmo que (deref contador))
+;=> 0
+
+(swap! contador inc)          ; troca o valor aplicando uma função: (inc 0)
+;=> 1
+
+(swap! contador + 10)         ; argumentos extras, como no update: (+ 1 10)
+;=> 11
+
+(reset! contador 0)           ; troca por um valor fixo
+;=> 0
+```
+
+Repare que nada aqui é mutação de dados: o número `0` não "virou" `1`. O que muda é **qual valor imutável** está dentro da caixa. `swap!` recebe uma função pura (`inc`, `+`) e garante que a troca acontece de forma atômica — se duas threads chamarem `swap!` ao mesmo tempo, nenhuma atualização se perde. O ponto de exclamação no nome é a convenção de Clojure para "esta função tem efeito colateral".
+
+Clojure também tem referências coordenadas (`ref`, alteradas dentro de transações com `dosync` — a STM, *Software Transactional Memory*), usadas quando várias referências precisam mudar juntas. Neste curso, o `atom` basta: é ele que guarda as tarefas em memória no [trabalho de Clojure](10_clojure_tutorial_todo.md).
+
+## 6.0 Hora da Prática!
 
 Siga os passos abaixo em seu ambiente Clojure para aplicar o que aprendeu.
 
@@ -561,7 +588,7 @@ Siga os passos abaixo em seu ambiente Clojure para aplicar o que aprendeu.
 6. **Transforme um Valor:** Use `update` para aplicar um aumento de 10% no preço da `:camiseta`. A expressão `#(* % 1.1)` é uma função anônima que multiplica seu argumento (`%`) por 1.1.
 7. **Desafio:** Crie um novo mapa `carrinho-final` a partir de `precos-produtos` que contenha *apenas* os itens do seu `carrinho-atualizado` (do passo 3). Pesquise a função `select-keys` para uma solução elegante.
 
-## 6.0 Conclusão: Seus Novos Superpoderes em Clojure
+## 7.0 Conclusão: Seus Novos Superpoderes em Clojure
 
 Parabéns! Você acaba de dominar as estruturas de dados mais importantes de Clojure. Ao final deste guia, você solidificou três conceitos essenciais:
 

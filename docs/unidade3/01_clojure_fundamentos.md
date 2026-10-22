@@ -10,7 +10,7 @@ Agora, na **Unidade 3**, fazemos uma transição filosófica importante ao entra
 
 1. **Tipagem Dinâmica e Pragmática**: Clojure não realiza checagem de tipos em tempo de compilação da forma estrita do Haskell. Isso confere uma flexibilidade incrível e agilidade de prototipagem.
 2. **Desenvolvimento Focado no REPL**: O REPL (Read-Eval-Print Loop) em Clojure não é apenas um local para testar funções (como o GHCi); ele é o próprio núcleo do desenvolvimento, onde você altera o programa em execução sem precisar reiniciar o processo.
-3. **Código como Dados (Homoiconicidade)**: Em Clojure, a própria sintaxe do código é estruturada como listas e mapas. Isso abre as portas para uma metaprogramação absurdamente poderosa através de **Macros**, algo impossível na sintaxe rígida do Haskell.
+3. **Código como Dados (Homoiconicidade)**: Em Clojure, a própria sintaxe do código é estruturada como listas e mapas. Isso abre as portas para uma metaprogramação absurdamente poderosa através de **Macros**. Em Haskell, gerar código exige uma extensão à parte (o *Template Haskell*, que usamos rapidamente no `$quickCheckAll` do capítulo de instalação); em Clojure, é natural, porque o código já é uma estrutura de dados.
 4. **Ambiente Hospedado**: Clojure roda sobre a Java Virtual Machine (JVM), dando acesso nativo ao ecossistema robusto e maduro do Java.
 
 Prepare-se para abrir sua mente e descobrir uma nova forma de projetar softwares funcionais, preditivos e altamente flexíveis.
@@ -31,7 +31,7 @@ Mas como programamos se não podemos mudar nada? A resposta é simples: quando u
 
 O principal benefício dessa abordagem é a segurança. O código torna-se imune a uma vasta classe de bugs relacionados à mutação não gerenciada e é inerentemente mais seguro para ser executado em ambientes concorrentes (com múltiplos threads), um desafio comum na programação moderna.
 
-### 1.3. Por que escolher Clojure?
+### 1.4. Por que escolher Clojure?
 
 Clojure é uma linguagem de propósito geral que combina o melhor de vários mundos, tornando-a uma escolha atraente para uma ampla gama de tarefas.
 
@@ -49,13 +49,13 @@ Uma das melhores partes de aprender Clojure é a interatividade. Você não prec
 
 O **REPL** (Read-Eval-Print Loop ou Ciclo de Leitura-Avaliação-Impressão) é um ambiente interativo onde você pode digitar código Clojure, executá-lo e ver o resultado instantaneamente. O REPL é uma ferramenta fundamental no fluxo de trabalho de um desenvolvedor Clojure. Ele permite experimentação rápida, desenvolvimento incremental e oferece um feedback imediato, tornando o processo de aprendizado e desenvolvimento muito mais dinâmico e produtivo.
 
-Podemos usar o [https://tryclojure.org/](https://tryclojure.org/) como nossso REPL
+Podemos usar o [tryclojure.org](https://tryclojure.org/) como nosso REPL.
 
 ![image.png](img-clojure-fundamentos/image.png)
 
-### 2.1. Preparando o Ambiente de Desenvolvimento
+### 2.2. Preparando o Ambiente de Desenvolvimento
 
-Para o desenvolvimento de sistemas o REPL online  não será suficiente, nesses casos, vamos precisar instalar na nossa própria máquina.
+Para o desenvolvimento de sistemas, o REPL online não será suficiente; nesses casos, vamos precisar instalar o Clojure na nossa própria máquina.
 
 1. Acesse o site oficial para as instruções de instalação: `https://clojure.org/guides/getting_started`.
 2. Siga o processo de acordo com seu sistema operacional:
@@ -65,13 +65,13 @@ Para o desenvolvimento de sistemas o REPL online  não será suficiente, nesses 
 3. Após a instalação, abra seu terminal e execute o interpretador interativo (REPL).
 4. Experiência na web https://tryclojure.org/ ou https://onecompiler.com/clojure
 
-### 2.2. Desmistificando os Parênteses: A Sintaxe de Clojure
+### 2.3. Desmistificando os Parênteses: A Sintaxe de Clojure
 
 À primeira vista, o código Clojure pode parecer estranho por causa dos parênteses. No entanto, essa sintaxe, conhecida como S-expressions (expressões simbólicas), é a fonte de uma simplicidade e poder incríveis.
 
 1. A estrutura fundamental é `(função argumento1 argumento2 ...)`.
 2. Considere o exemplo `(+ 13 3)`. Isso é chamado de **notação prefixada**, onde a operação (ou função) vem *antes* dos operandos (ou argumentos). Em Clojure, `+` não é um operador especial; é apenas mais uma função. Essa uniformidade torna a linguagem mais simples e consistente.
-3. Todas as operações seguem essa mesma lógica:
+3. Todas as operações seguem essa mesma lógica — inclusive imprimir na tela, como no exemplo abaixo.
 4. Longe de serem um problema, os parênteses são, como afirma *Clojure in Action*, "uma grande fonte das capacidades de Clojure", pois permitem que o código seja tratado como uma estrutura de dados, algo que exploraremos mais adiante.
 
 ```clojure
@@ -107,10 +107,10 @@ De acordo com *Clojure for the Brave and True*, `let` oferece duas vantagens pri
 (def nome-global "Rosanthony")
 
 (println nome-global)
-; => "Rosanthony"
+; imprime: Rosanthony   (o valor de retorno de println é nil)
 
 (let [nome-local "Bloodthunder"]
-  (println nome-local)    ; => "Bloodthunder"
+  (println nome-local)    ; imprime: Bloodthunder
   (println nome-global)) ; A variável global ainda é acessível aqui
 
 ;; A linha abaixo causaria um erro, pois 'nome-local' não existe fora do bloco 'let'.
@@ -119,7 +119,7 @@ De acordo com *Clojure for the Brave and True*, `let` oferece duas vantagens pri
 ```
 
 !!! tip
-    veremos melhor os nomes locais quando criarmos nossas funcoes
+    Veremos melhor os nomes locais quando criarmos nossas funções.
 
 ### 3.3. Keywords: Etiquetas Eficientes
 
@@ -175,9 +175,9 @@ Clojure permite que uma única função tenha diferentes comportamentos dependen
   ([x y]
    (str "Recebi dois argumentos: " x " e " y)))
 
-(println (minha-funcao))          ; => "Fui chamada sem argumentos!"
-(println (minha-funcao "olá"))    ; => "Recebi o argumento: olá"
-(println (minha-funcao 1 2))      ; => "Recebi dois argumentos: 1 e 2"
+(println (minha-funcao))          ; imprime: Fui chamada sem argumentos!
+(println (minha-funcao "olá"))    ; imprime: Recebi o argumento: olá
+(println (minha-funcao 1 2))      ; imprime: Recebi dois argumentos: 1 e 2
 
 ```
 
@@ -191,7 +191,7 @@ Podemos testar no onecompiler.com
 
 Lógica condicional é a espinha dorsal de qualquer programa não trivial. Clojure oferece formas simples e poderosas para isso.
 
-### 5.1. O Fundamental
+### 5.1. O Fundamental: `if`
 
 O `if` em Clojure é uma expressão, o que significa que ele sempre retorna um valor. Sua estrutura é direta:
 
@@ -251,8 +251,6 @@ Isso significa que números (incluindo `0`), strings (incluindo as vazias `""`),
 
 ```
 
-> Excelente para mostrar que 0, "" e [] são considerados verdadeiros em Clojure!
-> 
 
 ### 5.3. Predicados e a Convenção
 
@@ -292,8 +290,7 @@ Exemplos comuns incluem:
 
 ```
 
-> Esse trecho ajuda a reforçar o uso de predicados e a importância da interrogação ? na convenção de nomes.
-> 
+Uma variação útil é o `if-let`: ele combina `let` e `if`, ligando um nome a um valor e executando o primeiro ramo apenas se esse valor não for `nil` nem `false`:
 
 ```clojure
 (defn saudacao [nome]
@@ -314,14 +311,9 @@ Exemplos comuns incluem:
 
 ```
 
-> Uma forma elegante de combinar verificação e binding de valor.
-> 
+### 5.4. `when`: Para Casos sem "senão"
 
-### 5.4. : Para Casos sem "senão"
-
-Às vezes, você só quer executar uma ação se uma condição for verdadeira, sem se preocupar com o caso "senão". Para isso, Clojure oferece o `when`, uma forma mais concisa de `if` sem a cláusula `else`.
-
-Com todos esses blocos de construção em mãos — sintaxe, nomes, funções e condicionais — estamos prontos para descobrir o conceito mais poderoso e distintivo de Clojure e da família Lisp.
+Às vezes, você só quer executar uma ação se uma condição for verdadeira, sem se preocupar com o caso "senão". Para isso, Clojure oferece o `when`, uma forma mais concisa de `if` sem a cláusula `else` — e que aceita várias expressões no corpo.
 
 **Exemplo 1 – Imprimir apenas se o número for positivo**
 
@@ -365,8 +357,7 @@ Com todos esses blocos de construção em mãos — sintaxe, nomes, funções e 
 
 ```
 
-> Este exemplo mostra como when permite várias expressões no corpo, como um println, uma possível lógica de atualização, retorno etc.
-> 
+Repare que o corpo do `when` tem várias expressões (um `println`, outras ações, o retorno `true`), algo que o `if` não permite sem um `do`.
 
 ---
 
@@ -394,6 +385,8 @@ Recapitulando
 
 - `if` → usa-se quando há **caso "senão"**.
 - `when` → para **executar algo apenas se a condição for verdadeira**, com possibilidade de múltiplas expressões.
+
+Com todos esses blocos de construção em mãos — sintaxe, nomes, funções e condicionais — estamos prontos para descobrir o conceito mais poderoso e distintivo de Clojure e da família Lisp.
 
 ## 6. O Superpoder do Clojure: Homoiconicidade (Código como Dados)
 
@@ -446,11 +439,11 @@ Estes são os blocos de construção essenciais. Com essa base sólida, você es
 
 ### 8.1. Exercício 1: Operações Simples com Símbolos
 
-Vamos reforçar os conceitos de `def` e notação prefixa.
+Vamos reforçar os conceitos de `def` e notação prefixada.
 
 1. **Passo 1:** Defina um símbolo global `preco-base` com o valor `85` usando `def`.
 2. **Passo 2:** Defina outro símbolo global `taxa-fixa` com o valor `15` usando `def`.
-3. **Passo 3:** Use a notação prefixa para somar os dois símbolos e imprima o resultado com `println`.
+3. **Passo 3:** Use a notação prefixada para somar os dois símbolos e imprima o resultado com `println`.
 
 ### Código da Solução
 

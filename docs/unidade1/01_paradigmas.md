@@ -25,7 +25,7 @@ Uma evolução do imperativo que agrupa estados (atributos) e comportamentos (m�
 ### 3. Paradigma Declarativo / Funcional
 O modelo mental funcional é focado em **o que** deve ser feito, e não em como. Os programas são construídos através da composição de funções matemáticas puras, sem alteração de estado global ou dados mutáveis.
 
-* **Características**: Imutabilidade, funções como cidadãs de primeira classe, ausência de efeitos colaterais (*side effects*) e avaliação preguiçosa (*lazy evaluation*).
+* **Características**: Imutabilidade, funções como cidadãs de primeira classe e ausência de efeitos colaterais (*side effects*). Algumas linguagens funcionais, como Haskell, adotam também a avaliação preguiçosa (*lazy evaluation*); outras, como Clojure e Elixir (Unidade 3), avaliam de forma estrita.
 * **Analogia**: Uma linha de montagem matemática. Dados entram por um lado, passam por transformações (funções) e saem como novos dados do outro lado, sem alterar os dados originais.
 
 ---
@@ -34,10 +34,10 @@ O modelo mental funcional é focado em **o que** deve ser feito, e não em como.
 
 A programação funcional baseia-se no **Cálculo Lambda (λ-cálculo)**, um formalismo matemático criado pelo lógico **Alonzo Church** na década de 1930 para estudar a computabilidade. Curiosamente, o cálculo lambda surgiu na mesma época em que **Alan Turing** criou a Máquina de Turing.
 
-* **Máquina de Turing** (Base do Paradigma Imperativo): Baseada em transições de estado físicos e escrita/leitura em fitas magnéticas (memória).
+* **Máquina de Turing** (Base do Paradigma Imperativo): Baseada em um estado que muda passo a passo e na leitura/escrita de símbolos em uma fita (a memória).
 * **Cálculo Lambda** (Base do Paradigma Funcional): Baseado em aplicações e definições de funções puras, substituição de variáveis e recursão.
 
-Embora matematicamente equivalentes (Tese de Church-Turing), as duas abordagens levaram a caminhos diferentes na computação:
+Embora equivalentes em poder computacional — Turing provou, em 1937, que os dois modelos definem exatamente as mesmas funções computáveis, um dos pilares da Tese de Church-Turing —, as duas abordagens levaram a caminhos diferentes na computação:
 
 1. **Lisp (1958)**: Criada por John McCarthy — a primeira pessoa a perceber a conexão entre a prática de programação e o cálculo lambda —, foi a primeira linguagem a implementar seus conceitos, utilizando S-expressions. Lisp é a ancestral comum do Clojure.
 2. **Fundamentos teóricos (1960s)**: Durante os anos 1960, os cientistas da computação começaram a reconhecer a importância do cálculo lambda. **Peter Landin** e **Christopher Strachey** desenvolveram os fundamentos das linguagens de programação: como entender o que os programas *fazem* (semântica operacional) e o que eles *significam* (semântica denotacional).
@@ -64,7 +64,7 @@ Uma função é dita **pura** se ela atende a dois requisitos básicos:
 2. Não causa efeitos colaterais visíveis (como modificar uma variável global, escrever em arquivos, alterar parâmetros recebidos ou imprimir texto na tela).
 
 ### 2. Imutabilidade
-Uma vez que um valor é criado, ele nunca muda. Para "alterar" um dado, criamos uma nova versão dele aplicando uma função. Isso elimina completamente problemas de concorrência e condições de corrida (*race conditions*), pois múltiplos threads podem ler o mesmo dado sem medo de que ele seja modificado no meio do caminho.
+Uma vez que um valor é criado, ele nunca muda. Para "alterar" um dado, criamos uma nova versão dele aplicando uma função. Isso elimina uma classe inteira de problemas de concorrência — as condições de corrida (*race conditions*) sobre dados compartilhados —, pois múltiplos threads podem ler o mesmo dado sem medo de que ele seja modificado no meio do caminho.
 
 ### 3. Funções como Cidadãs de Primeira Classe
 Em linguagens funcionais, funções são tratadas como qualquer outro tipo de dado:
@@ -73,10 +73,10 @@ Em linguagens funcionais, funções são tratadas como qualquer outro tipo de da
 * Podem ser retornadas por outras funções.
 * Podem ser armazenadas em variáveis ou coleções de dados.
 
-Funções que recebem ou retornam outras funções são chamadas de **Funções de Alta Ordem** (*High-Order Functions*).
+Funções que recebem ou retornam outras funções são chamadas de **Funções de Alta Ordem** (*Higher-Order Functions*).
 
 ### 4. Avaliação Preguiçosa (*Lazy Evaluation*)
-Em Haskell, os cálculos são adiados até que seus resultados sejam realmente necessários. Esse recurso não é apenas um modo de postergar a avaliação: ele afeta profundamente a forma como escrevemos programas.
+Este pilar é específico de Haskell (e de outras linguagens preguiçosas), não do paradigma funcional como um todo. Em Haskell, os cálculos são adiados até que seus resultados sejam realmente necessários. Esse recurso não é apenas um modo de postergar a avaliação: ele afeta profundamente a forma como escrevemos programas.
 
 Um exemplo clássico: suponha que queremos encontrar os *k* menores elementos de uma lista não ordenada. Em uma linguagem tradicional, a abordagem óbvia — ordenar a lista inteira e pegar os *k* primeiros — seria cara, e escreveríamos uma função especial que encontra os valores em uma única passagem. Em Haskell, a abordagem "ordene e pegue" funciona bem:
 

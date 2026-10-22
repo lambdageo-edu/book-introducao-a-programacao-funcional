@@ -109,10 +109,10 @@ TentativaRuim.meu_if(condicao, IO.puts("🔥 APAGANDO O BANCO..."), IO.puts("Ufa
 
 **Resultado no Terminal:**
 
-Plaintext
-
-`"🔥 APAGANDO O BANCO..."
-"Ufa, salvo."`
+```text
+🔥 APAGANDO O BANCO...
+Ufa, salvo.
+```
 
 **O Desastre:**
 A mensagem "Apagando o banco" apareceu, mesmo a condição sendo `false`!
@@ -132,9 +132,9 @@ A mensagem "Apagando o banco" apareceu, mesmo a condição sendo `false`!
 A Macro resolve isso porque ela roda no **Tempo de Compilação**.
 Ela não recebe o *resultado* da execução ("Apagando..."). Ela recebe o **código em si** (a representação textual).
 
-A Macro olha para o código e diz: *"Eu vejo que você escreveu um comando para apagar o banco, mas eu decido que esse código **não será incluído** no resultado final porque a condição é falsa."*
+A Macro olha para o código e diz: *"Eu vejo que você escreveu um comando para apagar o banco. Não vou executá-lo agora: vou **reescrevê-lo** dentro de um `if` (ou `case`), de modo que ele só rode se a condição for verdadeira."*
 
-Quando o programa roda (Runtime), o código perigoso nem existe mais naquela trilha de execução.
+Repare que a macro, em geral, **não sabe** o valor da condição — `condicao` só existe em tempo de execução. O que ela faz é gerar um código em que os ramos ficam **protegidos** por uma decisão tomada em Runtime: quando o programa roda, só o ramo escolhido é avaliado, e o comando perigoso nunca é executado se a condição for falsa.
 
 | **Característica** | **Função (def)** | **Macro (defmacro)** |
 | --- | --- | --- |
@@ -200,11 +200,13 @@ O Elixir oferece uma sintaxe mais limpa (sem tantos parênteses), mas por baixo 
 
 Em ambas, **Código é Dado**. Saber escrever macros é apenas saber manipular Listas (no Clojure) ou Tuplas (no Elixir).
 
-### 3.3. Anatomia da AST em Elixir
+### 3.4. Anatomia da AST em Elixir
 
 Em Elixir, quase todo código vira uma tupla com este formato exato:
 
-{Nome da Operação, Metadados, Argumentos} }
+```elixir
+{nome_da_operacao, metadados, argumentos}
+```
 
 1. **Nome (Atom):** Qual função ou macro está sendo chamada (ex: `:if`, `:sum`, `:def`).
 2. **Metadados (List):** Informações para o compilador (número da linha, contexto, imports). Geralmente ignoramos isso em macros simples.
@@ -212,7 +214,7 @@ Em Elixir, quase todo código vira uma tupla com este formato exato:
 
 ---
 
-### 3.4. Laboratório: Raio-X com `quote`
+### 3.5. Laboratório: Raio-X com `quote`
 
 Vamos usar a macro `quote` para atuar como o Parser do compilador e ver essa estrutura.
 
@@ -258,7 +260,7 @@ quote do: idade
 
 ---
 
-### 3.5. A Dinâmica: Injetando Valores com `unquote`
+### 3.6. A Dinâmica: Injetando Valores com `unquote`
 
 Agora que você viu que `quote` transforma **tudo** em uma estrutura de dados estática, surge um problema de engenharia.
 
@@ -307,10 +309,10 @@ valor = 50
 ast = quote do
   1 + unquote(valor)
 end
-# Resultado da AST: {:+, [...], [1, 5]}
+# Resultado da AST: {:+, [...], [1, 50]}
 ```
 
-**Olhe a diferença:** Agora o segundo argumento da soma é o **número 5**, e não uma referência a uma variável.
+**Olhe a diferença:** Agora o segundo argumento da soma é o **número 50**, e não uma referência a uma variável.
 
 ---
 
@@ -324,14 +326,14 @@ Para escrever macros, você precisa dominar esse "Vem e Vai" mental:
 **Próximo Passo:**
 Agora que sabemos gerar a árvore (`quote`) e injetar valores nela (`unquote`), estamos prontos para encapsular isso dentro de um `defmacro` e criar nossa primeira extensão da linguagem: o comando `unless`.
 
-Perfeito. Agora que dominamos a **teoria** (AST) e as **ferramentas** (`quote`/`unquote`), vamos para a **Engenharia**.
+Agora que dominamos a **teoria** (AST) e as **ferramentas** (`quote`/`unquote`), vamos para a **Engenharia**.
 
 Vamos construir uma funcionalidade que o Elixir tem, mas vamos fingir que não tem: o comando `unless` (a menos que).
 Lógica: `unless(x)` é semanticamente idêntico a `if(!x)`.
 
 ---
 
-# 4. Prática de Engenharia: Criando a Macro `unless`
+## 4. Prática de Engenharia: Criando a Macro `unless`
 
 Neste laboratório, você vai sentir o poder de estender a linguagem. Você não vai criar uma função; você vai criar uma **nova palavra-chave**.
 
@@ -464,7 +466,7 @@ end
 
 ---
 
-# Laboratório Final: O Framework "MiniTest"
+## 6. Laboratório Final: O Framework "MiniTest"
 
 Neste laboratório, você vai entender como o Elixir consegue olhar para o código `assert 1 == 2` e dizer: *"Falhou. O lado esquerdo era 1 e o direito era 2"*. (Spoiler: Pattern Matching na AST).
 

@@ -109,7 +109,7 @@ quicksort (x:xs) = quicksort menores ++ [x] ++ quicksort maiores
     maiores = [a | a <- xs, a >  x]
 ```
 
-Nesta função, tomamos a cabeça `x` como o pivô. Usamos compreensões de lista para filtrar os elementos da cauda `xs` que são menores que o pivô (`menores`) e maiores que o pivô (`maiores`), ordenando cada uma dessas partes de forma recursiva antes de juntar tudo.
+Nesta função, tomamos a cabeça `x` como o pivô. Usamos compreensões de lista (a notação `[a | a <- xs, a <= x]`, que lê-se "todos os `a` tirados de `xs` tais que `a <= x`", explicada na seção 5 deste capítulo) para filtrar os elementos da cauda `xs` que são menores que o pivô (`menores`) e maiores que o pivô (`maiores`), ordenando cada uma dessas partes de forma recursiva antes de juntar tudo.
 
 ### Recursão de Cauda e Acumuladores
 Como Haskell não tem laços `for`/`while`, o equivalente de um loop com variável acumuladora é uma função auxiliar recursiva que carrega o acumulador como parâmetro. Compare com o loop em C que converte uma string de dígitos em inteiro (`acc = acc * 10 + dígito`):

@@ -34,7 +34,7 @@ Você deve desenvolver uma biblioteca de formatação baseada em um tipo abstrat
 * Imprimir objetos JSON formatados com indentação e quebra de linhas para fácil legibilidade.
 
 ### C. Testes com QuickCheck (`test/Spec.hs`)
-O projeto deve conter uma suíte de testes rodando via `cabal test` com, no mínimo:
+O arquivo de testes é o indicado em `main-is`, na seção `test-suite` do `.cabal`; o `cabal init` cria `test/Main.hs` (como no capítulo de [Instalação](../unidade1/02_instalacao.md)) — renomeie para `Spec.hs` ou mantenha o nome, desde que o `.cabal` aponte para ele. O projeto deve conter uma suíte de testes rodando via `cabal test` com, no mínimo:
 
 1. Implementação da Typeclass `Arbitrary` para o tipo `JValue` de forma a gerar dados aleatórios corretos e não-recursivos infinitos.
 2. No mínimo **5 propriedades** escritas para testar as invariantes da sua biblioteca (ex: idempotência de renderização, corretude dos escapes de string, corretude de acesso nas funções `get`).
@@ -50,3 +50,7 @@ O projeto deve conter uma suíte de testes rodando via `cabal test` com, no mín
 2. **Qualidade dos Testes**: A suíte de testes deve rodar com sucesso via `cabal test`.
 3. **Organização do Git**: O histórico de commits no repositório GitHub deve ser incremental e refletir o avanço por etapas do desenvolvimento do projeto (Conventional Commits recomendado).
 4. **Arquivo `README.md`**: Explicando claramente como clonar, compilar, testar e executar a aplicação.
+
+## 🎯 Critérios de Avaliação
+
+Conforme o [plano da unidade](00_plano_unidade2.md): corretude e completude da biblioteca, qualidade e cobertura das propriedades testadas, organização do projeto e defesa individual na aula 10.

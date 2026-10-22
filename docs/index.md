@@ -27,7 +27,7 @@ Exploramos os fundamentos teóricos do paradigma funcional em comparação aos p
 * Fundamentos da sintaxe e ambiente de desenvolvimento (GHCup, Cabal, REPL/GHCi)
 * Funções puras, casamento de padrões (*pattern matching*) e guardas
 * Manipulação e compreensão de listas, e recursão
-* Funções de Alta Ordem (*High-Order Functions*: `map`, `filter`, `fold`)
+* Funções de Alta Ordem (*Higher-Order Functions*: `map`, `filter`, `fold`)
 
 *Avaliação: prova escrita individual (70%) e listas de exercícios (30%). Veja o [plano completo da unidade](unidade1/00_plano_unidade1.md).*
 

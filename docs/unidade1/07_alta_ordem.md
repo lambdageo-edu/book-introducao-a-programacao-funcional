@@ -327,20 +327,25 @@ anexa xs ys = foldr (:) ys xs
 A classe de funções expressáveis com `foldr` é chamada de **recursiva primitiva** — e um número surpreendente de funções de manipulação de listas se encaixa nela (como desafio avançado: até `foldl` pode ser escrita usando `foldr`!).
 
 ### `foldl`, Avaliação Preguiçosa e *Space Leaks*
-Por causa da avaliação preguiçosa, `foldl` não calcula as somas parciais imediatamente — ele acumula uma expressão adiada (*thunk*) cada vez maior: `(((0+1)+2)+3)...`. Para listas grandes, isso consome memória linear e pode estourar a pilha:
+Por causa da avaliação preguiçosa, `foldl` não calcula as somas parciais imediatamente — ele acumula uma expressão adiada (*thunk*) cada vez maior: `(((0+1)+2)+3)...`, que só é reduzida no final. Para listas grandes, isso consome memória proporcional ao tamanho da lista. Nas versões antigas do GHC, isso estourava a pilha (`*** Exception: stack overflow`); nas atuais, a pilha cresce conforme a necessidade e o programa termina — mas o custo continua lá. O comando `:set +s` do GHCi mostra tempo e memória de cada expressão:
 
 ```haskell
-Prelude> foldl (+) 0 [1..1000000]
-*** Exception: stack overflow
+ghci> :set +s
+ghci> foldl (+) 0 [1..10000000]
+50000005000000
+(3.68 secs, 1,612,377,968 bytes)
 ```
 
 Esse *thunking* invisível é chamado de **space leak** (vazamento de espaço) — um obstáculo clássico para novos programadores Haskell. A solução é simples: o módulo `Data.List` define **`foldl'`**, uma versão estrita que avalia o acumulador a cada passo:
 
 ```haskell
-Prelude> import Data.List
-Prelude Data.List> foldl' (+) 0 [1..1000000]
-500000500000
+ghci> import Data.List
+ghci> foldl' (+) 0 [1..10000000]
+50000005000000
+(0.23 secs, 880,075,936 bytes)
 ```
+
+Os números exatos variam de máquina para máquina, mas a diferença de ordem de grandeza não. (Programas compilados com `ghc -O` costumam escapar do problema, porque o otimizador percebe que o acumulador pode ser estrito — mas não conte com isso.)
 
 Em programas reais, prefira sempre `foldl'` a `foldl`.
 

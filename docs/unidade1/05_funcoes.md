@@ -94,6 +94,8 @@ exemploRuim (x:xs) = x + exemploRuim xs
 -- exemploRuim []  ==> *** Exception: Non-exhaustive patterns
 ```
 
+(O padrão `(x:xs)` casa com uma lista não vazia, separando o primeiro elemento `x` do restante `xs`; ele é o assunto do próximo capítulo. Aqui, falta a equação para a lista vazia `[]`.)
+
 O GHC oferece a opção de compilação `-fwarn-incomplete-patterns` (ou `-Wall`), que emite um aviso quando uma sequência de padrões não cobre todos os construtores do tipo. Quando precisamos de um comportamento padrão para os casos restantes, usamos o curinga `_` como último padrão.
 
 ### As-Patterns: Nomeando o Todo e as Partes
@@ -195,6 +197,9 @@ emprestar valor saldo = if valor < reserva * 0.5
     where reserva   = 100
           novoSaldo = saldo - valor
 ```
+
+!!! note "`Just` e `Nothing`"
+    `emprestar` devolve um valor do tipo `Maybe`: `Just novoSaldo` quando o empréstimo é possível, `Nothing` quando não é. `Maybe` é a forma de Haskell representar "um resultado que pode não existir", sem `null`. Por enquanto basta reconhecer os dois construtores; o tipo é definido no capítulo de [Tipos Algébricos](../unidade2/01_declarando_tipos_classes.md).
 
 ```haskell
 -- ERRO: a segunda declaração está em coluna diferente da primeira

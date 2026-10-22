@@ -47,7 +47,7 @@ Siga as instruções exibidas na tela e selecione as opções para instalar o **
 
 ## 🛠️ O REPL: `ghci` e `cabal repl`
 
-Fora de qualquer projeto, `ghci` sozinho abre um REPL com só a biblioteca `base` carregada — é a calculadora interativa que usamos no capítulo anterior. Dentro de um projeto Cabal (que vamos criar já já), `cabal repl` abre o mesmo REPL, mas já com os módulos e as dependências do seu projeto carregados.
+Fora de qualquer projeto, `ghci` sozinho abre um REPL com só a biblioteca `base` carregada — é a calculadora interativa que vamos explorar no próximo capítulo. Dentro de um projeto Cabal (que vamos criar já já), `cabal repl` abre o mesmo REPL, mas já com os módulos e as dependências do seu projeto carregados.
 
 ## 📁 Criando um Projeto
 

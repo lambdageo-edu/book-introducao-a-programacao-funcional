@@ -1,6 +1,6 @@
 # Trabalhando com Coleções: De Lazy Sequences à Recursão Otimizada
 
-Bem-vindo a mais um encontro em nossa jornada com Clojure. Hoje, vamos nos aprofundar em três pilares essenciais para a manipulação de dados na linguagem. Primeiro, exploraremos como agrupar e resumir dados utilizando poderosas funções de agregação, transformando coleções brutas em insights valiosos. Em seguida, aprenderemos a ordenar e selecionar esses dados, uma etapa crucial para apresentar informações de forma clara e significativa. Por fim, desvendaremos o conceito de *lazy sequences* (sequências preguiçosas), um dos segredos por trás da eficiência e do excelente gerenciamento de memória de Clojure. Dominar essas três áreas permitirá que você construa pipelines de dados expressivos, legíveis e de alto desempenho.
+Bem-vindo a mais um capítulo em nossa jornada com Clojure. Hoje, vamos nos aprofundar em três pilares essenciais para a manipulação de dados na linguagem. Primeiro, exploraremos como agrupar e resumir dados utilizando poderosas funções de agregação, transformando coleções brutas em insights valiosos. Em seguida, aprenderemos a ordenar e selecionar esses dados, uma etapa crucial para apresentar informações de forma clara e significativa. Por fim, desvendaremos o conceito de *lazy sequences* (sequências preguiçosas), um dos segredos por trás da eficiência e do excelente gerenciamento de memória de Clojure. Dominar essas três áreas permitirá que você construa pipelines de dados expressivos, legíveis e de alto desempenho.
 
 ## 1. Agrupamento e Agregação de Dados
 
@@ -88,11 +88,11 @@ Resultado:
 
 ```
 
-### 1.2. A Função
+### 1.2. A Função `group-by`
 
 A principal ferramenta de Clojure para agrupamento é a função `group-by`. Sua operação é elegantemente simples: ela recebe uma função (a função de agrupamento) e uma coleção. Em seguida, retorna um mapa onde as chaves são o resultado da aplicação da função a cada item da coleção, e os valores são listas contendo todos os itens que geraram aquela chave específica.
 
-Vamos ver um exemplo simples, inspirado no paradigma map/reduce, para entender seu funcionamento. Imagine que temos uma lista de pares, onde cada par contém uma palavra e uma contagem.
+O exemplo de contagem de palavras da seção anterior, inspirado no paradigma map/reduce, já mostrou seu funcionamento: no Passo 2, `group-by` agrupou os pares `[palavra contagem]` usando a primeira posição de cada vetor como chave.
 
 ### 1.3. Caso de Uso: Análise de Carrinhos de Compras
 
@@ -119,6 +119,13 @@ Nosso objetivo é calcular o faturamento total por departamento. Para isso, cons
 3. **Transformação com `map`**: Antes de agrupar, é uma boa prática simplificar os dados. Usaremos `map` com uma função auxiliar, `line-summary`, para transformar cada item de linha em um resumo contendo apenas os dados de que precisamos: o departamento (`:dept`) e o total (`:total`). Isso descarta informações irrelevantes e torna o próximo passo mais eficiente.
 4. **Agrupamento com `group-by`**: Agora que temos uma sequência limpa e simplificada de itens, aplicamos `group-by` para agrupá-los por departamento (`:dept`).
 
+A função auxiliar `line-summary` é simplesmente uma seleção de chaves:
+
+```clojure
+(defn line-summary [item]
+  (select-keys item [:dept :total]))
+```
+
 Vamos combinar esses passos em um pipeline legível usando o macro `->>`:
 
 ```clojure
@@ -138,8 +145,18 @@ O resultado neste ponto é um mapa onde cada chave é um departamento e o valor 
 
 ```
 
-1. **Agregação com `map-vals` e `reduce`**: Por fim, precisamos somar os totais de cada departamento. Uma abordagem idiomática é usar `medley.core/map-vals` (uma função da biblioteca Medley que aplica uma função a cada valor de um mapa) combinada com `reduce` para somar os totais.
-2. Vamos aplicar isso ao nosso mapa agrupado:
+Falta o último passo, **agregação com `update-vals` e `reduce`**. Por fim, precisamos somar os totais de cada departamento. A função `update-vals` (disponível desde o Clojure 1.11) aplica uma função a **cada valor** de um mapa, mantendo as chaves. Combinada com `reduce`, ela soma os totais de cada grupo:
+
+```clojure
+(def agrupado
+  (->> carts
+       (filter :settled?)
+       (mapcat :line-items)
+       (map line-summary)
+       (group-by :dept)))
+
+(update-vals agrupado (fn [resumos] (reduce + (map :total resumos))))
+```
 
 O mapa final nos dá um resumo valioso dos dados brutos, mostrando o faturamento total para cada departamento.
 
@@ -152,15 +169,19 @@ Juntando tudo, a função completa seria:
 
 ```clojure
 (defn revenue-by-department [carts]
-  (->> carts
-       (filter :settled?)
-       (mapcat :line-items)
-       (map line-summary)
-       (group-by :dept)
-       (map-vals
-         (fn [summaries] (reduce + (map :total summaries))))))
+  (update-vals
+    (->> carts
+         (filter :settled?)
+         (mapcat :line-items)
+         (map line-summary)
+         (group-by :dept))
+    (fn [summaries] (reduce + (map :total summaries)))))
 
+(revenue-by-department carts)
+;; => {:toys 25, :clothing 25}
 ```
+
+Repare que `update-vals` fica **fora** do `->>`: ela recebe o mapa como **primeiro** argumento, e o `->>` insere o resultado sempre na **última** posição. (Em versões anteriores ao Clojure 1.11, o mesmo papel era feito por `map-vals`, da biblioteca externa Medley.)
 
 Com os dados devidamente agregados, o próximo passo lógico é organizá-los para facilitar a visualização e a tomada de decisões.
 
@@ -172,7 +193,7 @@ Com os dados devidamente agregados, o próximo passo lógico é organizá-los pa
 
 Após a agregação, os dados estão resumidos, mas não necessariamente organizados de uma maneira útil. A ordenação é o passo que nos permite responder a perguntas como "Quais são os departamentos mais lucrativos?" ou "Quais os 10 produtos menos vendidos?". Selecionar subconjuntos de dados, como os "Top 5", é igualmente importante para focar a atenção nos resultados mais relevantes. Clojure oferece um rico conjunto de funções para realizar essas tarefas de forma concisa e eficiente.
 
-### 2.2. Ordenação com e Inversão com
+### 2.2. Ordenação com `sort-by` e Inversão com `reverse`
 
 A função `sort-by` é a ferramenta ideal para ordenar coleções com base em um critério específico. Ela recebe uma função-chave e uma coleção, e ordena a coleção em ordem *crescente* com base no valor retornado pela função-chave para cada elemento.
 
@@ -214,7 +235,7 @@ Podemos combinar `take` com nosso exemplo de ordenação para obter os "Top 3" l
 
 ```
 
-### 2.4. Combinando Operações com o Macro
+### 2.4. Combinando Operações com o Macro `->>`
 
 Pipelines de dados como o que acabamos de construir podem se tornar difíceis de ler devido ao aninhamento de funções: `(take 3 (reverse (sort-by :rating books)))`. Para resolver isso, Clojure oferece o macro de encadeamento `->>` (conhecido como *thread-last*). Ele reescreve o código aninhado em uma sequência linear e legível, de cima para baixo. O macro insere o resultado de cada linha como o *último* argumento da função na linha seguinte.
 
@@ -271,7 +292,7 @@ Vamos ilustrar o benefício de desempenho e eficiência com um cenário prático
 (defn primo? [n]
   (and (> n 1)
        (not-any? #(zero? (mod n %))
-                 (range 2 (inc (Math/sqrt n))))))
+                 (range 2 (inc (long (Math/sqrt n)))))))
 
 ;; Função que simula uma transformação de dados cara (por exemplo, uma consulta)
 (defn detalhes-numero [n]
@@ -326,6 +347,9 @@ Ao executar o código, o retorno será algo como:
 
 E você notará que a execução é praticamente instantânea, porque o pipeline parou logo após encontrar o **primeiro número primo (2)** — os demais milhões de elementos **nem foram processados**.
 
+!!! note "Preguiçoso, mas em blocos de 32"
+    Na prática, `range` e `map` produzem *chunked sequences*: por eficiência, Clojure calcula os elementos em blocos de **32**. Se você contar as chamadas de `detalhes-numero` neste exemplo, verá que ela roda 32 vezes (para `0` a `31`), e não apenas 3. Ainda é muito menos que um milhão — mas é por isso que não se deve confiar na preguiça para controlar **efeitos colaterais** (como o `Thread/sleep`, uma consulta ou um `println`) dentro de `map`.
+
 ---
 
 ### Moral da história
@@ -347,13 +371,13 @@ Embora a preguiça seja o padrão para a maioria das transformações de dados e
 
 Em resumo, a preguiça é o comportamento padrão e desejável para transformações de dados, garantindo eficiência. A avidez (`eager`) é uma ferramenta usada intencionalmente para controlar a execução de efeitos colaterais.
 
-## 5. Recursão e Otimização de Cauda em Clojure
+## 4. Recursão e Otimização de Cauda em Clojure
 
 Na programação funcional, a **recursão** é a abordagem natural para lidar com repetição. Essa preferência está ligada ao pilar da **imutabilidade**: como as estruturas de dados não podem ser alteradas, laços imperativos como `for` e `while`, que dependem da mutação de variáveis, tornam-se pouco adequados.
 
 A recursão, por outro lado, é perfeitamente compatível com dados imutáveis, pois opera gerando *novos valores* a cada chamada, até atingir um **caso base** — a condição que interrompe a repetição.
 
-### 5.1 O Problema Comum: O Custo da Pilha
+### 4.1 O Problema Comum: O Custo da Pilha
 
 Funções recursivas simples podem rapidamente consumir toda a **pilha de chamadas** (*call stack*). Cada nova chamada empilha um novo *frame* de execução. Quando o número de chamadas é grande, ocorre o erro clássico `StackOverflowError`.
 
@@ -376,9 +400,9 @@ Cada chamada empilha uma nova execução de `count-down`. Como a pilha é limita
 
 ---
 
-### 5.2 A Solução de Clojure: `recur` e a Otimização de Chamada de Cauda
+### 4.2 A Solução de Clojure: `recur`
 
-Clojure resolve esse problema com a forma especial **`recur`**, que implementa a **otimização de chamada de cauda** (*Tail Call Optimization*, TCO).
+Em Haskell e em Elixir, uma chamada recursiva em **posição de cauda** (a última coisa que a função faz) é otimizada automaticamente: o compilador reaproveita o *frame* atual em vez de empilhar um novo — a chamada **otimização de chamada de cauda** (*Tail Call Optimization*, TCO). A JVM, onde Clojure roda, **não** faz essa otimização. Por isso, Clojure oferece uma forma especial explícita, **`recur`**, que produz o mesmo efeito.
 
 Mas o `recur` não é uma chamada de função — ele é uma **instrução de salto controlado**: diz ao compilador para **reiniciar a execução** da função (ou de um `loop`) **com novos valores** para os parâmetros, **sem empilhar uma nova chamada**.
 
@@ -389,7 +413,7 @@ Para que o `recur` funcione:
 
 ---
 
-### 5.3 Transformando uma Função Recursiva em `recur` (passo a passo)
+### 4.3 Transformando uma Função Recursiva em `recur` (passo a passo)
 
 Vamos entender **como transformar** uma função recursiva comum em uma versão com `recur`.
 
@@ -405,33 +429,21 @@ Vamos entender **como transformar** uma função recursiva comum em uma versão 
 
 Essa versão funciona, mas cria uma nova chamada a cada passo. `(soma 100000)` vai causar `StackOverflowError`.
 
-### Passo 2 — Adicionar um acumulador
+### Passo 2 — Adicionar um acumulador e colocar a recursão em cauda
 
-Introduzimos um argumento extra (`acc`) para guardar o resultado parcial:
-
-```clojure
-(defn soma [n acc]
-  (if (zero? n)
-    acc
-    (+ n (soma (dec n) (+ acc n))))) ; ainda recursiva normal
-
-```
-
-Agora acumulamos o resultado, mas ainda empilhamos chamadas.
-
-### Passo 3 — Colocar a recursão em posição de cauda
-
-A chamada recursiva precisa ser **a última operação** da função:
+No Passo 1, depois que `(soma (dec n))` retorna, ainda falta somar `n` — por isso cada chamada precisa ficar esperando na pilha. Introduzimos um argumento extra (`acc`) para guardar o resultado parcial; assim, a chamada recursiva passa a ser **a última operação** da função:
 
 ```clojure
 (defn soma [n acc]
   (if (zero? n)
     acc
-    (soma (dec n) (+ acc n))))  ;; agora está em cauda
+    (soma (dec n) (+ acc n))))  ;; agora está em posição de cauda
 
 ```
 
-### Passo 4 — Substituir a chamada por `recur`
+Em Haskell ou Elixir, isso já bastaria. Mas, na JVM, `(soma 100000 0)` **ainda** causa `StackOverflowError`: sem TCO, cada chamada continua empilhando um *frame*, mesmo estando em cauda.
+
+### Passo 3 — Substituir a chamada por `recur`
 
 Por fim, trocamos a chamada explícita pela forma especial:
 
@@ -449,7 +461,7 @@ Chamando `(soma 100000 0)` → executa perfeitamente, sem erro e sem consumir pi
 
 ---
 
-### 5.4 Como o `recur` “sabe” o que repetir
+### 4.4 Como o `recur` “sabe” o que repetir
 
 O `recur` **não chama a função pelo nome**.
 
@@ -462,7 +474,7 @@ Isso é resolvido **em tempo de compilação** — o compilador associa cada `re
 
 ---
 
-### 5.5 Iterações Locais com `loop/recur`
+### 4.5 Iterações Locais com `loop/recur`
 
 Além de `recur` dentro de funções, Clojure oferece a combinação `loop/recur` para criar **laços locais e eficientes**, sem precisar definir uma função nomeada.
 
@@ -481,7 +493,7 @@ O `loop` define as variáveis locais (`result`, `x`), e o `recur` reinicia o la�
 
 ---
 
-### 5.6 Conclusão
+### 4.6 Conclusão
 
 O `recur` permite que Clojure use **recursão como forma natural de iteração**, conciliando elegância funcional e eficiência prática.
 
@@ -497,4 +509,4 @@ Assim, obtemos o mesmo comportamento de um loop imperativo, mas preservando os p
 
 ## Conclusão
 
-Neste encontro, exploramos um conjunto de ferramentas que formam a espinha dorsal da manipulação de dados em Clojure. Vimos como a agregação com `group-by` nos permite resumir dados complexos. Aprendemos a usar o rico conjunto de funções de sequência, como `sort-by`, `take` e `reverse`, para organizar e focar em informações relevantes. E, crucialmente, entendemos como a avaliação preguiçosa torna esses pipelines de dados não apenas possíveis, mas extremamente eficientes, mesmo com coleções massivas ou infinitas. O domínio desses conceitos — agregação, manipulação de sequências e preguiça — é o que permite a construção de código idiomático, expressivo, legível e de alto desempenho em Clojure.
+Neste capítulo, exploramos um conjunto de ferramentas que formam a espinha dorsal da manipulação de dados em Clojure. Vimos como a agregação com `group-by` nos permite resumir dados complexos. Aprendemos a usar o rico conjunto de funções de sequência, como `sort-by`, `take` e `reverse`, para organizar e focar em informações relevantes. E, crucialmente, entendemos como a avaliação preguiçosa torna esses pipelines de dados não apenas possíveis, mas extremamente eficientes, mesmo com coleções massivas ou infinitas. O domínio desses conceitos — agregação, manipulação de sequências e preguiça — é o que permite a construção de código idiomático, expressivo, legível e de alto desempenho em Clojure.

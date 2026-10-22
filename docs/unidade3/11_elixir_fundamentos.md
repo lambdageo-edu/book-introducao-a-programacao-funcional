@@ -10,7 +10,7 @@ Ambas as linguagens compartilham princípios funcionais cruciais, como imutabili
 
 1. **VM do Erlang (BEAM) vs JVM**: A JVM do Clojure foi desenhada para alta performance de computação bruta em thread pools. A BEAM do Elixir foi desenhada para sistemas distribuídos altamente tolerantes a falhas e concorrentes com milhões de processos leves de baixo consumo de memória.
 2. **Modelo de Atores vs Memória Compartilhada**: Clojure lida com concorrência usando referências de estado imutável com STM (Software Transactional Memory) ou Atoms sobre threads compartilhadas. Elixir utiliza o **Modelo de Atores**, onde processos são totalmente isolados e não compartilham nenhuma memória entre si, comunicando-se exclusivamente via troca de mensagens assíncronas.
-3. **Sintaxe Amigável**: Elixir possui uma sintaxe influenciada por Ruby, muito mais familiar e acessível para desenvolvedores de linguagens imperativas do que as S-expressions do Clojure, mas mantendo a pureza funcional sob o capô.
+3. **Sintaxe Amigável**: Elixir possui uma sintaxe influenciada por Ruby, muito mais familiar e acessível para desenvolvedores de linguagens imperativas do que as S-expressions do Clojure, mas mantendo a semântica funcional (dados imutáveis) sob o capô.
 4. **O Operador Pipe (`|>`)**: Elixir introduz uma das sintaxes mais elegantes para pipeline de dados, o operador pipe, que permite encadear transformações de dados de forma extremamente legível (similar às threading macros do Clojure, mas integrado na raiz da sintaxe da linguagem).
 
 Nesta seção, você aprenderá os fundamentos sintáticos e operacionais do Elixir, preparando-se para construir aplicativos web de tempo real com Phoenix LiveView.
@@ -27,13 +27,13 @@ Nesta seção, você aprenderá os fundamentos sintáticos e operacionais do Eli
 
 ---
 
-## **1.1 Instalação e Ambiente (15 min)**
+## **1.1 Instalação e Ambiente**
 
-Exisitem diversas maneiras de instalar o elixir, veja mais detalhes em  https://elixir-lang.org/install.html
+Existem diversas maneiras de instalar o Elixir; veja mais detalhes em <https://elixir-lang.org/install.html>.
 
 ---
 
-## **1.2 Tipos Básicos (25 min)**
+## **1.2 Tipos Básicos**
 
 ### **Inteiros e Operações Aritméticas**
 
@@ -228,7 +228,7 @@ config[:host]  # "localhost"
 
     **Resumo:**
 
-    - Use **mapas** para representar dados estruturados e mutáveis (como registros de pessoas, produtos, etc.).
+    - Use **mapas** para representar dados estruturados (como registros de pessoas, produtos, etc.).
     - Use **keyword lists** para passar **opções ou parâmetros de funções**, especialmente quando a ordem importa.
 
     Exemplo:

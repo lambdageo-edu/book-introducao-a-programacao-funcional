@@ -22,7 +22,7 @@ Em Clojure, quando dizemos que as funções são "cidadãos de primeira classe",
 - **Retornadas como resultado** de outras funções.
 - **Armazenadas em estruturas de dados** ou **atribuídas a um símbolo (variável)** com `def`, assim como qualquer outro valor.
 
-Uma **Função de Alta Ordem (HOF - High-Order Function)** é simplesmente uma função que aproveita essa característica, seja recebendo outra função como argumento, seja retornando uma nova função como resultado.
+Uma **Função de Alta Ordem (HOF - Higher-Order Function)** é simplesmente uma função que aproveita essa característica, seja recebendo outra função como argumento, seja retornando uma nova função como resultado.
 
 Veja um exemplo prático. A função `valor-descontado` abaixo foi projetada para receber não apenas o valor a ser descontado, mas também a *própria regra* que decide se o desconto deve ser aplicado.
 
@@ -39,8 +39,8 @@ Veja um exemplo prático. A função `valor-descontado` abaixo foi projetada par
     valor-bruto))
 
 ;; Passando a função `mais-caro-que-100?` como argumento
-(println (valor-descontado mais-caro-que-100? 1000)) ; Retorna 900.0
-(println (valor-descontado mais-caro-que-100? 100))  ; Retorna 100
+(println (valor-descontado mais-caro-que-100? 1000)) ; imprime 900.0
+(println (valor-descontado mais-caro-que-100? 100))  ; imprime 100
 
 ```
 
@@ -50,7 +50,7 @@ Neste caso, `valor-descontado` é uma HOF porque aceita a função `mais-caro-qu
 
 `map`, `filter` e `reduce` são a tríade clássica de HOFs para processamento de coleções em Clojure. Todas recebem uma função como primeiro argumento para operar sobre os elementos de uma coleção.
 
-Para os exemplos a seguir, considere a coleção `precos` e uma versão de `valor-descontado` que aplica o desconto com base em uma regra fixa, além da função predicado `aplica-desconto?`:
+Para os exemplos a seguir, considere a coleção `precos` e uma função `preco-final`, de um único argumento, que aplica o desconto com base em uma regra fixa (diferente de `valor-descontado`, ela não recebe a regra como parâmetro), além da função predicado `aplica-desconto?`:
 
 ```clojure
 (def precos [30 700 1000])
@@ -59,7 +59,7 @@ Para os exemplos a seguir, considere a coleção `precos` e uma versão de `valo
   [valor-bruto]
   (> valor-bruto 100))
 
-(defn valor-descontado
+(defn preco-final
   "Retorna o valor com desconto de 10% se o valor bruto for estritamente maior que 100."
   [valor-bruto]
   (if (aplica-desconto? valor-bruto)
@@ -70,10 +70,10 @@ Para os exemplos a seguir, considere a coleção `precos` e uma versão de `valo
 
 `map`: aplica uma função a cada item da coleção
 
-A função `map` aplica `valor-descontado` a **cada elemento** da coleção `precos`.
+A função `map` aplica `preco-final` a **cada elemento** da coleção `precos`.
 
 ```clojure
-(map valor-descontado precos)
+(map preco-final precos)
 ;=> (30 630.0 900.0)
 
 ```
@@ -179,7 +179,7 @@ Você pode encadear operações de forma elegante usando o operador `->>`:
 ```clojure
 (->> precos
      (filter aplica-desconto?)
-     (map valor-descontado)
+     (map preco-final)
      (reduce +))
 ;=> 1530.0
 
@@ -195,7 +195,7 @@ Neste exemplo:
 
 | Função | O que faz | Exemplo com `precos` |
 | --- | --- | --- |
-| `map` | Transforma cada item | `(map valor-descontado precos)` |
+| `map` | Transforma cada item | `(map preco-final precos)` |
 | `filter` | Filtra itens com base em condição | `(filter aplica-desconto? precos)` |
 | `reduce` | Reduz coleção a um único valor | `(reduce + precos)` |
 

@@ -25,7 +25,7 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
 ### 3. Condicionais e guards
 
 1. Defina a função `sinal` usando `if-then-else` que devolva:
-    - `1` se o número for negativo
+    - `-1` se o número for negativo
     - `0` se for zero
     - `1` se for positivo
 2. Reescreva a função `sinal` usando **guards**.
@@ -47,7 +47,7 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
 
 ### 5. Recursão
 
-1. Implemente a função `potencia b e` que calcula beb^ebe usando recursão (sem usar `(^)`).
+1. Implemente a função `potencia b e` que calcula $b^e$ usando recursão (sem usar `(^)`).
 2. Escreva uma função `mdc a b` que calcule o máximo divisor comum (algoritmo de Euclides).
 3. Defina a sequência de Fibonacci de forma recursiva simples.
 4. Refaça a função de Fibonacci usando a técnica de **recursão em cauda**.
@@ -109,12 +109,12 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
 ### 6. Compreensão de Listas
 
 1. Gere, usando compreensão de listas:
-- uma lista com os quadrados dos números de 1 a 10.
-- uma lista com apenas os números pares de 1 a 20.
-- o produto cartesiano entre `[1,2,3]` e `[‘a’,’b’]`.
-1. Defina a função `divisores :: Int -> [Int]` que retorna a lista de todos os divisores de um número.
-2. Defina a função `ehPrimo :: Int -> Bool` que verifica se um número é primo usando `divisores`.
-3. Usando compreensão de listas, gere todos os pares `(x,y)` com `1 <= x < y <= 10` tais que `x + y` seja par.
+    - uma lista com os quadrados dos números de 1 a 10.
+    - uma lista com apenas os números pares de 1 a 20.
+    - o produto cartesiano entre `[1,2,3]` e `['a','b']`.
+2. Defina a função `divisores :: Int -> [Int]` que retorna a lista de todos os divisores de um número.
+3. Defina a função `ehPrimo :: Int -> Bool` que verifica se um número é primo usando `divisores`.
+4. Usando compreensão de listas, gere todos os pares `(x,y)` com `1 <= x < y <= 10` tais que `x + y` seja par.
 
 ---
 
@@ -179,13 +179,13 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
 
 1. Defina `dobroMaisUm = (+1) . (*2)` e teste em `[1..5]` com `map`.
 2. Escreva uma função `processaLista :: [Int] -> [Int]` que:
-- multiplique todos os números por 2,
-- some 1,
-- filtre apenas os números maiores que 10.
-    
+    - multiplique todos os números por 2,
+    - some 1,
+    - filtre apenas os números maiores que 10.
+
     Use **composição** para encadear os passos.
-    
-1. (Desafio) Defina `compose :: [a -> a] -> (a -> a)` que recebe uma lista de funções e retorna a composição delas.
+
+3. (Desafio) Defina `compose :: [a -> a] -> (a -> a)` que recebe uma lista de funções e retorna a composição delas.
     
     Teste com:
     

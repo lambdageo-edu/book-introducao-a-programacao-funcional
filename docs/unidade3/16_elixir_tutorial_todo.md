@@ -17,7 +17,7 @@ Este projeto é o **segundo lado de uma mesma jornada**: no [trabalho de Clojure
 
 | Aspecto | Clojure | Elixir |
 |---|---|---|
-| Paradigma | Funcional puro (imutabilidade explícita) | Funcional concorrente (processos leves) |
+| Paradigma | Funcional dinâmico na JVM (imutabilidade por padrão, estado via `atom`) | Funcional concorrente (processos leves) |
 | Renderização | Frontend reativo com Reagent (React) | LiveView (renderização no servidor em tempo real) |
 | Comunicação | API REST + JSON | Canal WebSocket interno (phx) |
 | Persistência | next.jdbc + SQLite | Ecto + SQLite |

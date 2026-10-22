@@ -177,6 +177,37 @@ $ cabal build && cabal run meu-programa -- entrada.txt saida.txt
 
 O ponto pedagógico é o **design**, não a sintaxe nova: `interactWith` é o "framework" fixo (I/O), e `minhaFuncao :: String -> String` é a única peça que muda de programa para programa — e é **pura**, portanto testável no GHCi sem tocar em disco algum. Esse é o mesmo padrão do capítulo de [funções de alta ordem](../unidade1/07_alta_ordem.md): isolar a lógica de negócio da mecânica de E/S.
 
+---
+
+## 8. Repetindo Ações e Convertendo Texto
+
+Dois recursos que os exercícios abaixo vão pedir.
+
+**Laços em `IO` são recursão.** Assim como nas funções puras, não há `while`: uma ação que precisa se repetir chama a si mesma no fim do bloco `do`, e para quando não faz a chamada.
+
+```haskell
+eco :: IO ()
+eco = do
+  linha <- getLine
+  if linha == "fim"
+    then putStrLn "Até logo!"
+    else do
+      putStrLn (reverse linha)
+      eco                      -- repete
+```
+
+**Convertendo texto em número.** `getLine` sempre devolve uma `String`. Para obter um número, use `read` (com o tipo indicado) ou `readLn`, que já lê e converte:
+
+```haskell
+lerIdade :: IO Int
+lerIdade = do
+  putStrLn "Qual a sua idade?"
+  linha <- getLine
+  return (read linha :: Int)   -- ou simplesmente: readLn
+```
+
+`read` é uma função parcial: se o usuário digitar algo que não é número, o programa termina com `Prelude.read: no parse`. Para os exercícios, isso basta; em programas reais, usa-se `readMaybe` (do módulo `Text.Read`), que devolve um `Maybe`.
+
 No próximo capítulo, começamos a construir uma biblioteca completa de manipulação de JSON, aplicando os tipos algébricos e a IO deste capítulo a um projeto real.
 
 ---

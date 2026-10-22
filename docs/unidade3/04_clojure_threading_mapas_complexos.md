@@ -50,13 +50,13 @@ Para acessar a média mensal do usuário `kyle`, lemos a expressão "de dentro p
 
 ```
 
-Embora seja uma abordagem direta, ela tem suas limitações. Fica verbosa para estruturas muito profundas e, mais importante, lançará um `NullPointerException` se qualquer nível intermediário no caminho não existir.
+Embora seja uma abordagem direta, ela tem suas limitações. Fica verbosa para estruturas muito profundas e, mais importante, não deixa claro quando algo deu errado: se qualquer nível intermediário não existir, a keyword aplicada a `nil` simplesmente devolve `nil`, e esse `nil` se propaga silenciosamente pela cadeia. (Um `NullPointerException` só aparece mais adiante, se esse `nil` for passado para uma função que não o aceite, como `+` ou um método Java.)
 
 ### 3.2. Acesso e Atualização Seguros com `get-in` e `update-in`
 
 Clojure fornece funções robustas e idiomáticas para lidar com estruturas profundas: `get-in` e `update-in`. Ambas utilizam um vetor de chaves que especifica o "caminho" até o valor desejado, tornando o código mais legível e seguro.
 
-- **`get-in` para Leitura Segura:** Esta função acessa um valor aninhado. Se o caminho for inválido ou algum nível intermediário não existir, ela retorna `nil` em vez de lançar um erro.
+- **`get-in` para Leitura Segura:** Esta função acessa um valor aninhado. Se o caminho for inválido ou algum nível intermediário não existir, ela retorna `nil` — ou um valor padrão que você escolher, como em `(get-in usuario [:kyle :resumo :total] 0)`.
 - **`update-in` para Atualização Funcional:** O verdadeiro poder está em `update-in`. Em vez de apenas fornecer um novo valor, você fornece uma **função** que será aplicada ao valor antigo. Isso cria uma nova estrutura de dados completamente nova com o valor atualizado, preservando a imutabilidade do mapa original.
 
 No exemplo abaixo, usamos `update-in` para aplicar a função `+` ao valor da média mensal, aumentando-a em 500.
@@ -78,7 +78,7 @@ No exemplo abaixo, usamos `update-in` para aplicar a função `+` ao valor da m�
 | Método | Caso de Uso Principal | Vantagem Principal |
 | --- | --- | --- |
 | Composição de Keywords | Leitura rápida de dados que você tem certeza que existem. | Sintaxe concisa para acesso simples. |
-| `get-in` | Leitura segura de dados em qualquer profundidade. | Retorna `nil` em vez de erro se o caminho for inválido. |
+| `get-in` | Leitura segura de dados em qualquer profundidade. | Caminho explícito em um vetor e valor padrão opcional quando o caminho não existe. |
 | `update-in` | Atualização funcional de dados em qualquer profundidade. | Forma idiomática e segura de modificar estruturas aninhadas. |
 
 ## 4. Extraindo Dados com Desestruturação de Mapas
@@ -199,12 +199,10 @@ A macro `->` (lê-se "thread-first") é a contraparte da `->>`. Ela pega o resul
 
 ```
 
-Este exemplo de aplicação irá ilustrar os conceitos de **Mapas Complexos** e **Threading** (*Encadeamento*) em Clojure, conforme abordado no Encontro 6 da estrutura curricular.
-
-O cenário baseia-se no processamento de pedidos em um sistema de loja, um domínio que naturalmente exige o uso de estruturas de dados aninhadas e transformações sequenciais complexas.
+Esta seção junta os conceitos de **Mapas Complexos** e **Threading** (*Encadeamento*) em um exemplo de aplicação. O cenário baseia-se no processamento de pedidos em um sistema de loja, um domínio que naturalmente exige o uso de estruturas de dados aninhadas e transformações sequenciais complexas.
 
 !!! tip "Ponte com Elixir"
-    Se você já trabalhou com Elixir, vai notar uma semelhança interessante: o macro `->` (thread-first) de Clojure é conceitualmente equivalente ao operador `|>` (pipe) em Elixir. Ambos facilitam a leitura encadeando transformações de dados de forma clara e funcional — um ótimo exemplo de como ideias poderosas se espalham entre linguagens funcionais!
+    Guarde esta ideia para os capítulos de Elixir: o macro `->` (thread-first) de Clojure é conceitualmente equivalente ao operador `|>` (pipe) de Elixir, que também passa o resultado anterior como **primeiro** argumento da próxima função. Ambos facilitam a leitura encadeando transformações de dados de forma clara e funcional — um ótimo exemplo de como ideias poderosas se espalham entre linguagens funcionais!
 
 ## 6. Juntando tudo em um exemplo de Pedidos em uma Loja
 
@@ -290,51 +288,67 @@ O macro `->>` (Thread Last) insere o resultado da expressão anterior como o **�
 Vamos definir uma função que calcula o valor de um item (preço * quantidade) e, em seguida, uma pipeline que soma todos os itens do pedido.
 
 1. **Função Auxiliar (Map Entry Destructuring):**
-Ao iterar sobre um mapa, a função `map` retorna uma sequência de `MapEntry` (par [chave, valor]). Precisamos desestruturar esse par para acessar os dados.
-    
-    ```
-    (defn preco-do-item [[_ item-detalhes]]
+Ao aplicar `map` diretamente sobre um mapa, cada elemento recebido é um `MapEntry` (um par `[chave valor]`). Desestruturamos esse par para acessar os dados, ignorando a chave com `_`.
+
+    ```clojure
+    (defn preco-do-item
       "Calcula o preço total de um item, ignorando a chave do produto (com _)."
+      [[_ item-detalhes]]
       (* (:quantidade item-detalhes)
          (:preco-unitario item-detalhes)))
-    
     ```
-    
+
+    Repare que a *docstring* vem **antes** do vetor de parâmetros; se viesse depois, seria apenas uma string avaliada e descartada no corpo da função.
+
 2. **Pipeline de Processamento (Usando `->>`):**
-A função `total-do-pedido` pega o mapa de pedidos, extrai a sequência de itens, mapeia o preço de cada item e, finalmente, reduz essa sequência a um único valor (a soma).
-    
-    ```
+A função `total-do-pedido` pega o pedido, extrai o mapa de itens, mapeia o preço de cada item e, finalmente, reduz essa sequência a um único valor (a soma).
+
+    ```clojure
     (defn total-do-pedido [pedido]
       (->> pedido
-           :itens        ; Pega o mapa de itens
-           vals         ; Transforma o mapa em uma sequência dos valores dos itens (mapas aninhados)
-           (map preco-do-item) ; Aplica a função de preço a cada item (MapEntry)
-           (reduce +)))   ; Soma todos os valores mapeados
-    
+           :itens               ; Pega o mapa de itens
+           (map preco-do-item)  ; Cada elemento é um MapEntry [produto detalhes]
+           (reduce +)))         ; Soma todos os valores mapeados
+
     (total-do-pedido pedido-exemplo)
-    ;; => 400.0 (2 * 80.00 + 3 * 40.00)
-    
+    ;; => 280.0 (2 * 80.00 + 3 * 40.00)
     ```
-    
+
+    !!! note "E se usássemos `vals`?"
+        Uma alternativa seria inserir `vals` antes do `map`, obtendo só os mapas de detalhes. Mas então `preco-do-item` receberia `{:quantidade 2 ...}` em vez de um par, e a desestruturação `[_ item-detalhes]` não funcionaria. Com `vals`, a função auxiliar deveria receber o mapa diretamente: `(defn preco-do-item [item] ...)`.
 
 ### Exemplo de Agregação Complexa (Agrupamento)
 
 Para ilustrar o poder da composição de coleções e *threading*, o Clojure frequentemente usa o `group-by` seguido de `map` e redução.
 
-**Tarefa:** Dado um vetor de pedidos, agrupar por usuário e calcular o total de cada usuário.
+**Tarefa:** Dado um vetor de pedidos, agrupar por usuário e calcular, para cada um, a quantidade de pedidos e o total gasto.
 
-Para este exemplo, assumimos que temos a função `todos-os-pedidos` que retorna um vetor de mapas de pedidos e uma função auxiliar `total-dos-pedidos` (que poderia ser a `total-do-pedido` definida acima, mas que no código fonte original aceita um vetor de pedidos).
-
-A transformação completa, utilizando `->>` para encadear as etapas do processamento de dados:
+Primeiro, os dados — um vetor de pedidos com a mesma estrutura de `pedido-exemplo`, agora com o id do usuário:
 
 ```clojure
-;; Estrutura de Mapas Complexos: Mapas de Pedidos (usando a convenção de namespace l.db)
-(->> (l.db/todos-os-pedidos) ; 1. Pega todos os pedidos (vetor de mapas)
-     (group-by :usuario)      ; 2. Agrupa os pedidos pelo keyword :usuario, gerando um mapa (usuario-id -> [pedidos])
-     (map quantia-de-pedidos-e-gasto-total-por-usuario)
-     ;; 3. Mapeia cada entrada (que é um MapEntry [usuario pedidos]) para um resumo de gastos
-     println)                ; 4. Imprime o resultado
+(def todos-os-pedidos
+  [{:usuario 15 :itens {:mochila  {:quantidade 2 :preco-unitario 80.0}}}
+   {:usuario 1  :itens {:camiseta {:quantidade 3 :preco-unitario 40.0}}}
+   {:usuario 15 :itens {:camiseta {:quantidade 1 :preco-unitario 40.0}}}])
+```
 
+Depois, uma função que resume os pedidos de um usuário. Como `group-by` devolve um mapa `{usuario [pedidos]}`, ao aplicar `map` sobre ele cada elemento é novamente um par `[usuario pedidos]`, que desestruturamos:
+
+```clojure
+(defn resumo-por-usuario [[usuario pedidos]]
+  {:usuario                usuario
+   :quantidade-de-pedidos  (count pedidos)
+   :gasto-total            (reduce + (map total-do-pedido pedidos))})
+```
+
+A transformação completa, utilizando `->>` para encadear as etapas:
+
+```clojure
+(->> todos-os-pedidos           ; 1. O vetor de pedidos
+     (group-by :usuario)        ; 2. {15 [pedido pedido], 1 [pedido]}
+     (map resumo-por-usuario))  ; 3. Um resumo para cada par [usuario pedidos]
+;; => ({:usuario 15, :quantidade-de-pedidos 2, :gasto-total 200.0}
+;;     {:usuario 1, :quantidade-de-pedidos 1, :gasto-total 120.0})
 ```
 
 Este é um exemplo clássico de como o `->>` permite criar uma sequência de transformações lógica e legível para processar mapas complexos e realizar agregações de dados.
@@ -343,8 +357,8 @@ Este é um exemplo clássico de como o `->>` permite criar uma sequência de tra
 
 - **Mapas Complexos:** A estrutura de `pedido-exemplo` demonstra mapas aninhados.
 - **Acesso Profundo:** Uso de *keywords* como funções e `update-in`.
-- **Threading (`->` e `->>`):** O `->>` facilita a leitura de pipelines de processamento de coleções (`vals`, `map`, `reduce`).
-- **Processamento de Mapas:** O uso de `vals` e a desestruturação `[_ item-detalhes]` lida com a iteração sobre `MapEntry` ao aplicar `map` a um mapa.
+- **Threading (`->` e `->>`):** O `->>` facilita a leitura de pipelines de processamento de coleções (`group-by`, `map`, `reduce`).
+- **Processamento de Mapas:** A desestruturação `[_ item-detalhes]` (e `[usuario pedidos]`) lida com a iteração sobre `MapEntry` ao aplicar `map` a um mapa.
 
 ## 7. Conclusão
 

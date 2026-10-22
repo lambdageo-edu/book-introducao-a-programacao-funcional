@@ -4,7 +4,7 @@ Os capítulos anteriores desta unidade tratam de Haskell como linguagem para *ap
 
 Este capítulo ilustra essa aplicação avançada com dois projetos pequenos e completos:
 
-1. **[PlayReg](https://github.com/LambdaGeo/playreg)** — um motor de casamento de expressões regulares construído sobre **derivadas de Brzozowski**, generalizado para casamento *ponderado* via semirings.
+1. **[PlayReg](https://github.com/LambdaGeo/playreg)** — um motor de casamento de expressões regulares baseado na técnica de **marcação de posições** do artigo *A Play on Regular Expressions* (parente das derivadas de Brzozowski), generalizado para casamento *ponderado* via semirings.
 2. **[scheme-hs](https://github.com/LambdaGeo/scheme-hs)** — um interpretador de **Scheme** (um dialeto de Lisp), com parser combinators, variáveis mutáveis, *closures* e um REPL.
 
 ---
@@ -35,13 +35,15 @@ accept (Seq p q) u = or [accept p u1 && accept q u2 | (u1, u2) <- split' u]
 accept (Rep r) u   = or [and [accept r ui | ui <- ps] | ps <- parts u]
 ```
 
+(`split'` e `parts` são funções auxiliares do projeto: `split' u` devolve todas as formas de dividir `u` em duas partes, e `parts u`, todas as formas de particioná-la em pedaços.)
+
 Essa implementação é didaticamente transparente, mas **exponencial**: para casar `Seq`, ela testa todas as formas de dividir a string em duas partes; para `Rep`, todas as formas de particioná-la. Funciona para exemplos pequenos, mas não escala.
 
-### 1.2 Casamento eficiente: derivadas de Brzozowski
+### 1.2 Casamento eficiente: marcando posições
 
-A alternativa eficiente vem de uma ideia de 1964 (Janusz Brzozowski): a **derivada** de uma expressão regular `r` em relação a um caractere `c`, escrita `∂c(r)`, é uma nova expressão regular que casa exatamente as strings que `r` casaria *depois* de consumir o caractere `c`. Aplicando a derivada caractere a caractere ao longo da entrada, o casamento vira uma dobra (`fold`) — linear no tamanho da entrada, sem backtracking.
+A alternativa eficiente parte de uma ideia de 1964 (Janusz Brzozowski): a **derivada** de uma expressão regular `r` em relação a um caractere `c`, escrita `∂c(r)`, é uma nova expressão regular que casa exatamente as strings que `r` casaria *depois* de consumir o caractere `c`. Aplicando a derivada caractere a caractere ao longo da entrada, o casamento vira uma dobra (`fold`) — linear no tamanho da entrada, sem backtracking.
 
-O PlayReg implementa isso com um tipo `REG` que carrega, em cada símbolo, um `Bool` indicando se aquele símbolo é a marca de "aceito" (`final`):
+O artigo que o PlayReg segue usa uma variante dessa ideia que não constrói uma expressão nova a cada passo: em vez disso, **marca**, na própria árvore da expressão, quais símbolos acabaram de casar um caractere — o que corresponde ao autômato de posições (de Glushkov). O tipo `REG` carrega, em cada símbolo, um `Bool` com essa marca:
 
 ```haskell
 data REG
@@ -65,7 +67,7 @@ match r []       = empty r
 match r (c : cs) = final (foldl (shift False) (shift True r c) cs)
 ```
 
-`empty r` diz se `r` casa a string vazia; `final r` diz se, no estado atual (depois de já ter "andado" por alguns caracteres), a expressão está numa posição de aceitação. `shift` avança um caractere, atualizando essas marcas — é a derivada, espalhada pela estrutura da árvore.
+`empty r` diz se `r` casa a string vazia; `final r` diz se, no estado atual (depois de já ter "andado" por alguns caracteres), a expressão está numa posição de aceitação. `shift` avança um caractere, atualizando essas marcas — o mesmo papel da derivada, só que espalhado pela estrutura da árvore em vez de reconstruí-la.
 
 ### 1.3 Generalizando com semirings: contar, e não só aceitar/rejeitar
 
@@ -88,6 +90,7 @@ instance Semiring Int where
 Com `Semiring Int`, a mesma função de casamento (generalizada para `REGw c s`, parametrizada pelo semiring `s`) não diz só "casa ou não casa" — ela **conta quantas derivações diferentes** levam ao casamento. E com dois semirings customizados do projeto, `Leftmost` e `LeftLong`, a mesma lógica encontra a **posição** do casamento mais à esquerda (ou mais à esquerda *e* mais longo) dentro de uma string maior — a base de como um `grep` de verdade funciona por baixo dos panos:
 
 ```haskell
+-- ab representa a expressão (a|b)*
 submatchw ab "xxabaxx" :: LeftLong
 -- LeftLong (Range 2 4)   -- achou "aba" nas posições 2 a 4
 ```
@@ -132,6 +135,9 @@ parseExpr =
 ```
 
 Repare que o parser inteiro é construído combinando pedaços pequenos (`parseAtom`, `parseString`, `parseList`...) — o mesmo princípio de composição que já apareceu nas funções de alta ordem da Unidade 1. Todos os valores que o parser produz têm o mesmo tipo, `LispVal`: um ADT que representa qualquer expressão Scheme válida.
+
+!!! note "Functor, Applicative e Monad em uma frase"
+    O `do` que aparece em `parseAtom` é o mesmo do capítulo de [Programas Interativos](02_programas_interativos.md): assim como `IO`, `Parser` é uma **monad** — um tipo que sabe encadear passos, passando o resultado de um para o próximo (`>>=`). Monads são um caso particular de duas classes mais gerais: **Functor** (tipos sobre os quais se pode aplicar uma função ao valor "de dentro", com `fmap`) e **Applicative** (que também combina vários desses valores, como em `(,) <$> p1 <*> p2`). Este livro não aprofunda essas classes; para o capítulo seguinte, basta a ideia de que um parser é uma função que *produz* um valor a partir de um contexto (a entrada ainda não lida).
 
 ```haskell
 data LispVal

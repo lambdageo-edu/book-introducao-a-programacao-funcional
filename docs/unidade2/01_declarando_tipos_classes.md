@@ -55,7 +55,7 @@ Para criar tipos de dados inteiramente novos com seus próprios construtores de 
             ▼                           ▼
        [Tipo Soma]                [Tipo Produto]
       (Alternativas)              (Combinações)
-  Vermelho | Verde | Azul       Circulo Float | Retangulo Float Float
+  Vermelho | Verde | Azul          Ponto Double Double
 ```
 
 ### 1. Tipos Soma (Enumerações)
@@ -69,7 +69,14 @@ data Resposta = Sim | Nao | Talvez
 Aqui, `Vermelho`, `Verde`, `Sim` e `Nao` são chamados de **Construtores de Valor**. Eles funcionam como constantes que representam os dados concretos do tipo.
 
 ### 2. Tipos Produto
-Representam valores compostos por múltiplos campos de dados combinados:
+Representam valores compostos por múltiplos campos de dados combinados — um valor do tipo carrega *todos* os campos ao mesmo tempo:
+
+```haskell
+data Ponto = Ponto Double Double   -- um x E um y
+```
+
+### 3. Soma de Produtos
+Na prática, os dois padrões aparecem juntos: um tipo soma cujas alternativas carregam campos, como um produto cada uma.
 
 ```haskell
 data Forma = Circulo Float
@@ -77,7 +84,7 @@ data Forma = Circulo Float
            | Quadrado Float
 ```
 
-O tipo `Forma` possui três construtores de valor. O construtor `Circulo` carrega um `Float` (o raio). O construtor `Retangulo` carrega dois valores `Float` (largura e altura). Podemos usar casamento de padrões para inspecionar e extrair esses valores:
+O tipo `Forma` é uma soma (é um círculo *ou* um retângulo *ou* um quadrado) de produtos (um retângulo tem largura *e* altura). Ele possui três construtores de valor. O construtor `Circulo` carrega um `Float` (o raio). O construtor `Retangulo` carrega dois valores `Float` (largura e altura). Podemos usar casamento de padrões para inspecionar e extrair esses valores:
 
 ```haskell
 area :: Forma -> Float

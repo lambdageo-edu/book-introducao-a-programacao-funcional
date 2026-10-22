@@ -78,12 +78,16 @@ spatial fn c predicate covRef =
   newCov (domain covRef) (\x -> compose fn (select c predicate x))
 ```
 
+`select c predicate x` escolhe, em `c`, os valores dos elementos que satisfazem `predicate` em relação a `x`, e `compose fn` agrega esses valores com `fn` — os dois passos que a seção explica logo adiante.
+
 Na prática, isso permite trocar livremente o critério de vizinhança. Um exemplo real do projeto: dado um conjunto de pontos com um valor de desmatamento e um conjunto de polígonos representando áreas de proteção ambiental, a média de desmatamento *por área de proteção* é uma única chamada, usando `pointInPolygon` como predicado espacial:
 
 ```haskell
 mediaPorArea :: Coverage Point Double -> Coverage Polygon Double
 mediaPorArea pontos = spatial media pontos pointInPolygon areasDeProtecao
   where media xs = sum xs / fromIntegral (length xs)
+-- areasDeProtecao :: Coverage Polygon Double — a coverage de referência,
+-- cujo domínio são os polígonos das áreas de proteção
 ```
 
 Trocar `pointInPolygon` por um predicado de proximidade a uma estrada (`pointOnLine`, com uma tolerância) dá a mesma agregação, mas "ao longo da estrada" em vez de "dentro da área" — sem escrever nenhuma lógica de agregação nova. A separação entre *seleção espacial* (`select`, o predicado) e *agregação* (`compose`, a função `[b] -> b`) é o que permite essa reutilização.
@@ -92,7 +96,7 @@ Trocar `pointInPolygon` por um predicado de proximidade a uma estrada (`pointOnL
 
 ## 3. Modelos dinâmicos espaciais: o comonad ao contrário do parser
 
-O capítulo anterior usou `Functor`, `Applicative` e `Monad` para escrever parsers — cada um é, por trás da API, uma função que **produz** um valor a partir de um contexto (`String -> Maybe (a, String)`, no caso do parser). Existe a classe simétrica, menos comum de se ver em código do dia a dia, mas natural para um problema específico: um **comonad** é um contexto que já *tem* um valor, e sabe como olhar para valores vizinhos a partir dele. `TerraHS.CA` — mais um componente independente do pacote (`terrahs-ca`), ao lado do `terrahs-render` da próxima seção — usa exatamente essa ideia para modelar sistemas dinâmicos espaciais: autômatos celulares aplicados a um domínio geográfico, o tema original do artigo *"Modelos dinâmicos espaciais em programação funcional"* (Costa et al.) que deu origem a essa parte do projeto.
+O capítulo anterior escreveu parsers como monads (veja a nota sobre `Functor`, `Applicative` e `Monad` naquele capítulo) — por trás da API, cada parser é uma função que **produz** um valor a partir de um contexto (`String -> Maybe (a, String)`, no caso do parser). Existe a classe simétrica, menos comum de se ver em código do dia a dia, mas natural para um problema específico: um **comonad** é um contexto que já *tem* um valor, e sabe como olhar para valores vizinhos a partir dele. `TerraHS.CA` — mais um componente independente do pacote (`terrahs-ca`), ao lado do `terrahs-render` da próxima seção — usa exatamente essa ideia para modelar sistemas dinâmicos espaciais: autômatos celulares aplicados a um domínio geográfico, o tema original do artigo *"Modelos dinâmicos espaciais em programação funcional"* (Costa et al.) que deu origem a essa parte do projeto.
 
 O tipo usado é `Store` (do pacote `comonad`): um valor de `Store e s` é, ao mesmo tempo, uma posição atual (`pos`), uma função de qualquer posição para seu estado (`peek`), e o estado da posição atual (`extract`, o valor de `peek` na própria posição). Para um autômato celular, isso é exatamente "onde estou, e como consultar qualquer vizinho sem sair daqui". A operação central é `extend`, que aplica uma regra `Store e s -> s` a **todas** as posições de uma vez, produzindo um novo `Store` — um passo de simulação inteiro, sem laço explícito:
 
@@ -167,10 +171,10 @@ Antes de ir para o dado real, o efeito é mais fácil de enxergar numa cadeia pe
 ghci> let bumpy = [Coord 0 0, Coord 1 0, Coord 2 0.05, Coord 3 0, Coord 4 0]
 
 ghci> simplifyCoords 0.1 bumpy    -- tolerância maior que o solavanco (0,05)
-[Coord 0 0,Coord 4 0]
+[Coord {coordX = 0.0, coordY = 0.0},Coord {coordX = 4.0, coordY = 0.0}]
 
 ghci> simplifyCoords 0.04 bumpy   -- tolerância menor que o solavanco
-[Coord 0 0,Coord 2 5.0e-2,Coord 4 0]
+[Coord {coordX = 0.0, coordY = 0.0},Coord {coordX = 2.0, coordY = 5.0e-2},Coord {coordX = 4.0, coordY = 0.0}]
 ```
 
 Com `epsilon = 0.1`, o ponto do meio está a só 0,05 da reta entre as pontas — menos que a tolerância, então some: a cadeia inteira colapsa para os dois extremos, os únicos que `simplifyCoords` sempre preserva. Com `epsilon = 0.04`, a mesma distância já passa da tolerância, e o ponto fica — a cadeia é dividida ali, e cada metade (só dois pontos cada) já não tem mais nada pra simplificar. É a mesma pergunta, feita uma vez só — "esse ponto muda a forma o suficiente para valer a pena guardar?" — que o mapa real do Maranhão faz 810 mil vezes:

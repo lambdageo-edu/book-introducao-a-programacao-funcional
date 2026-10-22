@@ -1,6 +1,6 @@
 # Processos
 
-# Módulo 1: Fundamentos de Computação Concorrente na BEAM
+## Módulo 1: Fundamentos de Computação Concorrente na BEAM
 
 **Objetivo:** Compreender o modelo de execução da Máquina Virtual Erlang (BEAM) e contrastá-lo com os modelos tradicionais de Threads de SO e Green Threads (Go).
 
@@ -74,7 +74,7 @@ Como processos se comunicam apenas por mensagens enviadas para um endereço (PID
 • Enviar mensagem para o PID `<50.100.0>` (em um servidor no Japão).
 **O código é exatamente o mesmo.** Isso torna o Elixir uma linguagem naturalmente orientada a sistemas distribuídos (Clusters).
 
-# Módulo 2: Laboratório de Anatomia de Processos
+## Módulo 2: Laboratório de Anatomia de Processos
 
 **Objetivo:** Manipular as primitivas de concorrência da BEAM (`spawn`, `send`, `receive`) e entender o ciclo de vida de um processo.
 
@@ -151,15 +151,15 @@ O envio de mensagens em Elixir é **Assíncrono (Non-blocking)**.
 
 Vamos usar o seu próprio processo do IEx (`self()`) para testar.
 
-1. Armazene seu endereço:Elixir
+1. Armazene seu endereço:
     
-    ```bash
+    ```elixir
     meu_pid = self()
     ```
     
-2. Envie uma mensagem para si mesmo:Elixir
+2. Envie uma mensagem para si mesmo:
     
-    ```bash
+    ```elixir
     send(meu_pid, {:ola, "Mundo"})
     # Saída: {:ola, "Mundo"}
     ```
@@ -167,9 +167,9 @@ Vamos usar o seu próprio processo do IEx (`self()`) para testar.
     *Observe:* A função retorna a mensagem enviada, mas nada foi impresso na tela como "Recebido". Onde está a mensagem?
     
 3. Inspecione a memória do processo (Buffer):
-Use a função de debug `flush()`:Elixir
+Use a função de debug `flush()`:
     
-    ```bash
+    ```elixir
     flush()
     # Saída:
     # {:ola, "Mundo"}
@@ -191,7 +191,7 @@ Vamos criar um processo que sabe esperar por uma mensagem.
 
 Digite no IEx:
 
-```bash
+```elixir
 # Definimos a função que o processo vai rodar
 funcao_ouvinte = fn ->
   receive do
@@ -207,7 +207,7 @@ pid_ping = spawn(funcao_ouvinte)
 
 Verifique se ele está vivo:
 
-```bash
+```elixir
 Process.alive?(pid_ping)
 # Saída: true
 ```
@@ -216,7 +216,7 @@ Process.alive?(pid_ping)
 
 Agora, vamos interagir:
 
-```bash
+```elixir
 send(pid_ping, {:ping, self()})
 # Saída no terminal: 🏓 Recebi PING. Enviando PONG...
 # Retorno: {:ping, #PID<...>}
@@ -224,14 +224,14 @@ send(pid_ping, {:ping, self()})
 
 Verifique se recebemos a resposta (:pong):
 
-```bash
+```elixir
 flush()
 # Saída: :pong
 ```
 
 Verifique se o processo ouvinte ainda vive:
 
-```bash
+```elixir
 Process.alive?(pid_ping)
 # Saída: false
 ```
@@ -250,7 +250,7 @@ Como estamos dentro do projeto `lab_concorrencia`, vamos criar um arquivo real p
 1. Abra seu editor (VS Code).
 2. Crie o arquivo `lib/processo_persistente.ex`.
 
-```bash
+```elixir
 defmodule ProcessoPersistente do
   def aguardar_mensagem do
     receive do
@@ -270,7 +270,7 @@ end
 
 Recompile o projeto para ler o arquivo novo:
 
-```bash
+```elixir
 recompile()
 ```
 
@@ -355,7 +355,7 @@ O aluno aprendeu:
 3. Que o recebimento trava o processo (`receive`).
 4. Que servidores são apenas loops recursivos infinitos.
 
-# Módulo 3: Construindo um Servidor de Conta
+## Módulo 3: Construindo um Servidor de Conta
 
 **Objetivo:** Implementar um processo com estado persistente (Stateful). Faremos isso em duas etapas:
 
@@ -364,11 +364,11 @@ O aluno aprendeu:
 
 ---
 
-## 1. Etapa A: O Servidor Manual (Entendendo o Loop)
+### 1. Etapa A: O Servidor Manual (Entendendo o Loop)
 
 Antes de usarmos ferramentas prontas, vamos criar uma conta bancária usando apenas primitivas: `spawn`, `receive` e recursão. Isso vai provar para você que **não existe mágica**, apenas engenharia.
 
-### Passo 1: O Loop de Estado
+#### Passo 1: O Loop de Estado
 
 Crie o arquivo `lib/conta_manual.ex`.
 
@@ -404,11 +404,11 @@ defmodule ContaManual do
 end
 ```
 
-### Testando a Versão Manual (IEx)
+#### Testando a Versão Manual (IEx)
 
 Abra o terminal e veja a dificuldade de comunicação:
 
-```bash
+```elixir
 # 1. Iniciar
 pid = ContaManual.iniciar(0)
 
@@ -433,7 +433,7 @@ Funciona? Sim. Mas é frágil.
 
 ---
 
-## 2. Etapa B: O Padrão Ouro (`GenServer`)
+### 2. Etapa B: O Padrão Ouro (`GenServer`)
 
 Na Etapa A, construímos um servidor "na unha". Funciona? Sim. É seguro para produção? **Não.**
 Como engenheiros, analisamos os riscos daquela abordagem manual:
@@ -469,7 +469,7 @@ Implementar o módulo ContaBancaria onde:
 • **Depósitos** usam `cast` (pois o banco aceita seu dinheiro na hora, sem bloquear).
 • **Saques** e **Consultas** usam `call` (pois você precisa da resposta imediata).
 
-### Passo 2: A Implementação Profissional
+#### Passo 2: A Implementação Profissional
 
 Vamos criar o módulo `ContaBancaria` (a versão final) dentro do projeto.
 
@@ -546,13 +546,13 @@ defmodule ContaBancaria do
 end
 ```
 
-### Nota de Engenharia: O que é esse `@impl true`?
+#### Nota de Engenharia: O que é esse `@impl true`?
 
 Você deve ter notado que, antes das funções `handle_call` e `handle_cast`, colocamos o atributo `@impl true`.
 
 Se você vem do **Java** ou **C#**, isso é exatamente equivalente ao **`@Override`**.
 
-### Para que serve?
+#### Para que serve?
 
 O `use GenServer` define um **Contrato** (chamado de *Behaviour* em Elixir). Ele diz: *"Quem usar este módulo DEVE ou PODE implementar funções chamadas `init`, `handle_call`, `handle_cast`, etc."*
 
@@ -565,14 +565,17 @@ O `@impl true` serve dois propósitos:
 Imagine que você digitou errado o nome da função (escreveu `handle_cat` em vez de `handle_cast`).
 
 - **SEM `@impl`:** O Elixir vai achar que você criou uma função nova chamada `handle_cat` propositalmente. O código compila, mas seu servidor não funciona (as mensagens são ignoradas). Você perde horas debugando.
-- **COM `@impl`:** O compilador vai gritar:
+- **COM `@impl`:** O compilador emite um **aviso** (*warning*) apontando o erro na hora da compilação:
     
-    > "Erro: Você marcou handle_cat como uma implementação de GenServer, mas o GenServer não tem nenhuma função com esse nome. Você quis dizer handle_cast?"
-    > 
+    ```text
+    warning: got "@impl true" for function handle_cat/2 but no behaviour specifies such callback.
+    ```
+    
+    Não é um erro que impede a compilação, mas é um aviso impossível de ignorar — e ferramentas como `mix compile --warnings-as-errors` (comum em CI) o transformam em erro.
 
 **Regra de Ouro:** Sempre use `@impl true` nos callbacks (`init`, `handle_call`, `handle_cast`, `terminate`). É o cinto de segurança do seu código.
 
-### Testando a Versão GenServer
+#### Testando a Versão GenServer
 
 Volte ao terminal (`recompile()`). Veja como a experiência de uso (Developer Experience) é superior.
 
@@ -596,41 +599,41 @@ ContaBancaria.sacar(pid, 2000)
 
 ---
 
-## 3. Reflexão de Engenharia
+### 3. Reflexão de Engenharia
 
 Por que migramos do manual para o GenServer?
 
 1. **Abstração do Loop:** Não precisamos escrever a recursão manualmente. O retorno `{:noreply, novo_estado}` cuida disso.
 2. **Abstração da Comunicação:** Não precisamos lidar com PIDs de resposta no `handle_call`. O GenServer sabe quem chamou e devolve a resposta.
-3. **Tratamento de Erros:** O GenServer captura exceções e evita que um crash leve o sistema todo junto (ele isola a falha).
+3. **Tratamento de Erros:** O GenServer **não** engole exceções: se um callback falhar, o processo morre. Mas, como ele é um processo isolado, a falha não contamina os demais — e, como veremos no próximo módulo, um **Supervisor** pode reiniciá-lo automaticamente. Essa é a filosofia *"let it crash"*.
 
 ---
 
 **Professor:** Agora temos um sistema funcional e limpo.
 Mas, como engenheiros, devemos ser pessimistas. **E se houver um bug no código?** E se dividirmos por zero? O processo vai morrer. O dinheiro vai sumir.
 
-# Módulo 4: Supervisores e Tolerância a Falhas
+## Módulo 4: Supervisores e Tolerância a Falhas
 
 **Objetivo:** Transformar nosso processo isolado em uma **Árvore de Supervisão** (Supervision Tree), criando um sistema que se cura sozinho (Self-healing).
 
-## 1. Teoria: O Supervisor
+### 1. Teoria: O Supervisor
 
 Um Supervisor é um processo especial. A única função dele é vigiar outros processos (chamados de *children* ou filhos).
 
 Se um filho morre (crash), o Supervisor percebe o sinal de saída (`EXIT`) e aplica uma estratégia de reinicialização.
 
-### Estratégias Comuns:
+#### Estratégias Comuns:
 
 - **:one_for_one (Um por Um):** Se o processo A morrer, reinicie apenas o A. (Mais comum).
 - **:one_for_all (Um por Todos):** Se o processo A morrer, mate o B e o C, e reinicie todos. (Usado quando os processos dependem estritamente um do outro).
 
 ---
 
-## 2. Laboratório Prático: Preparando o Crash
+### 2. Laboratório Prático: Preparando o Crash
 
 Para testar a resiliência, precisamos de uma forma de "quebrar" nossa conta bancária propositalmente.
 
-### Passo 1: Adicionando o Botão de Autodestruição
+#### Passo 1: Adicionando o Botão de Autodestruição
 
 Edite o arquivo `lib/conta_bancaria.ex`. Vamos adicionar uma função que causa um erro fatal (divisão por zero ou `raise`).
 
@@ -659,7 +662,7 @@ end
 
 ---
 
-### Passo 2: Transformando o Projeto em uma Aplicação
+#### Passo 2: Transformando o Projeto em uma Aplicação
 
 Quando criamos o projeto com `mix new lab_concorrencia`, ele veio "pelado". Precisamos dizer ao Mix que este projeto tem um ponto de entrada (uma Application Callback).
 
@@ -704,7 +707,7 @@ Abra o arquivo `mix.exs` na raiz, procure a função `application` e altere para
 
 ---
 
-### Passo 3: O Teste de Imortalidade (e a Correção do Contrato)
+#### Passo 3: O Teste de Imortalidade (e a Correção do Contrato)
 
 Agora que configuramos nosso Supervisor no `Application.ex`, a teoria diz que ele deve iniciar a conta automaticamente. Vamos testar?
 
@@ -808,7 +811,7 @@ O Supervisor limpou a bagunça e subiu uma nova instância. Seu banco digital co
 
 ---
 
-## 3. Reflexão de Arquitetura (O "Pulo do Gato")
+### 3. Reflexão de Arquitetura (O "Pulo do Gato")
 
 Aluno, observe um detalhe crítico:
 
@@ -844,7 +847,7 @@ Em um sistema real com milhares de processos, nós não ficamos anotando PIDs (`
 
 ---
 
-# Processos Nomeados (Named Processes)
+## Processos Nomeados (Named Processes)
 
 **O Problema:** Quando o Supervisor reinicia a `ContaBancaria` após um crash, o PID muda. Se o seu código dependia do PID antigo, ele quebra.
 
@@ -925,7 +928,7 @@ Reinicie seu terminal (`iex -S mix`) e veja a mágica da **Transparência de Loc
 
 Isso é **Alta Disponibilidade**. O cliente nem percebeu que o servidor caiu e voltou.
 
-# Módulo Intermediário: Especialistas (`Agent` e `Task`)
+## Módulo Intermediário: Especialistas (`Agent` e `Task`)
 
 Em alguns casos, ao invés de usar **GenServer** (que faz tudo), podemos usar seus "irmãos menores". Eles são processos especializados:
 
@@ -934,14 +937,14 @@ Em alguns casos, ao invés de usar **GenServer** (que faz tudo), podemos usar se
 
 ---
 
-## 1. O `Agent` (O Cofre de Estado)
+### 1. O `Agent` (O Cofre de Estado)
 
 Imagine que você só quer guardar um valor (como uma configuração global ou um contador) e ler/atualizar isso de forma segura entre vários processos.
 Criar um `GenServer` inteiro com `handle_call` e `handle_cast` só para isso é "matar formiga com bazuca".
 
 O **Agent** abstrai tudo isso.
 
-### Prática: O Cofre do Banco
+#### Prática: O Cofre do Banco
 
 Vamos criar um cofre que guarda as reservas totais do banco.
 Crie o arquivo `lib/cofre.ex`:
@@ -969,7 +972,7 @@ defmodule Cofre do
 end
 ```
 
-### Teste no Terminal (`iex -S mix`)
+#### Teste no Terminal (`iex -S mix`)
 
 Olhe como é simples (sem callbacks complexos):
 
@@ -991,14 +994,14 @@ Cofre.ver_total()
 
 ---
 
-## 2. A `Task` (O Trabalhador Assíncrono)
+### 2. A `Task` (O Trabalhador Assíncrono)
 
 E se precisarmos fazer algo demorado (ex: enviar e-mail de confirmação ou gerar PDF) e não quisermos travar o nosso Banco?
 
-Lembre-se: O Elixir é síncrono por padrão. Se você colocar um `sleep(5000)` no meio do código, tudo para.
+Lembre-se: O Elixir é síncrono por padrão. Se você colocar um `Process.sleep(3000)` no meio do código, aquele processo fica parado esperando.
 A **Task** serve para jogar esse trabalho para um processo descartável secundário.
 
-### Prática: O Notificador
+#### Prática: O Notificador
 
 Crie o arquivo `lib/notificador.ex`:
 
@@ -1008,14 +1011,14 @@ defmodule Notificador do
     IO.puts("📧 Iniciando envio de email para #{cliente}...")
     
     # Simula uma conexão lenta com servidor de email (3 segundos)
-    Process.sleep(5000)
+    Process.sleep(3000)
     
     IO.puts("✅ Email enviado com sucesso para #{cliente}!")
   end
 end
 ```
 
-### Teste Comparativo (IEx)
+#### Teste Comparativo (IEx)
 
 **Cenário A: O jeito travado (Sem Task)**
 Rode isso e veja seu terminal congelar:
@@ -1050,7 +1053,7 @@ Task.start(fn -> Notificador.enviar_email("Maria") end)
 
 ---
 
-# Revisão Geral do Modulo
+## Revisão Geral do Módulo
 
 Parabéns, caro aluno. Você completou a jornada fundamental da plataforma BEAM.
 Vamos recapitular o modelo mental que você construiu, pois é isso que importa na sua carreira.
@@ -1094,6 +1097,6 @@ Agora que você domina a base, para onde ir?
 
 Foi uma honra guiá-lo nesta jornada. Você agora tem o mindset de um Engenheiro de Software Concorrente. **Sucesso!**
 
-### veja mais
+### Veja mais
 
-[Excelente palestra do Fabia Akita de 2015](https://www.youtube.com/watch?v=GeGXXfNvdSA)
+[Excelente palestra do Fabio Akita de 2015](https://www.youtube.com/watch?v=GeGXXfNvdSA)

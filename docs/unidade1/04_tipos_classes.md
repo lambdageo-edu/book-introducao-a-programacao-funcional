@@ -10,7 +10,7 @@ Na ciência da computação e na matemática, os sistemas de tipos servem para i
 
 > "Sistemas de tipos são geralmente formulados como coleções de regras para verificar a 'consistência' dos programas." (Benjamin Pierce, 2004)
 
-> "O propósito fundamental de um sistema de tipos é prevenir a ocorrência de erros de execução durante a execução de um programa." ([Luca Cardelli, 2004](https://www.classes.cs.uchicago.edu/archive/2012/spring/22300-1/papers/Cardelli-Wegner.pdf))
+> "O propósito fundamental de um sistema de tipos é prevenir a ocorrência de erros de execução durante a execução de um programa." (Luca Cardelli, *Type Systems*, 2004)
 
 No nível mais baixo da computação, a memória do computador lida apenas com bytes brutos, sem qualquer estrutura inerente. O sistema de tipos fornece a **abstração** necessária para atribuirmos significado a esses bytes. Ele nos permite dizer que *"estes bytes representam texto"*, *"aqueles bytes representam um número decimal"*, e assim por diante. Ao introduzir essa abstração, o sistema de tipos impede misturas acidentais que causariam comportamentos indefinidos no software.
 
@@ -39,7 +39,7 @@ ghci> 1 + False
 -- ERRO! O operador (+) exige que ambos os operandos sejam numéricos.
 ```
 
-Diferentemente de linguagens como C ou JavaScript, o Haskell não realiza coerção automática de tipos (conversões implícitas). O compilador do C converteria silenciosamente um número inteiro (`int`) em ponto flutuante (`float`) se uma função exigisse um ponto flutuante, enquanto o Haskell forçará você a chamar funções de conversão explícitas, um processo seguro conhecido como *casting*.
+Diferentemente de linguagens como C ou JavaScript, o Haskell não realiza coerção automática de tipos (conversões implícitas). O compilador do C converteria silenciosamente um número inteiro (`int`) em ponto flutuante (`float`) se uma função exigisse um ponto flutuante, enquanto o Haskell exige que você chame explicitamente uma função de conversão (como `fromIntegral`, que converte um inteiro para qualquer tipo numérico).
 
 ### 2. Tipagem Estática
 Ter um sistema de tipos **estático** significa que o compilador sabe o tipo de cada valor e expressão em tempo de compilação, ou seja, **antes** de qualquer linha de código ser executada. Se houver um erro de tipo, o compilador recusará gerar o programa executável, eliminando toda uma classe de falhas que, em outras linguagens, só seriam descobertas durante a execução do programa em produção.

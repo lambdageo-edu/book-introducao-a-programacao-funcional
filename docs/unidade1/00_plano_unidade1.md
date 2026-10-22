@@ -27,10 +27,10 @@ Ao final desta unidade, o estudante deverá ser capaz de:
 | 2 | 2h | Instalação do ambiente (GHCup, Cabal), primeiros passos no GHCi e estrutura de um projeto Cabal | [Instalação do Ambiente](02_instalacao.md) |
 | 3 | 2h | Fundamentos: expressões, definição de funções, precedência e aplicação | [Fundamentos](03_fundamentos.md) |
 | 4 | 2h | Tipos básicos, tuplas, polimorfismo e classes de tipos | [Tipos e Classes](04_tipos_classes.md) |
-| 5 | 2h | Funções: pattern matching, guardas, `where`, `let` e lambdas | [Funções](05_funcoes.md) |
+| 5 | 2h | Funções: pattern matching, guardas, `case`, `where`, `let` e a regra *offside* | [Funções](05_funcoes.md) |
 | 6 | 2h | Listas: construção, recursão sobre listas e compreensão de listas | [Listas](06_listas.md) |
 | 7 | 2h | Prática dirigida em laboratório: recursão e listas | [Listas](06_listas.md) |
-| 8 | 2h | Funções de alta ordem: `map`, `filter`, `fold`, composição e aplicação parcial | [Funções de Alta Ordem](07_alta_ordem.md) |
+| 8 | 2h | Funções de alta ordem: `map`, `filter`, `fold`, lambdas, composição e aplicação parcial | [Funções de Alta Ordem](07_alta_ordem.md) |
 | 9 | 2h | Resolução comentada em sala das listas de exercícios e preparação para a avaliação | [Lista de Exercícios](08_exercicios.md) |
 | 10 | 2h | Revisão geral e **avaliação escrita da unidade** | — |
 

@@ -105,7 +105,7 @@ Manipular código manualmente usando funções como `list`, `first` e `second` f
 
 ### 3.1. A Forma Idiomática: Syntax Quote (`)
 
-O **acento grave** ( ``` ), também chamado de **backquote**, permite criar um **template de código** em Clojure.
+O **acento grave** (`` ` ``), também chamado de **backquote**, permite criar um **template de código** em Clojure.
 
 Em vez de construir uma lista manualmente com `list`, `cons` ou concatenação de símbolos, você pode simplesmente **escrever o código como ele deve parecer**, e prefixá-lo com o **acento grave**.
 
@@ -221,14 +221,28 @@ Com grande poder vem grande responsabilidade. A metaprogramação é uma ferrame
 
 Um dos problemas mais sutis em macros é a **captura de variável** (*variable capture*). Isso ocorre quando um símbolo introduzido pela macro acidentalmente colide com um símbolo no código que é passado para a macro. Macros que não levam isso em conta são chamadas de "não higiênicas".
 
-Considere esta macro, que cria uma ligação para o símbolo `x`:
+Considere esta macro, que tenta criar uma ligação para o símbolo `x`:
 
 ```clojure
-;; Macro NÃO higiênica que "captura" o símbolo `x`
+;; Primeira tentativa: o syntax quote não deixa isso compilar
 (defmacro when-x-is-ten [& body]
   `(let [x 10]
      ~@body))
 
+(when-x-is-ten (println x))
+;; Syntax error macroexpanding clojure.core/let ...
+;; Call to clojure.core/let did not conform to spec.
+```
+
+O erro é, na verdade, uma proteção. Dentro de um *syntax quote*, todo símbolo é **qualificado com o namespace atual**: o `x` vira `user/x`, e `let` não aceita ligar um nome qualificado. Ou seja, Clojure impede a captura acidental por padrão.
+
+Para mostrar o perigo, precisamos **forçar** um símbolo não qualificado com `~'x` (unquote de um símbolo citado):
+
+```clojure
+;; Macro NÃO higiênica que "captura" o símbolo `x` de propósito
+(defmacro when-x-is-ten [& body]
+  `(let [~'x 10]
+     ~@body))
 ```
 
 Agora, vejamos um uso problemático desta macro:
@@ -237,10 +251,10 @@ Agora, vejamos um uso problemático desta macro:
 (let [x "sou o x de fora"]
   (when-x-is-ten
     (println "O valor de x é:" x)))
-
+;; Imprime: O valor de x é: 10
 ```
 
-O programador que utiliza a macro espera que o código imprima "O valor de x é: sou o x de fora". No entanto, a macro expande para `(let [x "sou o x de fora"] (let [x 10] (println "O valor de x é:" x)))`. Como o `let` interno da macro também usa o símbolo `x`, ele "captura" a variável `x` usada no `println`, fazendo com que o programa imprima, inesperadamente, "O valor de x é: 10". Este é o verdadeiro perigo da captura de variáveis.
+O programador que utiliza a macro espera que o código imprima "O valor de x é: sou o x de fora". No entanto, a macro expande para `(let [x "sou o x de fora"] (let [x 10] (println "O valor de x é:" x)))`. Como o `let` interno da macro também usa o símbolo `x`, ele "captura" a variável `x` usada no `println`, fazendo com que o programa imprima, inesperadamente, "O valor de x é: 10". Este é o verdadeiro perigo da captura de variáveis — e o motivo de `~'x` só ser usado quando a captura é **intencional** (as chamadas *macros anafóricas*).
 
 ### 5.2. A Solução: `gensym` e Auto-gensym (`#`)
 
@@ -264,7 +278,7 @@ Vamos corrigir nossa macro para torná-la higiênica:
 
 ```
 
-O código expandido agora se parece com `(let [x__123__auto__ 10] (println "O valor de x é:" x))`. O `x` externo não é mais capturado, e a macro se comporta como o usuário esperava.
+O código expandido agora se parece com `(let [x__123__auto__ 10] (println "O valor de x é:" x))`. O `x` externo não é mais capturado, e a macro se comporta como o usuário esperava. (O nome gerado não pode ser usado pelo código do usuário; serve para valores internos da macro, como guardar o resultado de uma expressão para avaliá-la uma única vez.)
 
 ### 5.3. Depurando Macros com `macroexpand-1`
 
