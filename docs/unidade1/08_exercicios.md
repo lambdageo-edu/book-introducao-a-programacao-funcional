@@ -31,8 +31,10 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
 2. Reescreva a função `sinal` usando **guards**.
 3. Implemente a função `classificaNota` que recebe um número (0–10) e retorna:
     - `"Reprovado"` se menor que 5
-    - `"Recuperação"` se entre 5 e 6.9
+    - `"Recuperação"` se maior ou igual a 5 e menor que 7
     - `"Aprovado"` se maior ou igual a 7.
+
+    Use o tipo `classificaNota :: Double -> String`.
 
 ---
 
@@ -128,9 +130,8 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
 2. Usando **aplicação parcial**, defina:
     - `triplica = (*3)`
     - `mais10 = (+10)`
-        
-        Teste essas funções em valores diferentes.
-        
+
+    Teste essas funções em valores diferentes.
 
 ---
 
@@ -186,17 +187,13 @@ Esta página contém todas as listas de exercícios práticos da Unidade 1, serv
     Use **composição** para encadear os passos.
 
 3. (Desafio) Defina `compose :: [a -> a] -> (a -> a)` que recebe uma lista de funções e retorna a composição delas.
-    
+
     Teste com:
-    
 
-```haskell
-compose [(+1), (*2), (^2)] 3
--- deve aplicar (^2), depois (*2), depois (+1)
+    ```haskell
+    compose [(+1), (*2), (^2)] 3
+    -- deve aplicar (^2), depois (*2), depois (+1): resultado 19
+    ```
 
-```
-
----
-
----
+    **Dica:** qual é o elemento neutro da composição? (Experimente `id` no GHCi.)
 

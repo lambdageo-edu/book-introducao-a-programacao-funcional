@@ -220,21 +220,22 @@ Exercícios de fixação sobre os conceitos deste capítulo.
 
 1. Escreva um programa que leia um caractere do teclado e o imprima duas vezes na tela.
 
-    ```haskell
+    ```text
     -- exemplo de execução
     > a
     aa
-
     ```
 
 2. Crie um programa que leia dois caracteres e os imprima separados por um espaço.
 
-    ```haskell
+    ```text
     > a
     > b
     a b
-
     ```
+
+    !!! warning "Cuidado com o Enter"
+        No terminal, o caractere só chega ao programa depois que você tecla Enter, e o próprio Enter também é um caractere (`'\n'`). Assim, o segundo `getChar` lê o `'\n'`, e não o `b`. Duas saídas: descartar o `'\n'` com um `getChar` extra entre as leituras, ou desligar o *buffer* de linha com `hSetBuffering stdin NoBuffering` (importando `System.IO`) no início do `main`.
 
 3. Escreva uma versão simplificada do `putStrLn`, chamada `putStrSimples`, que recebe uma string e a imprime caractere por caractere, finalizando com `\n`.
 
@@ -244,11 +245,10 @@ Exercícios de fixação sobre os conceitos deste capítulo.
 
 1. Implemente uma função que peça o nome do usuário e o cumprimente.
 
-    ```haskell
+    ```text
     > Qual eh o seu nome?
     Sergio
     Bem vindo Sergio!
-
     ```
 
 2. Escreva um programa que leia duas linhas do teclado e depois imprima a concatenação delas.
@@ -266,7 +266,7 @@ Exercícios de fixação sobre os conceitos deste capítulo.
 
     ```
 
-2. Escreva um programa que peça a idade do usuário e diga se ele é maior de idade ou não.
+2. Escreva um programa que peça a idade do usuário e diga se ele é maior de idade ou não. (Para converter a `String` lida em número, use `read` ou `readLn`, vistos na seção 8.)
 
 ---
 
@@ -283,10 +283,10 @@ Exercícios de fixação sobre os conceitos deste capítulo.
 1. Implemente um programa que conte quantas linhas existem em um arquivo de texto.
 2. Escreva uma função `main` que:
     - pergunte ao usuário um número `n`,
-    - leia uma lista de números de um arquivo,
+    - leia uma lista de números de um arquivo (um número por linha),
     - some apenas os `n` primeiros números,
     - grave o resultado em outro arquivo.
-3. Escreva um mini "chat": o programa deve ler uma linha do usuário e imprimir de volta a mesma linha em maiúsculas até que ele digite `"sair"`.
+3. Escreva um mini "chat": o programa deve ler uma linha do usuário e imprimir de volta a mesma linha em maiúsculas até que ele digite `"sair"`. (Dica: comece pelo programa `eco` da seção 8 e use `toUpper`, de `Data.Char`.)
 
 ---
 

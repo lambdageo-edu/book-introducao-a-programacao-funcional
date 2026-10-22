@@ -580,13 +580,13 @@ Clojure também tem referências coordenadas (`ref`, alteradas dentro de transa�
 
 Siga os passos abaixo em seu ambiente Clojure para aplicar o que aprendeu.
 
-1. **Crie um Vetor:** Crie um vetor chamado `carrinho-de-compras` que represente itens em um carrinho, usando keywords.
+1. **Crie um Vetor:** Crie um vetor chamado `carrinho-de-compras` com os itens `:camiseta` e `:caneca`, representados por keywords.
 2. **Consulte o Vetor:** Verifique quantos itens há no carrinho.
 3. **Adicione ao Vetor:** Use `conj` para adicionar o item `:mochila` ao carrinho e armazene o resultado em um novo símbolo `carrinho-atualizado`. Lembre-se que o vetor original não será alterado!
-4. **Crie um Mapa:** Crie um mapa chamado `precos-produtos` que associe cada um dos três itens a um preço.
+4. **Crie um Mapa:** Crie um mapa chamado `precos-produtos` que associe cada um dos três itens (`:camiseta`, `:caneca` e `:mochila`) a um preço.
 5. **Adicione/Atualize o Mapa:** Use `assoc` para adicionar um novo item, `:chaveiro`, com o preço `10`.
 6. **Transforme um Valor:** Use `update` para aplicar um aumento de 10% no preço da `:camiseta`. A expressão `#(* % 1.1)` é uma função anônima que multiplica seu argumento (`%`) por 1.1.
-7. **Desafio:** Crie um novo mapa `carrinho-final` a partir de `precos-produtos` que contenha *apenas* os itens do seu `carrinho-atualizado` (do passo 3). Pesquise a função `select-keys` para uma solução elegante.
+7. **Desafio:** Crie um novo mapa `carrinho-final` a partir de `precos-produtos` que contenha *apenas* os itens do seu `carrinho-atualizado` (do passo 3). Pesquise a função `select-keys` para uma solução elegante. O resultado deve ter `:camiseta`, `:caneca` e `:mochila`, mas não o `:chaveiro`.
 
 ## 7.0 Conclusão: Seus Novos Superpoderes em Clojure
 

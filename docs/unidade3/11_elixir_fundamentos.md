@@ -289,7 +289,7 @@ Enum.filter([1, 2, 3, 4], fn x -> rem(x,2)==0 end)  # [2,4]
 
 ## **Exercícios em Sala**
 
-1. Criar uma lista com números de 1 a 5, usar pipe para **dobrar cada número** e filtrar apenas pares.
+1. Criar uma lista com números de 1 a 10 e, usando pipe, **filtrar apenas os pares** e depois **dobrar cada um** (resultado esperado: `[4, 8, 12, 16, 20]`). Por que não faria sentido dobrar primeiro e filtrar depois?
 2. Criar um mapa representando uma pessoa, **adicionar nova chave** usando `Map.put`.
 
 ---
@@ -297,7 +297,7 @@ Enum.filter([1, 2, 3, 4], fn x -> rem(x,2)==0 end)  # [2,4]
 ## **Tarefa para Casa**
 
 1. Ler as lições “Basics” do Elixir School em português.
-2. Fazer exercícios do Exercism: "Hello World", "Two Fer", "Reverse String".
+2. Fazer exercícios do Exercism: "Hello World", "Two Fer", "Leap".
 3. Praticar no IEx: criar **10 pipelines diferentes** usando `Enum`.
 
 ---

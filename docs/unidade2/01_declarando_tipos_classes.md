@@ -263,24 +263,24 @@ Exercícios de fixação sobre os conceitos deste capítulo.
 
 2. Defina um tipo `Cor` com `Vermelho | Verde | Azul | Amarelo`.
 
-    Crie uma função `ehPrimaria :: Cor -> Bool` que retorne `True` se a cor for primária.
+    Crie uma função `ehPrimaria :: Cor -> Bool` que retorne `True` se a cor for primária no modelo **RGB** (cores-luz: vermelho, verde e azul).
 
-3. Crie um tipo `Forma` com `Circulo Float | Retangulo Float Float | Quadrado Float`.
+3. Partindo do tipo `Forma` deste capítulo (`Circulo Float | Retangulo Float Float | Quadrado Float`), acrescente um construtor `Triangulo Float Float` (base e altura).
 
-    Escreva uma função `area :: Forma -> Float` que calcule a área de qualquer forma.
+    Estenda a função `area :: Forma -> Float` para o novo construtor e escreva também `perimetro :: Forma -> Maybe Float`, que devolve `Nothing` para o triângulo (base e altura não bastam para calcular o perímetro).
 
-4. Crie um tipo `Conta` com `Corrente Float | Poupanca Float Float` (saldo e juros).
+4. Crie um tipo `Conta` com `Corrente Float | Poupanca Float Float` (saldo e taxa de juros).
 
-    Escreva uma função `saldoTotal :: Conta -> Float` que retorne o saldo total considerando juros na poupança.
+    Escreva uma função `saldoTotal :: Conta -> Float` que retorne o saldo total considerando os juros na poupança. Exemplo: `saldoTotal (Poupanca 1000 0.05)` deve resultar em `1050.0`.
 
 ---
 
 ### **4. Pattern Matching**
 
-1. Reescreva a função `area` do exercício 3.3 (tipo `Forma`) usando **pattern matching**.
+1. Reescreva a função `area` do exercício 3.3 usando uma única equação com `case ... of`, em vez de uma equação por construtor. Qual das duas formas você acha mais legível?
 2. Escreva uma função `ehFimDeSemana :: DiaSemana -> Bool` usando pattern matching.
 3. Crie uma função `descricaoConta :: Conta -> String` que descreva a conta (`"Conta Corrente: R$..."` ou `"Conta Poupança: R$... com juros..."`).
-4. Escreva uma função `somaPontos :: Ponto -> Ponto -> Ponto` usando pattern matching em tuplas.
+4. Usando o sinônimo `Ponto` do exercício 1.3, escreva uma função `somaPontos :: Ponto -> Ponto -> Ponto` usando pattern matching em tuplas. (Se o arquivo também tiver o `data Ponto` deste capítulo, os nomes vão colidir: use um módulo separado ou renomeie um deles.)
 
 ---
 
@@ -304,17 +304,17 @@ Exercícios de fixação sobre os conceitos deste capítulo.
 
 ### **6. Exercícios mistos avançados**
 
-1. Crie um tipo `Pessoa` com `Nome String` e `Idade Int`.
+1. Crie um tipo produto `data Pessoa = Pessoa Nome Idade`, usando os sinônimos do exercício 1.1.
 
-    Escreva uma função `maiorIdade :: Pessoa -> Bool` usando pattern matching.
+    Escreva uma função `maiorIdade :: Pessoa -> Bool` usando pattern matching (maior de idade: 18 anos ou mais).
 
-2. Crie um tipo `Livro` com `Titulo String | Autor String | Ano Int`.
+2. Crie um tipo `Livro` com **sintaxe de registro**, com os campos `titulo :: String`, `autor :: String` e `ano :: Int`. (Repare que um livro tem título *e* autor *e* ano: é um tipo produto, não um tipo soma.)
 
-    Escreva uma função `descricaoLivro :: Livro -> String`.
+    Escreva uma função `descricaoLivro :: Livro -> String`, por exemplo `"SICP, de Abelson (1985)"`.
 
 3. Defina um tipo `Arvore a` com `Folha a | No (Arvore a) (Arvore a)`.
 
-    Escreva uma função `contaNos :: Arvore a -> Int` que conte os nós de uma árvore.
+    Escreva uma função `contaFolhas :: Arvore a -> Int` que conte as folhas e uma função `contaNos :: Arvore a -> Int` que conte todos os nós (folhas e nós internos). Para `No (Folha 1) (No (Folha 2) (Folha 3))`, os resultados devem ser `3` e `5`.
 
 4. Escreva uma função `mapArvore :: (a -> b) -> Arvore a -> Arvore b` que aplique uma função a todos os elementos da árvore.
 

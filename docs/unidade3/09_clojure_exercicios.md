@@ -59,7 +59,7 @@ Use `def` para valores que devem ser referenciados globalmente, como constantes 
 
 Use `let` para dar nomes a resultados intermediários, tornando cálculos complexos mais legíveis e eficientes ao evitar recálculos.
 
-**Tarefa:** Calcule o preço total de um produto, aplicando um desconto e depois um imposto. Use um formulário `let` para criar bindings locais para `valor-desconto` e `preco-com-desconto`, e então use-os para calcular o preço final.
+**Tarefa:** Calcule o preço total de um produto, aplicando um desconto e depois um imposto. Use um formulário `let` para criar bindings locais para `valor-desconto` e `preco-com-desconto`, e então use-os para calcular o preço final (resultado esperado: aproximadamente `144.45`).
 
 - `preco-base`: 150.0
 - `percentual-desconto`: 0.10 (10%)
@@ -87,7 +87,7 @@ A função `filter` recebe uma função predicado (que retorna `true` ou `false`
 
 **Tarefa:** Dado o vetor de pessoas abaixo, use `filter` para encontrar apenas aquelas com 18 anos ou mais.
 
-```
+```clojure
 (def pessoas [{:nome "Ana" :idade 25}
               {:nome "Bruno" :idade 17}
               {:nome "Carla" :idade 32}
@@ -128,7 +128,7 @@ Este problema clássico combina a transformação de dados (`map`) com a agrega�
 1. Usar `map` para calcular o subtotal de cada item (`:preco` * `:quantidade`).
 2. Usar `reduce` para somar todos os subtotais.
 
-```
+```clojure
 (def lista-de-compras
   [{:produto "Maçã" :preco 2.5 :quantidade 4}
    {:produto "Pão" :preco 5.0 :quantidade 1}
@@ -140,7 +140,9 @@ Este problema clássico combina a transformação de dados (`map`) com a agrega�
 
 Funções variádicas são aquelas que aceitam um número variável de argumentos (usando `&`).
 
-**Tarefa:** Crie uma função variádica chamada `estatisticas` que aceita qualquer número de argumentos numéricos. Ela deve retornar um mapa contendo o número de argumentos (`:contagem`), a soma total (`:soma`) e a média (`:media`). Teste-a chamando `(estatisticas 10 20 30 40 50)` e `(estatisticas)`.
+Na lista de parâmetros, o `&` indica que todos os argumentos restantes serão reunidos em uma sequência: em `(defn f [& nums] ...)`, a chamada `(f 1 2 3)` liga `nums` a `(1 2 3)`. Sem nenhum argumento, `nums` vale `nil` (e `(count nil)` e `(reduce + nil)` valem `0`).
+
+**Tarefa:** Crie uma função variádica chamada `estatisticas` que aceita qualquer número de argumentos numéricos. Ela deve retornar um mapa contendo o número de argumentos (`:contagem`), a soma total (`:soma`) e a média (`:media`). Teste-a chamando `(estatisticas 10 20 30 40 50)`, que deve resultar em `{:contagem 5, :soma 150, :media 30}`, e `(estatisticas)`. Cuidado: no segundo caso, calcular a média diretamente dá divisão por zero. Faça a função retornar `{:contagem 0, :soma 0, :media 0}`.
 
 ## Conclusão
 
