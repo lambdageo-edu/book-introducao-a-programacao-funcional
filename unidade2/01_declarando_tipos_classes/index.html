@@ -803,6 +803,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#3-soma-de-produtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Soma de Produtos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#analogia-com-outras-linguagens" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1822,6 +1833,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#3-soma-de-produtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Soma de Produtos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#analogia-com-outras-linguagens" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2091,7 +2113,7 @@
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            ▼                           ▼
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>       [Tipo Soma]                [Tipo Produto]
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>      (Alternativas)              (Combinações)
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  Vermelho | Verde | Azul       Circulo Float | Retangulo Float Float
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  Vermelho | Verde | Azul          Ponto Double Double
 </code></pre></div>
 <h3 id="1-tipos-soma-enumeracoes">1. Tipos Soma (Enumerações)<a class="headerlink" href="#1-tipos-soma-enumeracoes" title="Permanent link">&para;</a></h3>
 <p>Representam valores que podem assumir uma entre várias alternativas distintas:</p>
@@ -2100,16 +2122,20 @@
 </code></pre></div>
 <p>Aqui, <code>Vermelho</code>, <code>Verde</code>, <code>Sim</code> e <code>Nao</code> são chamados de <strong>Construtores de Valor</strong>. Eles funcionam como constantes que representam os dados concretos do tipo.</p>
 <h3 id="2-tipos-produto">2. Tipos Produto<a class="headerlink" href="#2-tipos-produto" title="Permanent link">&para;</a></h3>
-<p>Representam valores compostos por múltiplos campos de dados combinados:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Forma</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Circulo</span><span class="w"> </span><span class="kt">Float</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="kt">Retangulo</span><span class="w"> </span><span class="kt">Float</span><span class="w"> </span><span class="kt">Float</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="kt">Quadrado</span><span class="w"> </span><span class="kt">Float</span>
+<p>Representam valores compostos por múltiplos campos de dados combinados — um valor do tipo carrega <em>todos</em> os campos ao mesmo tempo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Ponto</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Ponto</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="kt">Double</span><span class="w">   </span><span class="c1">-- um x E um y</span>
 </code></pre></div>
-<p>O tipo <code>Forma</code> possui três construtores de valor. O construtor <code>Circulo</code> carrega um <code>Float</code> (o raio). O construtor <code>Retangulo</code> carrega dois valores <code>Float</code> (largura e altura). Podemos usar casamento de padrões para inspecionar e extrair esses valores:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">area</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Forma</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Float</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">area</span><span class="w"> </span><span class="p">(</span><span class="kt">Circulo</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w">       </span><span class="ow">=</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mi">2</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nf">area</span><span class="w"> </span><span class="p">(</span><span class="kt">Retangulo</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w">   </span><span class="ow">=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nf">area</span><span class="w"> </span><span class="p">(</span><span class="kt">Quadrado</span><span class="w"> </span><span class="n">l</span><span class="p">)</span><span class="w">      </span><span class="ow">=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mi">2</span>
+<h3 id="3-soma-de-produtos">3. Soma de Produtos<a class="headerlink" href="#3-soma-de-produtos" title="Permanent link">&para;</a></h3>
+<p>Na prática, os dois padrões aparecem juntos: um tipo soma cujas alternativas carregam campos, como um produto cada uma.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Forma</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Circulo</span><span class="w"> </span><span class="kt">Float</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="kt">Retangulo</span><span class="w"> </span><span class="kt">Float</span><span class="w"> </span><span class="kt">Float</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="kt">Quadrado</span><span class="w"> </span><span class="kt">Float</span>
+</code></pre></div>
+<p>O tipo <code>Forma</code> é uma soma (é um círculo <em>ou</em> um retângulo <em>ou</em> um quadrado) de produtos (um retângulo tem largura <em>e</em> altura). Ele possui três construtores de valor. O construtor <code>Circulo</code> carrega um <code>Float</code> (o raio). O construtor <code>Retangulo</code> carrega dois valores <code>Float</code> (largura e altura). Podemos usar casamento de padrões para inspecionar e extrair esses valores:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">area</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Forma</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Float</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">area</span><span class="w"> </span><span class="p">(</span><span class="kt">Circulo</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w">       </span><span class="ow">=</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">area</span><span class="w"> </span><span class="p">(</span><span class="kt">Retangulo</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w">   </span><span class="ow">=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nf">area</span><span class="w"> </span><span class="p">(</span><span class="kt">Quadrado</span><span class="w"> </span><span class="n">l</span><span class="p">)</span><span class="w">      </span><span class="ow">=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mi">2</span>
 </code></pre></div>
 <h3 id="analogia-com-outras-linguagens">Analogia com Outras Linguagens<a class="headerlink" href="#analogia-com-outras-linguagens" title="Permanent link">&para;</a></h3>
 <p>Os ADTs unificam, em um único mecanismo, várias construções que outras linguagens oferecem separadamente:</p>
@@ -2120,85 +2146,85 @@
 </ul>
 <h3 id="adts-vs-tuplas">ADTs vs. Tuplas<a class="headerlink" href="#adts-vs-tuplas" title="Permanent link">&para;</a></h3>
 <p>Dois pares <code>(String, String)</code> são sempre do mesmo tipo, mesmo que um represente um animal e outro um móvel — o sistema de tipos não pode nos proteger da mistura. Já dois ADTs estruturalmente idênticos com nomes diferentes são tipos <strong>distintos</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Cetaceo</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Cetaceo</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="kt">String</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Movel</span><span class="w">   </span><span class="ow">=</span><span class="w"> </span><span class="kt">Movel</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="kt">String</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Cetaceo</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Cetaceo</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Movel</span><span class="w">   </span><span class="ow">=</span><span class="w"> </span><span class="kt">Movel</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="kt">String</span>
 </code></pre></div>
 <p>Regra prática: se você usa um valor composto amplamente no código, declare um <code>data</code> — ganha segurança de tipos e legibilidade; para usos pequenos e localizados, uma tupla resolve.</p>
 <hr />
 <h2 id="4-sintaxe-de-registro-record-syntax">4. Sintaxe de Registro (Record Syntax)<a class="headerlink" href="#4-sintaxe-de-registro-record-syntax" title="Permanent link">&para;</a></h2>
 <p>Quando definimos tipos produto com muitos campos, acessar os valores por posição em casamento de padrões torna-se confuso e propenso a erros. Para resolver isso, Haskell fornece a <strong>Sintaxe de Registro</strong> (<em>Record Syntax</em>), que permite nomear os campos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">nome</span><span class="w">    </span><span class="ow">::</span><span class="w"> </span><span class="kt">String</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">idade</span><span class="w">   </span><span class="ow">::</span><span class="w"> </span><span class="kt">Int</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">ativo</span><span class="w">   </span><span class="ow">::</span><span class="w"> </span><span class="kt">Bool</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">deriving</span><span class="w"> </span><span class="p">(</span><span class="kt">Show</span><span class="p">,</span><span class="w"> </span><span class="kt">Eq</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">nome</span><span class="w">    </span><span class="ow">::</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">idade</span><span class="w">   </span><span class="ow">::</span><span class="w"> </span><span class="kt">Int</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">ativo</span><span class="w">   </span><span class="ow">::</span><span class="w"> </span><span class="kt">Bool</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">deriving</span><span class="w"> </span><span class="p">(</span><span class="kt">Show</span><span class="p">,</span><span class="w"> </span><span class="kt">Eq</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="vantagens-da-sintaxe-de-registro">Vantagens da Sintaxe de Registro:<a class="headerlink" href="#vantagens-da-sintaxe-de-registro" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Funções Seletoras Automáticas</strong>: O compilador cria automaticamente funções com o nome de cada campo para extrair o valor de um registro. Ex: <code>nome meuUsuario</code> retorna a <code>String</code> do nome.</li>
 <li><strong>Atualização Prática de Registros</strong>: Podemos atualizar campos facilmente por meio de uma sintaxe de cópia imutável:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">aniversario</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Usuario</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">aniversario</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">aniversario</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Usuario</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">aniversario</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></li>
 </ol>
 <hr />
 <h2 id="5-tipos-parametrizados-e-o-maybe">5. Tipos Parametrizados e o <code>Maybe</code><a class="headerlink" href="#5-tipos-parametrizados-e-o-maybe" title="Permanent link">&para;</a></h2>
 <p>Assim como as listas, nossos próprios tipos podem ser <strong>polimórficos</strong>: basta introduzir variáveis de tipo na declaração. O exemplo mais importante do Prelude é o tipo <code>Maybe</code>, que representa um valor que pode estar presente ou ausente:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Maybe</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="n">a</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="kt">Nothing</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Maybe</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="n">a</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="kt">Nothing</span>
 </code></pre></div>
 <p>A variável <code>a</code> indica que <code>Maybe</code> recebe outro tipo como parâmetro: <code>Maybe Int</code>, <code>Maybe String</code>, <code>Maybe [Bool]</code> são tipos distintos construídos a partir dele.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="mf">1.5</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kt">Just</span><span class="w"> </span><span class="mf">1.5</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">:</span><span class="kr">type</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="s">"bicicleta"</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kt">Just</span><span class="w"> </span><span class="s">"bicicleta"</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Maybe</span><span class="w"> </span><span class="p">[</span><span class="kt">Char</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="mf">1.5</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kt">Just</span><span class="w"> </span><span class="mf">1.5</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">:</span><span class="kr">type</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="s">"bicicleta"</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kt">Just</span><span class="w"> </span><span class="s">"bicicleta"</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Maybe</span><span class="w"> </span><span class="p">[</span><span class="kt">Char</span><span class="p">]</span>
 </code></pre></div>
 <h3 id="tratando-erros-error-vs-maybe">Tratando Erros: <code>error</code> vs. <code>Maybe</code><a class="headerlink" href="#tratando-erros-error-vs-maybe" title="Permanent link">&para;</a></h3>
 <p>Haskell oferece a função <code>error :: String -&gt; a</code>, que aborta a execução imediatamente com uma mensagem. O problema: quem chama a função não consegue distinguir um erro recuperável de uma falha fatal. Compare:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">-- Versão que "explode":</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">meuSegundo</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="n">a</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nf">meuSegundo</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="n">null</span><span class="w"> </span><span class="p">(</span><span class="n">tail</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">                </span><span class="kr">then</span><span class="w"> </span><span class="ne">error</span><span class="w"> </span><span class="s">"lista muito curta"</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">                </span><span class="kr">else</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="p">(</span><span class="n">tail</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1">-- Versão total e segura com Maybe:</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nf">segundoSeguro</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Maybe</span><span class="w"> </span><span class="n">a</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nf">segundoSeguro</span><span class="w"> </span><span class="p">(</span><span class="kr">_</span><span class="kt">:</span><span class="n">x</span><span class="kt">:</span><span class="kr">_</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="n">x</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nf">segundoSeguro</span><span class="w"> </span><span class="kr">_</span><span class="w">       </span><span class="ow">=</span><span class="w"> </span><span class="kt">Nothing</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">-- Versão que "explode":</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">meuSegundo</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="n">a</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nf">meuSegundo</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="n">null</span><span class="w"> </span><span class="p">(</span><span class="n">tail</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">                </span><span class="kr">then</span><span class="w"> </span><span class="ne">error</span><span class="w"> </span><span class="s">"lista muito curta"</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">                </span><span class="kr">else</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="p">(</span><span class="n">tail</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1">-- Versão total e segura com Maybe:</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nf">segundoSeguro</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Maybe</span><span class="w"> </span><span class="n">a</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="nf">segundoSeguro</span><span class="w"> </span><span class="p">(</span><span class="kr">_</span><span class="kt">:</span><span class="n">x</span><span class="kt">:</span><span class="kr">_</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Just</span><span class="w"> </span><span class="n">x</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nf">segundoSeguro</span><span class="w"> </span><span class="kr">_</span><span class="w">       </span><span class="ow">=</span><span class="w"> </span><span class="kt">Nothing</span>
 </code></pre></div>
 <p>Na versão com <code>Maybe</code>, devolvemos <code>Nothing</code> quando a lista é curta demais — e o <strong>chamador</strong> decide o que fazer, em vez de o programa cair. Note também como o pattern matching <code>(_:x:_)</code> torna a versão segura mais concisa: o padrão casa apenas com listas de pelo menos dois elementos, ligando <code>x</code> ao segundo.</p>
 <hr />
 <h2 id="6-tipos-recursivos-modelando-estruturas-de-dados">6. Tipos Recursivos: Modelando Estruturas de Dados<a class="headerlink" href="#6-tipos-recursivos-modelando-estruturas-de-dados" title="Permanent link">&para;</a></h2>
 <p>Os tipos declarados com <code>data</code> podem ser recursivos, ou seja, conter referências a si mesmos em seus campos. Isso nos permite modelar estruturas de dados complexas, como árvores binárias:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Folha</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="kt">No</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">              </span><span class="kr">deriving</span><span class="w"> </span><span class="p">(</span><span class="kt">Show</span><span class="p">,</span><span class="w"> </span><span class="kt">Eq</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Folha</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="kt">No</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">              </span><span class="kr">deriving</span><span class="w"> </span><span class="p">(</span><span class="kt">Show</span><span class="p">,</span><span class="w"> </span><span class="kt">Eq</span><span class="p">)</span>
 </code></pre></div>
 <p>Uma árvore binária ou é um nó com um valor e dois filhos (que também são árvores binárias), ou é uma folha vazia. Em Java, a classe equivalente usaria <code>null</code> para indicar a ausência de um filho; em Haskell não existe <code>null</code> — usamos explicitamente o construtor <code>Folha</code>, e o compilador nos obriga a tratá-lo no pattern matching. Toda uma classe de erros (<code>NullPointerException</code>) simplesmente não existe.</p>
 <p>Podemos processar essa árvore utilizando recursão sobre sua estrutura:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">altura</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Int</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nf">altura</span><span class="w"> </span><span class="kt">Folha</span><span class="w">      </span><span class="ow">=</span><span class="w"> </span><span class="mi">0</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">altura</span><span class="w"> </span><span class="p">(</span><span class="kt">No</span><span class="w"> </span><span class="kr">_</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">altura</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Arvore</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">Int</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">altura</span><span class="w"> </span><span class="kt">Folha</span><span class="w">      </span><span class="ow">=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nf">altura</span><span class="w"> </span><span class="p">(</span><span class="kt">No</span><span class="w"> </span><span class="kr">_</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="7-implementando-classes-de-tipos-personalizadas">7. Implementando Classes de Tipos Personalizadas<a class="headerlink" href="#7-implementando-classes-de-tipos-personalizadas" title="Permanent link">&para;</a></h2>
 <p>Vimos na Unidade 1 que classes de tipos (como <code>Eq</code> e <code>Ord</code>) governam comportamentos comuns. Haskell nos permite declarar novas classes de tipos por meio da palavra-chave <code>class</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">class</span><span class="w"> </span><span class="kt">Serializavel</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="kr">where</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">String</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">class</span><span class="w"> </span><span class="kt">Serializavel</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="kr">where</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="kt">String</span>
 </code></pre></div>
 <p>Aqui, declaramos uma classe <code>Serializavel</code> que exige que qualquer tipo participante implemente a função <code>serializar</code>.</p>
 <h3 id="declarando-instancias-instance">Declarando Instâncias (<code>instance</code>)<a class="headerlink" href="#declarando-instancias-instance" title="Permanent link">&para;</a></h3>
 <p>Para fazer um tipo de dados fazer parte de uma classe de tipos, escrevemos uma declaração de <strong><code>instance</code></strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">instance</span><span class="w"> </span><span class="kt">Serializavel</span><span class="w"> </span><span class="kt">Cor</span><span class="w"> </span><span class="kr">where</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Vermelho</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="s">"#FF0000"</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Verde</span><span class="w">    </span><span class="ow">=</span><span class="w"> </span><span class="s">"#00FF00"</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Azul</span><span class="w">     </span><span class="ow">=</span><span class="w"> </span><span class="s">"#0000FF"</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Amarelo</span><span class="w">  </span><span class="ow">=</span><span class="w"> </span><span class="s">"#FFFF00"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">instance</span><span class="w"> </span><span class="kt">Serializavel</span><span class="w"> </span><span class="kt">Cor</span><span class="w"> </span><span class="kr">where</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Vermelho</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="s">"#FF0000"</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Verde</span><span class="w">    </span><span class="ow">=</span><span class="w"> </span><span class="s">"#00FF00"</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Azul</span><span class="w">     </span><span class="ow">=</span><span class="w"> </span><span class="s">"#0000FF"</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span><span class="n">serializar</span><span class="w"> </span><span class="kt">Amarelo</span><span class="w">  </span><span class="ow">=</span><span class="w"> </span><span class="s">"#FFFF00"</span>
 </code></pre></div>
 <h3 id="derivacao-automatica-deriving">Derivação Automática (<code>deriving</code>)<a class="headerlink" href="#derivacao-automatica-deriving" title="Permanent link">&para;</a></h3>
 <p>Para classes de tipos muito comuns da biblioteca padrão (<code>Show</code>, <code>Read</code>, <code>Eq</code>, <code>Ord</code>), o compilador do Haskell é inteligente o bastante para gerar as implementações de instância automaticamente. Basta adicionar a cláusula <code>deriving</code> no final da declaração do tipo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Ponto</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Ponto</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="kt">Double</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="kr">deriving</span><span class="w"> </span><span class="p">(</span><span class="kt">Show</span><span class="p">,</span><span class="w"> </span><span class="kt">Eq</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">Ponto</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Ponto</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="kt">Double</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="kr">deriving</span><span class="w"> </span><span class="p">(</span><span class="kt">Show</span><span class="p">,</span><span class="w"> </span><span class="kt">Eq</span><span class="p">)</span>
 </code></pre></div>
 <p>No próximo capítulo, veremos como utilizar o encapsulamento de tipos algébricos para lidar com a manipulação de Entrada/Saída de forma segura através da Monad de IO.</p>
 <hr />
@@ -2238,24 +2264,24 @@
 </li>
 <li>
 <p>Defina um tipo <code>Cor</code> com <code>Vermelho | Verde | Azul | Amarelo</code>.</p>
-<p>Crie uma função <code>ehPrimaria :: Cor -&gt; Bool</code> que retorne <code>True</code> se a cor for primária.</p>
+<p>Crie uma função <code>ehPrimaria :: Cor -&gt; Bool</code> que retorne <code>True</code> se a cor for primária no modelo <strong>RGB</strong> (cores-luz: vermelho, verde e azul).</p>
 </li>
 <li>
-<p>Crie um tipo <code>Forma</code> com <code>Circulo Float | Retangulo Float Float | Quadrado Float</code>.</p>
-<p>Escreva uma função <code>area :: Forma -&gt; Float</code> que calcule a área de qualquer forma.</p>
+<p>Partindo do tipo <code>Forma</code> deste capítulo (<code>Circulo Float | Retangulo Float Float | Quadrado Float</code>), acrescente um construtor <code>Triangulo Float Float</code> (base e altura).</p>
+<p>Estenda a função <code>area :: Forma -&gt; Float</code> para o novo construtor e escreva também <code>perimetro :: Forma -&gt; Maybe Float</code>, que devolve <code>Nothing</code> para o triângulo (base e altura não bastam para calcular o perímetro).</p>
 </li>
 <li>
-<p>Crie um tipo <code>Conta</code> com <code>Corrente Float | Poupanca Float Float</code> (saldo e juros).</p>
-<p>Escreva uma função <code>saldoTotal :: Conta -&gt; Float</code> que retorne o saldo total considerando juros na poupança.</p>
+<p>Crie um tipo <code>Conta</code> com <code>Corrente Float | Poupanca Float Float</code> (saldo e taxa de juros).</p>
+<p>Escreva uma função <code>saldoTotal :: Conta -&gt; Float</code> que retorne o saldo total considerando os juros na poupança. Exemplo: <code>saldoTotal (Poupanca 1000 0.05)</code> deve resultar em <code>1050.0</code>.</p>
 </li>
 </ol>
 <hr />
 <h3 id="4-pattern-matching"><strong>4. Pattern Matching</strong><a class="headerlink" href="#4-pattern-matching" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Reescreva a função <code>area</code> do exercício 3.3 (tipo <code>Forma</code>) usando <strong>pattern matching</strong>.</li>
+<li>Reescreva a função <code>area</code> do exercício 3.3 usando uma única equação com <code>case ... of</code>, em vez de uma equação por construtor. Qual das duas formas você acha mais legível?</li>
 <li>Escreva uma função <code>ehFimDeSemana :: DiaSemana -&gt; Bool</code> usando pattern matching.</li>
 <li>Crie uma função <code>descricaoConta :: Conta -&gt; String</code> que descreva a conta (<code>"Conta Corrente: R$..."</code> ou <code>"Conta Poupança: R$... com juros..."</code>).</li>
-<li>Escreva uma função <code>somaPontos :: Ponto -&gt; Ponto -&gt; Ponto</code> usando pattern matching em tuplas.</li>
+<li>Usando o sinônimo <code>Ponto</code> do exercício 1.3, escreva uma função <code>somaPontos :: Ponto -&gt; Ponto -&gt; Ponto</code> usando pattern matching em tuplas. (Se o arquivo também tiver o <code>data Ponto</code> deste capítulo, os nomes vão colidir: use um módulo separado ou renomeie um deles.)</li>
 </ol>
 <hr />
 <h3 id="5-funcoes-que-usam-tipos-algebricos"><strong>5. Funções que usam tipos algebricos</strong><a class="headerlink" href="#5-funcoes-que-usam-tipos-algebricos" title="Permanent link">&para;</a></h3>
@@ -2278,16 +2304,16 @@
 <h3 id="6-exercicios-mistos-avancados"><strong>6. Exercícios mistos avançados</strong><a class="headerlink" href="#6-exercicios-mistos-avancados" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Crie um tipo <code>Pessoa</code> com <code>Nome String</code> e <code>Idade Int</code>.</p>
-<p>Escreva uma função <code>maiorIdade :: Pessoa -&gt; Bool</code> usando pattern matching.</p>
+<p>Crie um tipo produto <code>data Pessoa = Pessoa Nome Idade</code>, usando os sinônimos do exercício 1.1.</p>
+<p>Escreva uma função <code>maiorIdade :: Pessoa -&gt; Bool</code> usando pattern matching (maior de idade: 18 anos ou mais).</p>
 </li>
 <li>
-<p>Crie um tipo <code>Livro</code> com <code>Titulo String | Autor String | Ano Int</code>.</p>
-<p>Escreva uma função <code>descricaoLivro :: Livro -&gt; String</code>.</p>
+<p>Crie um tipo <code>Livro</code> com <strong>sintaxe de registro</strong>, com os campos <code>titulo :: String</code>, <code>autor :: String</code> e <code>ano :: Int</code>. (Repare que um livro tem título <em>e</em> autor <em>e</em> ano: é um tipo produto, não um tipo soma.)</p>
+<p>Escreva uma função <code>descricaoLivro :: Livro -&gt; String</code>, por exemplo <code>"SICP, de Abelson (1985)"</code>.</p>
 </li>
 <li>
 <p>Defina um tipo <code>Arvore a</code> com <code>Folha a | No (Arvore a) (Arvore a)</code>.</p>
-<p>Escreva uma função <code>contaNos :: Arvore a -&gt; Int</code> que conte os nós de uma árvore.</p>
+<p>Escreva uma função <code>contaFolhas :: Arvore a -&gt; Int</code> que conte as folhas e uma função <code>contaNos :: Arvore a -&gt; Int</code> que conte todos os nós (folhas e nós internos). Para <code>No (Folha 1) (No (Folha 2) (Folha 3))</code>, os resultados devem ser <code>3</code> e <code>5</code>.</p>
 </li>
 <li>
 <p>Escreva uma função <code>mapArvore :: (a -&gt; b) -&gt; Arvore a -&gt; Arvore b</code> que aplique uma função a todos os elementos da árvore.</p>

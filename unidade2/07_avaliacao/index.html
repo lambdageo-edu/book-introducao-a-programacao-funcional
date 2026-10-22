@@ -975,6 +975,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#criterios-de-avaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Critérios de Avaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1615,6 +1626,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#criterios-de-avaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Critérios de Avaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1661,7 +1683,7 @@
 <li>Imprimir objetos JSON formatados com indentação e quebra de linhas para fácil legibilidade.</li>
 </ul>
 <h3 id="c-testes-com-quickcheck-testspechs">C. Testes com QuickCheck (<code>test/Spec.hs</code>)<a class="headerlink" href="#c-testes-com-quickcheck-testspechs" title="Permanent link">&para;</a></h3>
-<p>O projeto deve conter uma suíte de testes rodando via <code>cabal test</code> com, no mínimo:</p>
+<p>O arquivo de testes é o indicado em <code>main-is</code>, na seção <code>test-suite</code> do <code>.cabal</code>; o <code>cabal init</code> cria <code>test/Main.hs</code> (como no capítulo de <a href="../../unidade1/02_instalacao/">Instalação</a>) — renomeie para <code>Spec.hs</code> ou mantenha o nome, desde que o <code>.cabal</code> aponte para ele. O projeto deve conter uma suíte de testes rodando via <code>cabal test</code> com, no mínimo:</p>
 <ol>
 <li>Implementação da Typeclass <code>Arbitrary</code> para o tipo <code>JValue</code> de forma a gerar dados aleatórios corretos e não-recursivos infinitos.</li>
 <li>No mínimo <strong>5 propriedades</strong> escritas para testar as invariantes da sua biblioteca (ex: idempotência de renderização, corretude dos escapes de string, corretude de acesso nas funções <code>get</code>).</li>
@@ -1678,6 +1700,8 @@
 <li><strong>Organização do Git</strong>: O histórico de commits no repositório GitHub deve ser incremental e refletir o avanço por etapas do desenvolvimento do projeto (Conventional Commits recomendado).</li>
 <li><strong>Arquivo <code>README.md</code></strong>: Explicando claramente como clonar, compilar, testar e executar a aplicação.</li>
 </ol>
+<h2 id="criterios-de-avaliacao">🎯 Critérios de Avaliação<a class="headerlink" href="#criterios-de-avaliacao" title="Permanent link">&para;</a></h2>
+<p>Conforme o <a href="../00_plano_unidade2/">plano da unidade</a>: corretude e completude da biblioteca, qualidade e cobertura das propriedades testadas, organização do projeto e defesa individual na aula 10.</p>
 
 
 

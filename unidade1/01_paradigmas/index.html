@@ -1853,17 +1853,17 @@
 <h3 id="3-paradigma-declarativo-funcional">3. Paradigma Declarativo / Funcional<a class="headerlink" href="#3-paradigma-declarativo-funcional" title="Permanent link">&para;</a></h3>
 <p>O modelo mental funcional é focado em <strong>o que</strong> deve ser feito, e não em como. Os programas são construídos através da composição de funções matemáticas puras, sem alteração de estado global ou dados mutáveis.</p>
 <ul>
-<li><strong>Características</strong>: Imutabilidade, funções como cidadãs de primeira classe, ausência de efeitos colaterais (<em>side effects</em>) e avaliação preguiçosa (<em>lazy evaluation</em>).</li>
+<li><strong>Características</strong>: Imutabilidade, funções como cidadãs de primeira classe e ausência de efeitos colaterais (<em>side effects</em>). Algumas linguagens funcionais, como Haskell, adotam também a avaliação preguiçosa (<em>lazy evaluation</em>); outras, como Clojure e Elixir (Unidade 3), avaliam de forma estrita.</li>
 <li><strong>Analogia</strong>: Uma linha de montagem matemática. Dados entram por um lado, passam por transformações (funções) e saem como novos dados do outro lado, sem alterar os dados originais.</li>
 </ul>
 <hr />
 <h2 id="historico-do-paradigma-funcional">📌 Histórico do Paradigma Funcional<a class="headerlink" href="#historico-do-paradigma-funcional" title="Permanent link">&para;</a></h2>
 <p>A programação funcional baseia-se no <strong>Cálculo Lambda (λ-cálculo)</strong>, um formalismo matemático criado pelo lógico <strong>Alonzo Church</strong> na década de 1930 para estudar a computabilidade. Curiosamente, o cálculo lambda surgiu na mesma época em que <strong>Alan Turing</strong> criou a Máquina de Turing.</p>
 <ul>
-<li><strong>Máquina de Turing</strong> (Base do Paradigma Imperativo): Baseada em transições de estado físicos e escrita/leitura em fitas magnéticas (memória).</li>
+<li><strong>Máquina de Turing</strong> (Base do Paradigma Imperativo): Baseada em um estado que muda passo a passo e na leitura/escrita de símbolos em uma fita (a memória).</li>
 <li><strong>Cálculo Lambda</strong> (Base do Paradigma Funcional): Baseado em aplicações e definições de funções puras, substituição de variáveis e recursão.</li>
 </ul>
-<p>Embora matematicamente equivalentes (Tese de Church-Turing), as duas abordagens levaram a caminhos diferentes na computação:</p>
+<p>Embora equivalentes em poder computacional — Turing provou, em 1937, que os dois modelos definem exatamente as mesmas funções computáveis, um dos pilares da Tese de Church-Turing —, as duas abordagens levaram a caminhos diferentes na computação:</p>
 <ol>
 <li><strong>Lisp (1958)</strong>: Criada por John McCarthy — a primeira pessoa a perceber a conexão entre a prática de programação e o cálculo lambda —, foi a primeira linguagem a implementar seus conceitos, utilizando S-expressions. Lisp é a ancestral comum do Clojure.</li>
 <li><strong>Fundamentos teóricos (1960s)</strong>: Durante os anos 1960, os cientistas da computação começaram a reconhecer a importância do cálculo lambda. <strong>Peter Landin</strong> e <strong>Christopher Strachey</strong> desenvolveram os fundamentos das linguagens de programação: como entender o que os programas <em>fazem</em> (semântica operacional) e o que eles <em>significam</em> (semântica denotacional).</li>
@@ -1884,7 +1884,7 @@
 <li>Não causa efeitos colaterais visíveis (como modificar uma variável global, escrever em arquivos, alterar parâmetros recebidos ou imprimir texto na tela).</li>
 </ol>
 <h3 id="2-imutabilidade">2. Imutabilidade<a class="headerlink" href="#2-imutabilidade" title="Permanent link">&para;</a></h3>
-<p>Uma vez que um valor é criado, ele nunca muda. Para "alterar" um dado, criamos uma nova versão dele aplicando uma função. Isso elimina completamente problemas de concorrência e condições de corrida (<em>race conditions</em>), pois múltiplos threads podem ler o mesmo dado sem medo de que ele seja modificado no meio do caminho.</p>
+<p>Uma vez que um valor é criado, ele nunca muda. Para "alterar" um dado, criamos uma nova versão dele aplicando uma função. Isso elimina uma classe inteira de problemas de concorrência — as condições de corrida (<em>race conditions</em>) sobre dados compartilhados —, pois múltiplos threads podem ler o mesmo dado sem medo de que ele seja modificado no meio do caminho.</p>
 <h3 id="3-funcoes-como-cidadas-de-primeira-classe">3. Funções como Cidadãs de Primeira Classe<a class="headerlink" href="#3-funcoes-como-cidadas-de-primeira-classe" title="Permanent link">&para;</a></h3>
 <p>Em linguagens funcionais, funções são tratadas como qualquer outro tipo de dado:</p>
 <ul>
@@ -1892,9 +1892,9 @@
 <li>Podem ser retornadas por outras funções.</li>
 <li>Podem ser armazenadas em variáveis ou coleções de dados.</li>
 </ul>
-<p>Funções que recebem ou retornam outras funções são chamadas de <strong>Funções de Alta Ordem</strong> (<em>High-Order Functions</em>).</p>
+<p>Funções que recebem ou retornam outras funções são chamadas de <strong>Funções de Alta Ordem</strong> (<em>Higher-Order Functions</em>).</p>
 <h3 id="4-avaliacao-preguicosa-lazy-evaluation">4. Avaliação Preguiçosa (<em>Lazy Evaluation</em>)<a class="headerlink" href="#4-avaliacao-preguicosa-lazy-evaluation" title="Permanent link">&para;</a></h3>
-<p>Em Haskell, os cálculos são adiados até que seus resultados sejam realmente necessários. Esse recurso não é apenas um modo de postergar a avaliação: ele afeta profundamente a forma como escrevemos programas.</p>
+<p>Este pilar é específico de Haskell (e de outras linguagens preguiçosas), não do paradigma funcional como um todo. Em Haskell, os cálculos são adiados até que seus resultados sejam realmente necessários. Esse recurso não é apenas um modo de postergar a avaliação: ele afeta profundamente a forma como escrevemos programas.</p>
 <p>Um exemplo clássico: suponha que queremos encontrar os <em>k</em> menores elementos de uma lista não ordenada. Em uma linguagem tradicional, a abordagem óbvia — ordenar a lista inteira e pegar os <em>k</em> primeiros — seria cara, e escreveríamos uma função especial que encontra os valores em uma única passagem. Em Haskell, a abordagem "ordene e pegue" funciona bem:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">minima</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">(</span><span class="n">sort</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span>
 </code></pre></div>

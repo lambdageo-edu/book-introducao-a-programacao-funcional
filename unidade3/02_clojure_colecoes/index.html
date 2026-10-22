@@ -1188,10 +1188,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-recaptulando" class="md-nav__link">
+  <a href="#33-recapitulando" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Recaptulando
+        3.3 Recapitulando
       
     </span>
   </a>
@@ -1243,10 +1243,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#50-hora-da-pratica" class="md-nav__link">
+  <a href="#50-quando-o-estado-precisa-mudar-atom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.0 Hora da Prática!
+        5.0 Quando o Estado Precisa Mudar: atom
       
     </span>
   </a>
@@ -1254,10 +1254,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#60-conclusao-seus-novos-superpoderes-em-clojure" class="md-nav__link">
+  <a href="#60-hora-da-pratica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.0 Conclusão: Seus Novos Superpoderes em Clojure
+        6.0 Hora da Prática!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#70-conclusao-seus-novos-superpoderes-em-clojure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.0 Conclusão: Seus Novos Superpoderes em Clojure
       
     </span>
   </a>
@@ -1827,10 +1838,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-recaptulando" class="md-nav__link">
+  <a href="#33-recapitulando" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Recaptulando
+        3.3 Recapitulando
       
     </span>
   </a>
@@ -1882,10 +1893,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#50-hora-da-pratica" class="md-nav__link">
+  <a href="#50-quando-o-estado-precisa-mudar-atom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.0 Hora da Prática!
+        5.0 Quando o Estado Precisa Mudar: atom
       
     </span>
   </a>
@@ -1893,10 +1904,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#60-conclusao-seus-novos-superpoderes-em-clojure" class="md-nav__link">
+  <a href="#60-hora-da-pratica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.0 Conclusão: Seus Novos Superpoderes em Clojure
+        6.0 Hora da Prática!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#70-conclusao-seus-novos-superpoderes-em-clojure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.0 Conclusão: Seus Novos Superpoderes em Clojure
       
     </span>
   </a>
@@ -2028,7 +2050,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Rebinding, não mutação</p>
 <p>Embora pareça que a "variável" <code>estoque</code> tenha mudado de valor, o que realmente aconteceu aqui foi um <strong>rebinding</strong> — ou seja, o símbolo <code>estoque</code> foi <strong>reassociado</strong> a um novo valor.</p>
-<p>Em Clojure, os valores são imutáveis: o vetor original (<code>["Mochila"]</code>) continua existindo, intacto. O que mudou foi apenas a <strong>referência</strong>: agora o nome <code>estoque</code> aponta para um novo vetor (<code>["Mochila" "Tênis"]</code>).</p>
+<p>Em Clojure, os valores são imutáveis: o vetor original (<code>["Mochila" "Camiseta"]</code>) continua existindo, intacto. O que mudou foi apenas a <strong>referência</strong>: agora o nome <code>estoque</code> aponta para um novo vetor (<code>["Mochila" "Camiseta" "Tênis"]</code>).</p>
 <p>Isso é diferente de linguagens imperativas onde variáveis são caixas mutáveis. Em Clojure, estamos apenas <strong>atualizando o mapeamento entre um nome e um valor</strong>, sem modificar os dados em si.</p>
 </div>
 <hr />
@@ -2133,7 +2155,7 @@
 <a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1">;; 3. Quais são os valores?</span>
 <a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1">;; 4. Imprima cada chave com seu valor correspondente.</span>
 </code></pre></div>
-<h3 id="33-recaptulando">3.3 Recaptulando<a class="headerlink" href="#33-recaptulando" title="Permanent link">&para;</a></h3>
+<h3 id="33-recapitulando">3.3 Recapitulando<a class="headerlink" href="#33-recapitulando" title="Permanent link">&para;</a></h3>
 <p>Assim como em vetores, há várias formas de acessar valores em um mapa em Clojure. Cada abordagem tem seu uso ideal. A seguir, exploramos as três formas principais.</p>
 <hr />
 <p><strong>1. Usando Keywords como Funções (Forma Idiomática)</strong></p>
@@ -2209,8 +2231,8 @@
 <ul>
 <li>Essas funções são fundamentais para <strong>trabalhar com dados imutáveis</strong>, que é a base da programação funcional.</li>
 <li>Você pode usar <code>assoc</code> e <code>dissoc</code> em sequência para construir lógicas de atualização mais complexas.</li>
-<li>
-<p>Ambas funcionam com mapas simples ou aninhados (em combinação com <code>assoc-in</code>, <code>update-in</code>, etc.).</p>
+<li>Ambas funcionam com mapas simples ou aninhados (em combinação com <code>assoc-in</code>, <code>update-in</code>, etc.).</li>
+</ul>
 <h3 id="42-a-funcao-universal-atualizando-valores-com-update">4.2 A Função Universal: Atualizando Valores com <code>update</code><a class="headerlink" href="#42-a-funcao-universal-atualizando-valores-com-update" title="Permanent link">&para;</a></h3>
 <p>A função <code>update</code> permite modificar um valor <strong>existente</strong> aplicando-lhe uma função, seja num <strong>vetor</strong> (por índice) ou num <strong>mapa</strong> (por chave).</p>
 <p>Essa abordagem evita código imperativo como:</p>
@@ -2238,6 +2260,10 @@
 <a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="p">(</span><span class="nf">update</span><span class="w"> </span><span class="nv">estoque</span><span class="w"> </span><span class="ss">:camiseta</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">* </span><span class="mi">2</span><span class="w"> </span><span class="nv">%</span><span class="p">))</span>
 <a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="c1">;; =&gt; {:mochila 10, :camiseta 10}</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">O que é <code>#(* 2 %)</code>?</p>
+<p>É uma <strong>função anônima</strong> escrita de forma abreviada: <code>#(* 2 %)</code> equivale a <code>(fn [x] (* 2 x))</code>, e o <code>%</code> representa o argumento recebido. Veremos funções anônimas em detalhe no próximo capítulo, sobre funções de alta ordem.</p>
+</div>
 <blockquote>
 <p>Dica: O % representa o valor atual da chave. É como dizer: "pegue esse valor, faça isso com ele e retorne".
 </p>
@@ -2275,20 +2301,36 @@
 <li>Funciona tanto com <strong>mapas</strong> (por chave) quanto com <strong>vetores</strong> (por índice).</li>
 <li>É <strong>imutável</strong>: o valor original não é modificado.</li>
 </ul>
-</li>
-</ul>
-<h2 id="50-hora-da-pratica">5.0 Hora da Prática!<a class="headerlink" href="#50-hora-da-pratica" title="Permanent link">&para;</a></h2>
+<h2 id="50-quando-o-estado-precisa-mudar-atom">5.0 Quando o Estado Precisa Mudar: <code>atom</code><a class="headerlink" href="#50-quando-o-estado-precisa-mudar-atom" title="Permanent link">&para;</a></h2>
+<p>Tudo o que vimos até aqui é imutável — e é assim que a maior parte de um programa Clojure deve ser. Mas um programa real às vezes precisa de <strong>uma</strong> coisa que muda ao longo do tempo: o estoque atual de uma loja, a lista de tarefas de um aplicativo. Para isso, Clojure oferece <strong>referências</strong>, e a mais simples delas é o <code>atom</code>: uma caixa que guarda um valor imutável e pode ter seu conteúdo <strong>trocado</strong> de forma segura, mesmo com várias threads.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="p">(</span><span class="k">def </span><span class="nv">contador</span><span class="w"> </span><span class="p">(</span><span class="nf">atom</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w">       </span><span class="c1">; cria a caixa com o valor inicial 0</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="o">@</span><span class="nv">contador</span><span class="w">                     </span><span class="c1">; lê o valor atual (o mesmo que (deref contador))</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="c1">;=&gt; 0</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="p">(</span><span class="nf">swap!</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="nv">inc</span><span class="p">)</span><span class="w">          </span><span class="c1">; troca o valor aplicando uma função: (inc 0)</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="c1">;=&gt; 1</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="p">(</span><span class="nf">swap!</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="nb">+ </span><span class="mi">10</span><span class="p">)</span><span class="w">         </span><span class="c1">; argumentos extras, como no update: (+ 1 10)</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="c1">;=&gt; 11</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="p">(</span><span class="nf">reset!</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">           </span><span class="c1">; troca por um valor fixo</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="c1">;=&gt; 0</span>
+</code></pre></div>
+<p>Repare que nada aqui é mutação de dados: o número <code>0</code> não "virou" <code>1</code>. O que muda é <strong>qual valor imutável</strong> está dentro da caixa. <code>swap!</code> recebe uma função pura (<code>inc</code>, <code>+</code>) e garante que a troca acontece de forma atômica — se duas threads chamarem <code>swap!</code> ao mesmo tempo, nenhuma atualização se perde. O ponto de exclamação no nome é a convenção de Clojure para "esta função tem efeito colateral".</p>
+<p>Clojure também tem referências coordenadas (<code>ref</code>, alteradas dentro de transações com <code>dosync</code> — a STM, <em>Software Transactional Memory</em>), usadas quando várias referências precisam mudar juntas. Neste curso, o <code>atom</code> basta: é ele que guarda as tarefas em memória no <a href="../10_clojure_tutorial_todo/">trabalho de Clojure</a>.</p>
+<h2 id="60-hora-da-pratica">6.0 Hora da Prática!<a class="headerlink" href="#60-hora-da-pratica" title="Permanent link">&para;</a></h2>
 <p>Siga os passos abaixo em seu ambiente Clojure para aplicar o que aprendeu.</p>
 <ol>
-<li><strong>Crie um Vetor:</strong> Crie um vetor chamado <code>carrinho-de-compras</code> que represente itens em um carrinho, usando keywords.</li>
+<li><strong>Crie um Vetor:</strong> Crie um vetor chamado <code>carrinho-de-compras</code> com os itens <code>:camiseta</code> e <code>:caneca</code>, representados por keywords.</li>
 <li><strong>Consulte o Vetor:</strong> Verifique quantos itens há no carrinho.</li>
 <li><strong>Adicione ao Vetor:</strong> Use <code>conj</code> para adicionar o item <code>:mochila</code> ao carrinho e armazene o resultado em um novo símbolo <code>carrinho-atualizado</code>. Lembre-se que o vetor original não será alterado!</li>
-<li><strong>Crie um Mapa:</strong> Crie um mapa chamado <code>precos-produtos</code> que associe cada um dos três itens a um preço.</li>
+<li><strong>Crie um Mapa:</strong> Crie um mapa chamado <code>precos-produtos</code> que associe cada um dos três itens (<code>:camiseta</code>, <code>:caneca</code> e <code>:mochila</code>) a um preço.</li>
 <li><strong>Adicione/Atualize o Mapa:</strong> Use <code>assoc</code> para adicionar um novo item, <code>:chaveiro</code>, com o preço <code>10</code>.</li>
 <li><strong>Transforme um Valor:</strong> Use <code>update</code> para aplicar um aumento de 10% no preço da <code>:camiseta</code>. A expressão <code>#(* % 1.1)</code> é uma função anônima que multiplica seu argumento (<code>%</code>) por 1.1.</li>
-<li><strong>Desafio:</strong> Crie um novo mapa <code>carrinho-final</code> a partir de <code>precos-produtos</code> que contenha <em>apenas</em> os itens do seu <code>carrinho-atualizado</code> (do passo 3). Pesquise a função <code>select-keys</code> para uma solução elegante.</li>
+<li><strong>Desafio:</strong> Crie um novo mapa <code>carrinho-final</code> a partir de <code>precos-produtos</code> que contenha <em>apenas</em> os itens do seu <code>carrinho-atualizado</code> (do passo 3). Pesquise a função <code>select-keys</code> para uma solução elegante. O resultado deve ter <code>:camiseta</code>, <code>:caneca</code> e <code>:mochila</code>, mas não o <code>:chaveiro</code>.</li>
 </ol>
-<h2 id="60-conclusao-seus-novos-superpoderes-em-clojure">6.0 Conclusão: Seus Novos Superpoderes em Clojure<a class="headerlink" href="#60-conclusao-seus-novos-superpoderes-em-clojure" title="Permanent link">&para;</a></h2>
+<h2 id="70-conclusao-seus-novos-superpoderes-em-clojure">7.0 Conclusão: Seus Novos Superpoderes em Clojure<a class="headerlink" href="#70-conclusao-seus-novos-superpoderes-em-clojure" title="Permanent link">&para;</a></h2>
 <p>Parabéns! Você acaba de dominar as estruturas de dados mais importantes de Clojure. Ao final deste guia, você solidificou três conceitos essenciais:</p>
 <ol>
 <li>A diferença fundamental entre <strong>vetores</strong> (listas ordenadas por índice) e <strong>mapas</strong> (associações de chave-valor).</li>

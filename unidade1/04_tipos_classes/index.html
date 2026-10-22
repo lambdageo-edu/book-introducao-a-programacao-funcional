@@ -1839,7 +1839,7 @@
 <p>Na ciência da computação e na matemática, os sistemas de tipos servem para impor consistência e garantir a correção dos programas. De acordo com grandes teóricos da área:</p>
 <blockquote>
 <p>"Sistemas de tipos são geralmente formulados como coleções de regras para verificar a 'consistência' dos programas." (Benjamin Pierce, 2004)</p>
-<p>"O propósito fundamental de um sistema de tipos é prevenir a ocorrência de erros de execução durante a execução de um programa." (<a href="https://www.classes.cs.uchicago.edu/archive/2012/spring/22300-1/papers/Cardelli-Wegner.pdf">Luca Cardelli, 2004</a>)</p>
+<p>"O propósito fundamental de um sistema de tipos é prevenir a ocorrência de erros de execução durante a execução de um programa." (Luca Cardelli, <em>Type Systems</em>, 2004)</p>
 </blockquote>
 <p>No nível mais baixo da computação, a memória do computador lida apenas com bytes brutos, sem qualquer estrutura inerente. O sistema de tipos fornece a <strong>abstração</strong> necessária para atribuirmos significado a esses bytes. Ele nos permite dizer que <em>"estes bytes representam texto"</em>, <em>"aqueles bytes representam um número decimal"</em>, e assim por diante. Ao introduzir essa abstração, o sistema de tipos impede misturas acidentais que causariam comportamentos indefinidos no software.</p>
 <hr />
@@ -1859,7 +1859,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">ghci</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="kt">False</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">-- ERRO! O operador (+) exige que ambos os operandos sejam numéricos.</span>
 </code></pre></div>
-<p>Diferentemente de linguagens como C ou JavaScript, o Haskell não realiza coerção automática de tipos (conversões implícitas). O compilador do C converteria silenciosamente um número inteiro (<code>int</code>) em ponto flutuante (<code>float</code>) se uma função exigisse um ponto flutuante, enquanto o Haskell forçará você a chamar funções de conversão explícitas, um processo seguro conhecido como <em>casting</em>.</p>
+<p>Diferentemente de linguagens como C ou JavaScript, o Haskell não realiza coerção automática de tipos (conversões implícitas). O compilador do C converteria silenciosamente um número inteiro (<code>int</code>) em ponto flutuante (<code>float</code>) se uma função exigisse um ponto flutuante, enquanto o Haskell exige que você chame explicitamente uma função de conversão (como <code>fromIntegral</code>, que converte um inteiro para qualquer tipo numérico).</p>
 <h3 id="2-tipagem-estatica">2. Tipagem Estática<a class="headerlink" href="#2-tipagem-estatica" title="Permanent link">&para;</a></h3>
 <p>Ter um sistema de tipos <strong>estático</strong> significa que o compilador sabe o tipo de cada valor e expressão em tempo de compilação, ou seja, <strong>antes</strong> de qualquer linha de código ser executada. Se houver um erro de tipo, o compilador recusará gerar o programa executável, eliminando toda uma classe de falhas que, em outras linguagens, só seriam descobertas durante a execução do programa em produção.</p>
 <h3 id="3-inferencia-de-tipos">3. Inferência de Tipos<a class="headerlink" href="#3-inferencia-de-tipos" title="Permanent link">&para;</a></h3>

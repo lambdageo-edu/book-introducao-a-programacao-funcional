@@ -2008,17 +2008,20 @@
 <h3 id="3-condicionais-e-guards">3. Condicionais e guards<a class="headerlink" href="#3-condicionais-e-guards" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Defina a função <code>sinal</code> usando <code>if-then-else</code> que devolva:<ul>
-<li><code>1</code> se o número for negativo</li>
+<li><code>-1</code> se o número for negativo</li>
 <li><code>0</code> se for zero</li>
 <li><code>1</code> se for positivo</li>
 </ul>
 </li>
 <li>Reescreva a função <code>sinal</code> usando <strong>guards</strong>.</li>
-<li>Implemente a função <code>classificaNota</code> que recebe um número (0–10) e retorna:<ul>
+<li>
+<p>Implemente a função <code>classificaNota</code> que recebe um número (0–10) e retorna:</p>
+<ul>
 <li><code>"Reprovado"</code> se menor que 5</li>
-<li><code>"Recuperação"</code> se entre 5 e 6.9</li>
+<li><code>"Recuperação"</code> se maior ou igual a 5 e menor que 7</li>
 <li><code>"Aprovado"</code> se maior ou igual a 7.</li>
 </ul>
+<p>Use o tipo <code>classificaNota :: Double -&gt; String</code>.</p>
 </li>
 </ol>
 <hr />
@@ -2034,7 +2037,7 @@
 <hr />
 <h3 id="5-recursao">5. Recursão<a class="headerlink" href="#5-recursao" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Implemente a função <code>potencia b e</code> que calcula beb^ebe usando recursão (sem usar <code>(^)</code>).</li>
+<li>Implemente a função <code>potencia b e</code> que calcula <span class="arithmatex">\(b^e\)</span> usando recursão (sem usar <code>(^)</code>).</li>
 <li>Escreva uma função <code>mdc a b</code> que calcule o máximo divisor comum (algoritmo de Euclides).</li>
 <li>Defina a sequência de Fibonacci de forma recursiva simples.</li>
 <li>Refaça a função de Fibonacci usando a técnica de <strong>recursão em cauda</strong>.</li>
@@ -2094,10 +2097,12 @@
 <hr />
 <h3 id="6-compreensao-de-listas">6. Compreensão de Listas<a class="headerlink" href="#6-compreensao-de-listas" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Gere, usando compreensão de listas:</li>
+<li>Gere, usando compreensão de listas:<ul>
 <li>uma lista com os quadrados dos números de 1 a 10.</li>
 <li>uma lista com apenas os números pares de 1 a 20.</li>
-<li>o produto cartesiano entre <code>[1,2,3]</code> e <code>[‘a’,’b’]</code>.</li>
+<li>o produto cartesiano entre <code>[1,2,3]</code> e <code>['a','b']</code>.</li>
+</ul>
+</li>
 <li>Defina a função <code>divisores :: Int -&gt; [Int]</code> que retorna a lista de todos os divisores de um número.</li>
 <li>Defina a função <code>ehPrimo :: Int -&gt; Bool</code> que verifica se um número é primo usando <code>divisores</code>.</li>
 <li>Usando compreensão de listas, gere todos os pares <code>(x,y)</code> com <code>1 &lt;= x &lt; y &lt;= 10</code> tais que <code>x + y</code> seja par.</li>
@@ -2111,13 +2116,13 @@
 <li><code>duasVezes reverse [1,2,3]</code></li>
 </ul>
 </li>
-<li>Usando <strong>aplicação parcial</strong>, defina:<ul>
-<li><code>triplica = (*3)</code></li>
 <li>
-<p><code>mais10 = (+10)</code></p>
-<p>Teste essas funções em valores diferentes.</p>
-</li>
+<p>Usando <strong>aplicação parcial</strong>, defina:</p>
+<ul>
+<li><code>triplica = (*3)</code></li>
+<li><code>mais10 = (+10)</code></li>
 </ul>
+<p>Teste essas funções em valores diferentes.</p>
 </li>
 </ol>
 <hr />
@@ -2169,23 +2174,24 @@
 <h3 id="parte-6-composicao">Parte 6 – Composição<a class="headerlink" href="#parte-6-composicao" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Defina <code>dobroMaisUm = (+1) . (*2)</code> e teste em <code>[1..5]</code> com <code>map</code>.</li>
-<li>Escreva uma função <code>processaLista :: [Int] -&gt; [Int]</code> que:</li>
+<li>
+<p>Escreva uma função <code>processaLista :: [Int] -&gt; [Int]</code> que:</p>
+<ul>
 <li>multiplique todos os números por 2,</li>
 <li>some 1,</li>
-<li>
-<p>filtre apenas os números maiores que 10.</p>
+<li>filtre apenas os números maiores que 10.</li>
+</ul>
 <p>Use <strong>composição</strong> para encadear os passos.</p>
 </li>
 <li>
 <p>(Desafio) Defina <code>compose :: [a -&gt; a] -&gt; (a -&gt; a)</code> que recebe uma lista de funções e retorna a composição delas.</p>
 <p>Teste com:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">compose</span><span class="w"> </span><span class="p">[(</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="mi">2</span><span class="p">)]</span><span class="w"> </span><span class="mi">3</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">-- deve aplicar (^2), depois (*2), depois (+1): resultado 19</span>
+</code></pre></div>
+<p><strong>Dica:</strong> qual é o elemento neutro da composição? (Experimente <code>id</code> no GHCi.)</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">compose</span><span class="w"> </span><span class="p">[(</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="mi">2</span><span class="p">)]</span><span class="w"> </span><span class="mi">3</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">-- deve aplicar (^2), depois (*2), depois (+1)</span>
-</code></pre></div>
-<hr />
-<hr />
 
 
 

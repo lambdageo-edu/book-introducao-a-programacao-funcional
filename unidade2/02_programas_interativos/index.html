@@ -891,6 +891,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#8-repetindo-acoes-e-convertendo-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Repetindo Ações e Convertendo Texto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lista-5-entradasaida-io-e-programacao-interativa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1798,6 +1809,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#8-repetindo-acoes-e-convertendo-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Repetindo Ações e Convertendo Texto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lista-5-entradasaida-io-e-programacao-interativa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2017,6 +2039,27 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>cabal<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cabal<span class="w"> </span>run<span class="w"> </span>meu-programa<span class="w"> </span>--<span class="w"> </span>entrada.txt<span class="w"> </span>saida.txt
 </code></pre></div>
 <p>O ponto pedagógico é o <strong>design</strong>, não a sintaxe nova: <code>interactWith</code> é o "framework" fixo (I/O), e <code>minhaFuncao :: String -&gt; String</code> é a única peça que muda de programa para programa — e é <strong>pura</strong>, portanto testável no GHCi sem tocar em disco algum. Esse é o mesmo padrão do capítulo de <a href="../../unidade1/07_alta_ordem/">funções de alta ordem</a>: isolar a lógica de negócio da mecânica de E/S.</p>
+<hr />
+<h2 id="8-repetindo-acoes-e-convertendo-texto">8. Repetindo Ações e Convertendo Texto<a class="headerlink" href="#8-repetindo-acoes-e-convertendo-texto" title="Permanent link">&para;</a></h2>
+<p>Dois recursos que os exercícios abaixo vão pedir.</p>
+<p><strong>Laços em <code>IO</code> são recursão.</strong> Assim como nas funções puras, não há <code>while</code>: uma ação que precisa se repetir chama a si mesma no fim do bloco <code>do</code>, e para quando não faz a chamada.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">eco</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">IO</span><span class="w"> </span><span class="nb">()</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">eco</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="n">linha</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">getLine</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="n">linha</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"fim"</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="kr">then</span><span class="w"> </span><span class="n">putStrLn</span><span class="w"> </span><span class="s">"Até logo!"</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kr">else</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="n">putStrLn</span><span class="w"> </span><span class="p">(</span><span class="n">reverse</span><span class="w"> </span><span class="n">linha</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">      </span><span class="n">eco</span><span class="w">                      </span><span class="c1">-- repete</span>
+</code></pre></div>
+<p><strong>Convertendo texto em número.</strong> <code>getLine</code> sempre devolve uma <code>String</code>. Para obter um número, use <code>read</code> (com o tipo indicado) ou <code>readLn</code>, que já lê e converte:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">lerIdade</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">IO</span><span class="w"> </span><span class="kt">Int</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">lerIdade</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="n">putStrLn</span><span class="w"> </span><span class="s">"Qual a sua idade?"</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="n">linha</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">getLine</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="n">return</span><span class="w"> </span><span class="p">(</span><span class="n">read</span><span class="w"> </span><span class="n">linha</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w">   </span><span class="c1">-- ou simplesmente: readLn</span>
+</code></pre></div>
+<p><code>read</code> é uma função parcial: se o usuário digitar algo que não é número, o programa termina com <code>Prelude.read: no parse</code>. Para os exercícios, isso basta; em programas reais, usa-se <code>readMaybe</code> (do módulo <code>Text.Read</code>), que devolve um <code>Maybe</code>.</p>
 <p>No próximo capítulo, começamos a construir uma biblioteca completa de manipulação de JSON, aplicando os tipos algébricos e a IO deste capítulo a um projeto real.</p>
 <hr />
 <h2 id="lista-5-entradasaida-io-e-programacao-interativa">📓 Lista 5: Entrada/Saída (IO) e Programação Interativa<a class="headerlink" href="#lista-5-entradasaida-io-e-programacao-interativa" title="Permanent link">&para;</a></h2>
@@ -2025,17 +2068,21 @@
 <ol>
 <li>
 <p>Escreva um programa que leia um caractere do teclado e o imprima duas vezes na tela.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">-- exemplo de execução</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">aa</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>-- exemplo de execução
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>&gt; a
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>aa
 </code></pre></div>
 </li>
 <li>
 <p>Crie um programa que leia dois caracteres e os imprima separados por um espaço.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nf">a</span><span class="w"> </span><span class="n">b</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&gt; a
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>&gt; b
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>a b
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado com o Enter</p>
+<p>No terminal, o caractere só chega ao programa depois que você tecla Enter, e o próprio Enter também é um caractere (<code>'\n'</code>). Assim, o segundo <code>getChar</code> lê o <code>'\n'</code>, e não o <code>b</code>. Duas saídas: descartar o <code>'\n'</code> com um <code>getChar</code> extra entre as leituras, ou desligar o <em>buffer</em> de linha com <code>hSetBuffering stdin NoBuffering</code> (importando <code>System.IO</code>) no início do <code>main</code>.</p>
+</div>
 </li>
 <li>
 <p>Escreva uma versão simplificada do <code>putStrLn</code>, chamada <code>putStrSimples</code>, que recebe uma string e a imprime caractere por caractere, finalizando com <code>\n</code>.</p>
@@ -2046,9 +2093,9 @@
 <ol>
 <li>
 <p>Implemente uma função que peça o nome do usuário e o cumprimente.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="kt">Qual</span><span class="w"> </span><span class="n">eh</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">seu</span><span class="w"> </span><span class="n">nome</span><span class="o">?</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kt">Sergio</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kt">Bem</span><span class="w"> </span><span class="n">vindo</span><span class="w"> </span><span class="kt">Sergio</span><span class="o">!</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&gt; Qual eh o seu nome?
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Sergio
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Bem vindo Sergio!
 </code></pre></div>
 </li>
 <li>
@@ -2060,13 +2107,13 @@
 <ol>
 <li>
 <p>Reescreva o seguinte programa sem usar <code>do</code> (usando <code>&gt;&gt;=</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">main</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kr">do</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="n">nome</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">getLine</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="n">putStrLn</span><span class="w"> </span><span class="p">(</span><span class="s">"Oi, "</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="n">nome</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">main</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="n">nome</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">getLine</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="n">putStrLn</span><span class="w"> </span><span class="p">(</span><span class="s">"Oi, "</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="n">nome</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
-<p>Escreva um programa que peça a idade do usuário e diga se ele é maior de idade ou não.</p>
+<p>Escreva um programa que peça a idade do usuário e diga se ele é maior de idade ou não. (Para converter a <code>String</code> lida em número, use <code>read</code> ou <code>readLn</code>, vistos na seção 8.)</p>
 </li>
 </ol>
 <hr />
@@ -2082,12 +2129,12 @@
 <li>Implemente um programa que conte quantas linhas existem em um arquivo de texto.</li>
 <li>Escreva uma função <code>main</code> que:<ul>
 <li>pergunte ao usuário um número <code>n</code>,</li>
-<li>leia uma lista de números de um arquivo,</li>
+<li>leia uma lista de números de um arquivo (um número por linha),</li>
 <li>some apenas os <code>n</code> primeiros números,</li>
 <li>grave o resultado em outro arquivo.</li>
 </ul>
 </li>
-<li>Escreva um mini "chat": o programa deve ler uma linha do usuário e imprimir de volta a mesma linha em maiúsculas até que ele digite <code>"sair"</code>.</li>
+<li>Escreva um mini "chat": o programa deve ler uma linha do usuário e imprimir de volta a mesma linha em maiúsculas até que ele digite <code>"sair"</code>. (Dica: comece pelo programa <code>eco</code> da seção 8 e use <code>toUpper</code>, de <code>Data.Char</code>.)</li>
 </ol>
 <hr />
 <blockquote>

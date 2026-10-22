@@ -882,10 +882,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-casamento-eficiente-derivadas-de-brzozowski" class="md-nav__link">
+  <a href="#12-casamento-eficiente-marcando-posicoes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Casamento eficiente: derivadas de Brzozowski
+        1.2 Casamento eficiente: marcando posições
       
     </span>
   </a>
@@ -1617,10 +1617,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-casamento-eficiente-derivadas-de-brzozowski" class="md-nav__link">
+  <a href="#12-casamento-eficiente-marcando-posicoes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Casamento eficiente: derivadas de Brzozowski
+        1.2 Casamento eficiente: marcando posições
       
     </span>
   </a>
@@ -1714,7 +1714,7 @@
 <p>Os capítulos anteriores desta unidade tratam de Haskell como linguagem para <em>aplicações</em> — bibliotecas, testes, programas interativos. Mas o paradigma funcional também é, historicamente, a ferramenta de escolha para construir <strong>linguagens</strong>: parsers, interpretadores e compiladores. Álgebra de tipos, recursão estrutural e funções de alta ordem — os mesmos ingredientes dos capítulos anteriores — são exatamente o que se precisa para representar e processar programas como dados.</p>
 <p>Este capítulo ilustra essa aplicação avançada com dois projetos pequenos e completos:</p>
 <ol>
-<li><strong><a href="https://github.com/LambdaGeo/playreg">PlayReg</a></strong> — um motor de casamento de expressões regulares construído sobre <strong>derivadas de Brzozowski</strong>, generalizado para casamento <em>ponderado</em> via semirings.</li>
+<li><strong><a href="https://github.com/LambdaGeo/playreg">PlayReg</a></strong> — um motor de casamento de expressões regulares baseado na técnica de <strong>marcação de posições</strong> do artigo <em>A Play on Regular Expressions</em> (parente das derivadas de Brzozowski), generalizado para casamento <em>ponderado</em> via semirings.</li>
 <li><strong><a href="https://github.com/LambdaGeo/scheme-hs">scheme-hs</a></strong> — um interpretador de <strong>Scheme</strong> (um dialeto de Lisp), com parser combinators, variáveis mutáveis, <em>closures</em> e um REPL.</li>
 </ol>
 <hr />
@@ -1736,10 +1736,11 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">accept</span><span class="w"> </span><span class="p">(</span><span class="kt">Seq</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="n">accept</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">u1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">accept</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="n">u2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">)</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">split'</span><span class="w"> </span><span class="n">u</span><span class="p">]</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nf">accept</span><span class="w"> </span><span class="p">(</span><span class="kt">Rep</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="w">   </span><span class="ow">=</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="n">and</span><span class="w"> </span><span class="p">[</span><span class="n">accept</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">ui</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ui</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">ps</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ps</span><span class="w"> </span><span class="ow">&lt;-</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="n">u</span><span class="p">]</span>
 </code></pre></div>
+<p>(<code>split'</code> e <code>parts</code> são funções auxiliares do projeto: <code>split' u</code> devolve todas as formas de dividir <code>u</code> em duas partes, e <code>parts u</code>, todas as formas de particioná-la em pedaços.)</p>
 <p>Essa implementação é didaticamente transparente, mas <strong>exponencial</strong>: para casar <code>Seq</code>, ela testa todas as formas de dividir a string em duas partes; para <code>Rep</code>, todas as formas de particioná-la. Funciona para exemplos pequenos, mas não escala.</p>
-<h3 id="12-casamento-eficiente-derivadas-de-brzozowski">1.2 Casamento eficiente: derivadas de Brzozowski<a class="headerlink" href="#12-casamento-eficiente-derivadas-de-brzozowski" title="Permanent link">&para;</a></h3>
-<p>A alternativa eficiente vem de uma ideia de 1964 (Janusz Brzozowski): a <strong>derivada</strong> de uma expressão regular <code>r</code> em relação a um caractere <code>c</code>, escrita <code>∂c(r)</code>, é uma nova expressão regular que casa exatamente as strings que <code>r</code> casaria <em>depois</em> de consumir o caractere <code>c</code>. Aplicando a derivada caractere a caractere ao longo da entrada, o casamento vira uma dobra (<code>fold</code>) — linear no tamanho da entrada, sem backtracking.</p>
-<p>O PlayReg implementa isso com um tipo <code>REG</code> que carrega, em cada símbolo, um <code>Bool</code> indicando se aquele símbolo é a marca de "aceito" (<code>final</code>):</p>
+<h3 id="12-casamento-eficiente-marcando-posicoes">1.2 Casamento eficiente: marcando posições<a class="headerlink" href="#12-casamento-eficiente-marcando-posicoes" title="Permanent link">&para;</a></h3>
+<p>A alternativa eficiente parte de uma ideia de 1964 (Janusz Brzozowski): a <strong>derivada</strong> de uma expressão regular <code>r</code> em relação a um caractere <code>c</code>, escrita <code>∂c(r)</code>, é uma nova expressão regular que casa exatamente as strings que <code>r</code> casaria <em>depois</em> de consumir o caractere <code>c</code>. Aplicando a derivada caractere a caractere ao longo da entrada, o casamento vira uma dobra (<code>fold</code>) — linear no tamanho da entrada, sem backtracking.</p>
+<p>O artigo que o PlayReg segue usa uma variante dessa ideia que não constrói uma expressão nova a cada passo: em vez disso, <strong>marca</strong>, na própria árvore da expressão, quais símbolos acabaram de casar um caractere — o que corresponde ao autômato de posições (de Glushkov). O tipo <code>REG</code> carrega, em cada símbolo, um <code>Bool</code> com essa marca:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">REG</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="ow">=</span><span class="w"> </span><span class="kt">EPS</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="kt">SYM</span><span class="w"> </span><span class="kt">Bool</span><span class="w"> </span><span class="kt">Char</span>
@@ -1760,7 +1761,7 @@
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nf">match</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="kt">[]</span><span class="w">       </span><span class="ow">=</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">r</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nf">match</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="kt">:</span><span class="w"> </span><span class="n">cs</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">(</span><span class="n">foldl</span><span class="w"> </span><span class="p">(</span><span class="n">shift</span><span class="w"> </span><span class="kt">False</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">shift</span><span class="w"> </span><span class="kt">True</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="n">cs</span><span class="p">)</span>
 </code></pre></div>
-<p><code>empty r</code> diz se <code>r</code> casa a string vazia; <code>final r</code> diz se, no estado atual (depois de já ter "andado" por alguns caracteres), a expressão está numa posição de aceitação. <code>shift</code> avança um caractere, atualizando essas marcas — é a derivada, espalhada pela estrutura da árvore.</p>
+<p><code>empty r</code> diz se <code>r</code> casa a string vazia; <code>final r</code> diz se, no estado atual (depois de já ter "andado" por alguns caracteres), a expressão está numa posição de aceitação. <code>shift</code> avança um caractere, atualizando essas marcas — o mesmo papel da derivada, só que espalhado pela estrutura da árvore em vez de reconstruí-la.</p>
 <h3 id="13-generalizando-com-semirings-contar-e-nao-so-aceitarrejeitar">1.3 Generalizando com semirings: contar, e não só aceitar/rejeitar<a class="headerlink" href="#13-generalizando-com-semirings-contar-e-nao-so-aceitarrejeitar" title="Permanent link">&para;</a></h3>
 <p>A parte mais interessante do projeto é notar que <code>Bool</code> (aceita/rejeita) é só <strong>um</strong> dos possíveis resultados de um casamento. Se em vez de <code>Bool</code> usarmos outro tipo com as mesmas duas operações que <code>Bool</code> tem sob "ou" (<code>||</code>) e "e" (<code>&amp;&amp;</code>) — um <strong>semiring</strong> —, a mesma lógica de derivadas serve para calcular outras coisas:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">class</span><span class="w"> </span><span class="kt">Semiring</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="kr">where</span>
@@ -1776,8 +1777,9 @@
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="p">(</span><span class="o">&lt;+&gt;</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">);</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;.&gt;</span><span class="p">)</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
 </code></pre></div>
 <p>Com <code>Semiring Int</code>, a mesma função de casamento (generalizada para <code>REGw c s</code>, parametrizada pelo semiring <code>s</code>) não diz só "casa ou não casa" — ela <strong>conta quantas derivações diferentes</strong> levam ao casamento. E com dois semirings customizados do projeto, <code>Leftmost</code> e <code>LeftLong</code>, a mesma lógica encontra a <strong>posição</strong> do casamento mais à esquerda (ou mais à esquerda <em>e</em> mais longo) dentro de uma string maior — a base de como um <code>grep</code> de verdade funciona por baixo dos panos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">submatchw</span><span class="w"> </span><span class="n">ab</span><span class="w"> </span><span class="s">"xxabaxx"</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">LeftLong</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">-- LeftLong (Range 2 4)   -- achou "aba" nas posições 2 a 4</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- ab representa a expressão (a|b)*</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">submatchw</span><span class="w"> </span><span class="n">ab</span><span class="w"> </span><span class="s">"xxabaxx"</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">LeftLong</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">-- LeftLong (Range 2 4)   -- achou "aba" nas posições 2 a 4</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Onde ler mais</p>
@@ -1812,6 +1814,10 @@
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="n">x</span>
 </code></pre></div>
 <p>Repare que o parser inteiro é construído combinando pedaços pequenos (<code>parseAtom</code>, <code>parseString</code>, <code>parseList</code>...) — o mesmo princípio de composição que já apareceu nas funções de alta ordem da Unidade 1. Todos os valores que o parser produz têm o mesmo tipo, <code>LispVal</code>: um ADT que representa qualquer expressão Scheme válida.</p>
+<div class="admonition note">
+<p class="admonition-title">Functor, Applicative e Monad em uma frase</p>
+<p>O <code>do</code> que aparece em <code>parseAtom</code> é o mesmo do capítulo de <a href="../02_programas_interativos/">Programas Interativos</a>: assim como <code>IO</code>, <code>Parser</code> é uma <strong>monad</strong> — um tipo que sabe encadear passos, passando o resultado de um para o próximo (<code>&gt;&gt;=</code>). Monads são um caso particular de duas classes mais gerais: <strong>Functor</strong> (tipos sobre os quais se pode aplicar uma função ao valor "de dentro", com <code>fmap</code>) e <strong>Applicative</strong> (que também combina vários desses valores, como em <code>(,) &lt;$&gt; p1 &lt;*&gt; p2</code>). Este livro não aprofunda essas classes; para o capítulo seguinte, basta a ideia de que um parser é uma função que <em>produz</em> um valor a partir de um contexto (a entrada ainda não lida).</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">data</span><span class="w"> </span><span class="kt">LispVal</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="ow">=</span><span class="w"> </span><span class="kt">Atom</span><span class="w"> </span><span class="kt">String</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="p">[</span><span class="kt">LispVal</span><span class="p">]</span>

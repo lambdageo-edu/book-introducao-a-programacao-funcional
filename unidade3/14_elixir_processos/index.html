@@ -1345,6 +1345,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cap 27: Elixir — Processos e Concorrência
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1361,6 +1379,609 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-1-fundamentos-de-computacao-concorrente-na-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 1: Fundamentos de Computação Concorrente na BEAM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 1: Fundamentos de Computação Concorrente na BEAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nota-para-o-engenheiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota para o Engenheiro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-2-laboratorio-de-anatomia-de-processos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 2: Laboratório de Anatomia de Processos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 2: Laboratório de Anatomia de Processos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-preparacao-do-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Preparação do Ambiente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-identidade-o-pid-process-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Identidade: O PID (Process Identifier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-criacao-spawn-vida-e-morte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Criação: spawn (Vida e Morte)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-comunicacao-assincrona-send-e-a-mailbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Comunicação Assíncrona: send e a Mailbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sincronizacao-receive-o-bloqueio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sincronização: receive (O Bloqueio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-a-persistencia-recursao-de-cauda-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. A Persistência: Recursão de Cauda (O Servidor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-por-que-esta-vazio-esse-exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Por que está vazio [] esse exemplo?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-e-se-a-funcao-precisasse-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. E se a função precisasse de dados?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-3-construindo-um-servidor-de-conta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 3: Construindo um Servidor de Conta
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 3: Construindo um Servidor de Conta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-etapa-a-o-servidor-manual-entendendo-o-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Etapa A: O Servidor Manual (Entendendo o Loop)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Etapa A: O Servidor Manual (Entendendo o Loop)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-o-loop-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: O Loop de Estado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testando-a-versao-manual-iex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testando a Versão Manual (IEx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-etapa-b-o-padrao-ouro-genserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Etapa B: O Padrão Ouro (GenServer)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Etapa B: O Padrão Ouro (GenServer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-a-implementacao-profissional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: A Implementação Profissional
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nota-de-engenharia-o-que-e-esse-impl-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota de Engenharia: O que é esse @impl true?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-que-serve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para que serve?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testando-a-versao-genserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testando a Versão GenServer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reflexao-de-engenharia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reflexão de Engenharia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-4-supervisores-e-tolerancia-a-falhas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 4: Supervisores e Tolerância a Falhas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 4: Supervisores e Tolerância a Falhas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-teoria-o-supervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Teoria: O Supervisor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Teoria: O Supervisor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategias-comuns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estratégias Comuns:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-laboratorio-pratico-preparando-o-crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Laboratório Prático: Preparando o Crash
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Laboratório Prático: Preparando o Crash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-adicionando-o-botao-de-autodestruicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Adicionando o Botão de Autodestruição
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-transformando-o-projeto-em-uma-aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Transformando o Projeto em uma Aplicação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: O Teste de Imortalidade (e a Correção do Contrato)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reflexao-de-arquitetura-o-pulo-do-gato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reflexão de Arquitetura (O "Pulo do Gato")
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processos-nomeados-named-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processos Nomeados (Named Processes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processos Nomeados (Named Processes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-atualizando-o-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Atualizando o Código
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-o-teste-definitivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: O Teste Definitivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-intermediario-especialistas-agent-e-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo Intermediário: Especialistas (Agent e Task)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo Intermediário: Especialistas (Agent e Task)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-o-agent-o-cofre-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O Agent (O Cofre de Estado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. O Agent (O Cofre de Estado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pratica-o-cofre-do-banco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prática: O Cofre do Banco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-no-terminal-iex-s-mix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste no Terminal (iex -S mix)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-a-task-o-trabalhador-assincrono" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. A Task (O Trabalhador Assíncrono)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. A Task (O Trabalhador Assíncrono)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pratica-o-notificador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prática: O Notificador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-comparativo-iex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste Comparativo (IEx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revisao-geral-do-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revisão Geral do Módulo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Revisão Geral do Módulo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-o-paradigma-funcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O Paradigma Funcional
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-o-modelo-de-concorrencia-atores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. O Modelo de Concorrência (Atores)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-as-ferramentas-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. As Ferramentas de Trabalho
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tolerancia-a-falhas-the-erlang-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tolerância a Falhas (The Erlang Way)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximos-passos-na-sua-carreira" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos Passos na sua Carreira
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veja-mais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Veja mais
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1450,6 +2071,598 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-1-fundamentos-de-computacao-concorrente-na-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 1: Fundamentos de Computação Concorrente na BEAM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 1: Fundamentos de Computação Concorrente na BEAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nota-para-o-engenheiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota para o Engenheiro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-2-laboratorio-de-anatomia-de-processos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 2: Laboratório de Anatomia de Processos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 2: Laboratório de Anatomia de Processos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-preparacao-do-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Preparação do Ambiente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-identidade-o-pid-process-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Identidade: O PID (Process Identifier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-criacao-spawn-vida-e-morte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Criação: spawn (Vida e Morte)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-comunicacao-assincrona-send-e-a-mailbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Comunicação Assíncrona: send e a Mailbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sincronizacao-receive-o-bloqueio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sincronização: receive (O Bloqueio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-a-persistencia-recursao-de-cauda-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. A Persistência: Recursão de Cauda (O Servidor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-por-que-esta-vazio-esse-exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Por que está vazio [] esse exemplo?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-e-se-a-funcao-precisasse-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. E se a função precisasse de dados?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-3-construindo-um-servidor-de-conta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 3: Construindo um Servidor de Conta
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 3: Construindo um Servidor de Conta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-etapa-a-o-servidor-manual-entendendo-o-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Etapa A: O Servidor Manual (Entendendo o Loop)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Etapa A: O Servidor Manual (Entendendo o Loop)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-o-loop-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: O Loop de Estado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testando-a-versao-manual-iex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testando a Versão Manual (IEx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-etapa-b-o-padrao-ouro-genserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Etapa B: O Padrão Ouro (GenServer)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Etapa B: O Padrão Ouro (GenServer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-a-implementacao-profissional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: A Implementação Profissional
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nota-de-engenharia-o-que-e-esse-impl-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota de Engenharia: O que é esse @impl true?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-que-serve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para que serve?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testando-a-versao-genserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testando a Versão GenServer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reflexao-de-engenharia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reflexão de Engenharia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-4-supervisores-e-tolerancia-a-falhas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo 4: Supervisores e Tolerância a Falhas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo 4: Supervisores e Tolerância a Falhas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-teoria-o-supervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Teoria: O Supervisor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Teoria: O Supervisor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategias-comuns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estratégias Comuns:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-laboratorio-pratico-preparando-o-crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Laboratório Prático: Preparando o Crash
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Laboratório Prático: Preparando o Crash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-adicionando-o-botao-de-autodestruicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Adicionando o Botão de Autodestruição
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-transformando-o-projeto-em-uma-aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Transformando o Projeto em uma Aplicação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: O Teste de Imortalidade (e a Correção do Contrato)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reflexao-de-arquitetura-o-pulo-do-gato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reflexão de Arquitetura (O "Pulo do Gato")
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processos-nomeados-named-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processos Nomeados (Named Processes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processos Nomeados (Named Processes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-atualizando-o-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Atualizando o Código
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-o-teste-definitivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: O Teste Definitivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-intermediario-especialistas-agent-e-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulo Intermediário: Especialistas (Agent e Task)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Módulo Intermediário: Especialistas (Agent e Task)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-o-agent-o-cofre-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O Agent (O Cofre de Estado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. O Agent (O Cofre de Estado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pratica-o-cofre-do-banco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prática: O Cofre do Banco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-no-terminal-iex-s-mix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste no Terminal (iex -S mix)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-a-task-o-trabalhador-assincrono" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. A Task (O Trabalhador Assíncrono)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. A Task (O Trabalhador Assíncrono)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pratica-o-notificador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prática: O Notificador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-comparativo-iex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste Comparativo (IEx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revisao-geral-do-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revisão Geral do Módulo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Revisão Geral do Módulo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-o-paradigma-funcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O Paradigma Funcional
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-o-modelo-de-concorrencia-atores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. O Modelo de Concorrência (Atores)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-as-ferramentas-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. As Ferramentas de Trabalho
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tolerancia-a-falhas-the-erlang-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tolerância a Falhas (The Erlang Way)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximos-passos-na-sua-carreira" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos Passos na sua Carreira
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veja-mais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Veja mais
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1466,7 +2679,7 @@
 
 
 <h1 id="processos">Processos<a class="headerlink" href="#processos" title="Permanent link">&para;</a></h1>
-<h1 id="modulo-1-fundamentos-de-computacao-concorrente-na-beam">Módulo 1: Fundamentos de Computação Concorrente na BEAM<a class="headerlink" href="#modulo-1-fundamentos-de-computacao-concorrente-na-beam" title="Permanent link">&para;</a></h1>
+<h2 id="modulo-1-fundamentos-de-computacao-concorrente-na-beam">Módulo 1: Fundamentos de Computação Concorrente na BEAM<a class="headerlink" href="#modulo-1-fundamentos-de-computacao-concorrente-na-beam" title="Permanent link">&para;</a></h2>
 <p><strong>Objetivo:</strong> Compreender o modelo de execução da Máquina Virtual Erlang (BEAM) e contrastá-lo com os modelos tradicionais de Threads de SO e Green Threads (Go).</p>
 <p><strong>1. O Problema da Concorrência Tradicional</strong></p>
 <p>Na engenharia de software clássica (Java, C++, C#), a unidade de concorrência é a <strong>Thread do Sistema Operacional (OS Thread)</strong>.
@@ -1552,7 +2765,7 @@ Dentro dessas threads, a BEAM roda seus próprios escalonadores (Schedulers).
 • Enviar mensagem para o PID <code>&lt;0.100.0&gt;</code> (na mesma máquina).
 • Enviar mensagem para o PID <code>&lt;50.100.0&gt;</code> (em um servidor no Japão).
 <strong>O código é exatamente o mesmo.</strong> Isso torna o Elixir uma linguagem naturalmente orientada a sistemas distribuídos (Clusters).</p>
-<h1 id="modulo-2-laboratorio-de-anatomia-de-processos">Módulo 2: Laboratório de Anatomia de Processos<a class="headerlink" href="#modulo-2-laboratorio-de-anatomia-de-processos" title="Permanent link">&para;</a></h1>
+<h2 id="modulo-2-laboratorio-de-anatomia-de-processos">Módulo 2: Laboratório de Anatomia de Processos<a class="headerlink" href="#modulo-2-laboratorio-de-anatomia-de-processos" title="Permanent link">&para;</a></h2>
 <p><strong>Objetivo:</strong> Manipular as primitivas de concorrência da BEAM (<code>spawn</code>, <code>send</code>, <code>receive</code>) e entender o ciclo de vida de um processo.</p>
 <h3 id="1-preparacao-do-ambiente">1. Preparação do Ambiente<a class="headerlink" href="#1-preparacao-do-ambiente" title="Permanent link">&para;</a></h3>
 <p>Abra seu terminal. Vamos criar um projeto chamado <code>lab_concorrencia</code>.
@@ -1606,21 +2819,21 @@ O envio de mensagens em Elixir é <strong>Assíncrono (Non-blocking)</strong>.</
 <p>Vamos usar o seu próprio processo do IEx (<code>self()</code>) para testar.</p>
 <ol>
 <li>
-<p>Armazene seu endereço:Elixir</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">meu_pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>self<span class="o">()</span>
+<p>Armazene seu endereço:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">meu_pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">()</span>
 </code></pre></div>
 </li>
 <li>
-<p>Envie uma mensagem para si mesmo:Elixir</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>send<span class="o">(</span>meu_pid,<span class="w"> </span><span class="o">{</span>:ola,<span class="w"> </span><span class="s2">"Mundo"</span><span class="o">})</span>
+<p>Envie uma mensagem para si mesmo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">send</span><span class="p">(</span><span class="n">meu_pid</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:ola</span><span class="p">,</span><span class="w"> </span><span class="s2">"Mundo"</span><span class="p">})</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Saída: {:ola, "Mundo"}</span>
 </code></pre></div>
 <p><em>Observe:</em> A função retorna a mensagem enviada, mas nada foi impresso na tela como "Recebido". Onde está a mensagem?</p>
 </li>
 <li>
 <p>Inspecione a memória do processo (Buffer):
-Use a função de debug <code>flush()</code>:Elixir</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>flush<span class="o">()</span>
+Use a função de debug <code>flush()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">flush</span><span class="p">()</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># Saída:</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># {:ola, "Mundo"}</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># :ok</span>
@@ -1636,33 +2849,33 @@ A mensagem ficou armazenada na Heap do processo. O <code>send</code> apenas depo
 <p>Vamos criar um processo que sabe esperar por uma mensagem.</p>
 <p>Digite no IEx:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Definimos a função que o processo vai rodar</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">funcao_ouvinte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>fn<span class="w"> </span>-&gt;
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>receive<span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="o">{</span>:ping,<span class="w"> </span>remetente_pid<span class="o">}</span><span class="w"> </span>-&gt;
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span>IO.puts<span class="w"> </span><span class="s2">"🏓 Recebi PING. Enviando PONG..."</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span>send<span class="o">(</span>remetente_pid,<span class="w"> </span>:pong<span class="o">)</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span>end
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>end
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">funcao_ouvinte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">receive</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="p">{</span><span class="ss">:ping</span><span class="p">,</span><span class="w"> </span><span class="n">remetente_pid</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">"🏓 Recebi PING. Enviando PONG..."</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="n">send</span><span class="p">(</span><span class="n">remetente_pid</span><span class="p">,</span><span class="w"> </span><span class="ss">:pong</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">end</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Criamos o processo</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nv">pid_ping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>spawn<span class="o">(</span>funcao_ouvinte<span class="o">)</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">pid_ping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn</span><span class="p">(</span><span class="n">funcao_ouvinte</span><span class="p">)</span>
 </code></pre></div>
 <p>Verifique se ele está vivo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Process.alive?<span class="o">(</span>pid_ping<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nc">Process</span><span class="o">.</span><span class="n">alive?</span><span class="p">(</span><span class="n">pid_ping</span><span class="p">)</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Saída: true</span>
 </code></pre></div>
 <p><em>Ele está vivo, parado na linha do <code>receive</code>, aguardando.</em></p>
 <p>Agora, vamos interagir:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>send<span class="o">(</span>pid_ping,<span class="w"> </span><span class="o">{</span>:ping,<span class="w"> </span>self<span class="o">()})</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">send</span><span class="p">(</span><span class="n">pid_ping</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:ping</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">()})</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># Saída no terminal: 🏓 Recebi PING. Enviando PONG...</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Retorno: {:ping, #PID&lt;...&gt;}</span>
 </code></pre></div>
 <p>Verifique se recebemos a resposta (:pong):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>flush<span class="o">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">flush</span><span class="p">()</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Saída: :pong</span>
 </code></pre></div>
 <p>Verifique se o processo ouvinte ainda vive:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Process.alive?<span class="o">(</span>pid_ping<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nc">Process</span><span class="o">.</span><span class="n">alive?</span><span class="p">(</span><span class="n">pid_ping</span><span class="p">)</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># Saída: false</span>
 </code></pre></div>
 <p><em>Ele processou o <code>ping</code>, acabou o bloco <code>receive</code>, saiu da função e morreu.</em></p>
@@ -1675,24 +2888,24 @@ Em linguagens imperativas, usaríamos <code>while(true)</code>. Em Elixir, usamo
 <li>Abra seu editor (VS Code).</li>
 <li>Crie o arquivo <code>lib/processo_persistente.ex</code>.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>defmodule<span class="w"> </span>ProcessoPersistente<span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>def<span class="w"> </span>aguardar_mensagem<span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>receive<span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="o">{</span>:mensagem,<span class="w"> </span>texto<span class="o">}</span><span class="w"> </span>-&gt;
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span>IO.puts<span class="w"> </span><span class="s2">"📝 Log: #{texto}"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ProcessoPersistente</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">aguardar_mensagem</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="k">receive</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="p">{</span><span class="ss">:mensagem</span><span class="p">,</span><span class="w"> </span><span class="n">texto</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">"📝 Log: </span><span class="si">#{</span><span class="n">texto</span><span class="si">}</span><span class="s2">"</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="c1"># AQUI ESTÁ O SEGREDO:</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="c1"># Chamamos a função novamente. O processo volta para o topo e para no 'receive'.</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span>aguardar_mensagem<span class="o">()</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="n">aguardar_mensagem</span><span class="p">()</span>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">      </span><span class="o">{</span>:parar<span class="o">}</span><span class="w"> </span>-&gt;
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span>IO.puts<span class="w"> </span><span class="s2">"🛑 Encerrando processo..."</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">      </span><span class="p">{</span><span class="ss">:parar</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">"🛑 Encerrando processo..."</span>
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="c1"># Não chamamos a recursão. O processo chegará ao fim e morrerá.</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span>end
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">  </span>end
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>end
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="k">end</span>
 </code></pre></div>
 <p>Recompile o projeto para ler o arquivo novo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>recompile<span class="o">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">recompile</span><span class="p">()</span>
 </code></pre></div>
 <p>ou caso tenha saido:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>iex<span class="w"> </span>-S<span class="w"> </span>mix
@@ -1752,16 +2965,16 @@ O aluno aprendeu:</p>
 <li>Que o recebimento trava o processo (<code>receive</code>).</li>
 <li>Que servidores são apenas loops recursivos infinitos.</li>
 </ol>
-<h1 id="modulo-3-construindo-um-servidor-de-conta">Módulo 3: Construindo um Servidor de Conta<a class="headerlink" href="#modulo-3-construindo-um-servidor-de-conta" title="Permanent link">&para;</a></h1>
+<h2 id="modulo-3-construindo-um-servidor-de-conta">Módulo 3: Construindo um Servidor de Conta<a class="headerlink" href="#modulo-3-construindo-um-servidor-de-conta" title="Permanent link">&para;</a></h2>
 <p><strong>Objetivo:</strong> Implementar um processo com estado persistente (Stateful). Faremos isso em duas etapas:</p>
 <ol>
 <li><strong>A Versão "Raiz" (Manual):</strong> Para entender onde o estado mora (recursão).</li>
 <li><strong>A Versão "Profissional" (GenServer):</strong> Para ganhar robustez e padronização.</li>
 </ol>
 <hr />
-<h2 id="1-etapa-a-o-servidor-manual-entendendo-o-loop">1. Etapa A: O Servidor Manual (Entendendo o Loop)<a class="headerlink" href="#1-etapa-a-o-servidor-manual-entendendo-o-loop" title="Permanent link">&para;</a></h2>
+<h3 id="1-etapa-a-o-servidor-manual-entendendo-o-loop">1. Etapa A: O Servidor Manual (Entendendo o Loop)<a class="headerlink" href="#1-etapa-a-o-servidor-manual-entendendo-o-loop" title="Permanent link">&para;</a></h3>
 <p>Antes de usarmos ferramentas prontas, vamos criar uma conta bancária usando apenas primitivas: <code>spawn</code>, <code>receive</code> e recursão. Isso vai provar para você que <strong>não existe mágica</strong>, apenas engenharia.</p>
-<h3 id="passo-1-o-loop-de-estado">Passo 1: O Loop de Estado<a class="headerlink" href="#passo-1-o-loop-de-estado" title="Permanent link">&para;</a></h3>
+<h4 id="passo-1-o-loop-de-estado">Passo 1: O Loop de Estado<a class="headerlink" href="#passo-1-o-loop-de-estado" title="Permanent link">&para;</a></h4>
 <p>Crie o arquivo <code>lib/conta_manual.ex</code>.</p>
 <p>Neste código, observe que o <strong>saldo</strong> não é uma variável global. Ele é um <strong>argumento</strong> que é passado de uma volta do loop para a próxima.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaManual</span><span class="w"> </span><span class="k">do</span>
@@ -1792,20 +3005,20 @@ O aluno aprendeu:</p>
 <a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="w">  </span><span class="k">end</span>
 <a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a><span class="k">end</span>
 </code></pre></div>
-<h3 id="testando-a-versao-manual-iex">Testando a Versão Manual (IEx)<a class="headerlink" href="#testando-a-versao-manual-iex" title="Permanent link">&para;</a></h3>
+<h4 id="testando-a-versao-manual-iex">Testando a Versão Manual (IEx)<a class="headerlink" href="#testando-a-versao-manual-iex" title="Permanent link">&para;</a></h4>
 <p>Abra o terminal e veja a dificuldade de comunicação:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 1. Iniciar</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nv">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ContaManual.iniciar<span class="o">(</span><span class="m">0</span><span class="o">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ContaManual</span><span class="o">.</span><span class="n">iniciar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># 2. Depositar (Fácil, só enviar)</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>send<span class="o">(</span>pid,<span class="w"> </span><span class="o">{</span>:depositar,<span class="w"> </span><span class="m">500</span><span class="o">})</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">send</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:depositar</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">})</span>
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1"># "💰 [Manual] Depositado 500. Novo saldo: 500"</span>
 <a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># 3. Ver Saldo (Difícil! Preciso enviar meu PID e esperar resposta)</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>send<span class="o">(</span>pid,<span class="w"> </span><span class="o">{</span>:ver_saldo,<span class="w"> </span>self<span class="o">()})</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="n">send</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:ver_saldo</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">()})</span>
 <a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
 <a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># Agora preciso caçar a resposta na minha caixa de correio</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>flush<span class="o">()</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="n">flush</span><span class="p">()</span>
 <a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="c1"># {:resposta_saldo, 500}</span>
 </code></pre></div>
 <p><strong>Análise do Professor:</strong>
@@ -1816,7 +3029,7 @@ Funciona? Sim. Mas é frágil.</p>
 <li>É muito código repetitivo ("Boilerplate").</li>
 </ul>
 <hr />
-<h2 id="2-etapa-b-o-padrao-ouro-genserver">2. Etapa B: O Padrão Ouro (<code>GenServer</code>)<a class="headerlink" href="#2-etapa-b-o-padrao-ouro-genserver" title="Permanent link">&para;</a></h2>
+<h3 id="2-etapa-b-o-padrao-ouro-genserver">2. Etapa B: O Padrão Ouro (<code>GenServer</code>)<a class="headerlink" href="#2-etapa-b-o-padrao-ouro-genserver" title="Permanent link">&para;</a></h3>
 <p>Na Etapa A, construímos um servidor "na unha". Funciona? Sim. É seguro para produção? <strong>Não.</strong>
 Como engenheiros, analisamos os riscos daquela abordagem manual:</p>
 <ol>
@@ -1865,7 +3078,7 @@ Implementar o módulo ContaBancaria onde:
 • O <strong>Estado</strong> (Saldo) é gerenciado automaticamente pelo GenServer.
 • <strong>Depósitos</strong> usam <code>cast</code> (pois o banco aceita seu dinheiro na hora, sem bloquear).
 • <strong>Saques</strong> e <strong>Consultas</strong> usam <code>call</code> (pois você precisa da resposta imediata).</p>
-<h3 id="passo-2-a-implementacao-profissional">Passo 2: A Implementação Profissional<a class="headerlink" href="#passo-2-a-implementacao-profissional" title="Permanent link">&para;</a></h3>
+<h4 id="passo-2-a-implementacao-profissional">Passo 2: A Implementação Profissional<a class="headerlink" href="#passo-2-a-implementacao-profissional" title="Permanent link">&para;</a></h4>
 <p>Vamos criar o módulo <code>ContaBancaria</code> (a versão final) dentro do projeto.</p>
 <p>Crie o arquivo <code>lib/conta_bancaria.ex</code>.
 <em>Note como <code>loop(novo_saldo)</code> vira <code>{:noreply, novo_saldo}</code>.</em></p>
@@ -1937,10 +3150,10 @@ Implementar o módulo ContaBancaria onde:
 <a id="__codelineno-22-66" name="__codelineno-22-66" href="#__codelineno-22-66"></a><span class="w">  </span><span class="k">end</span>
 <a id="__codelineno-22-67" name="__codelineno-22-67" href="#__codelineno-22-67"></a><span class="k">end</span>
 </code></pre></div>
-<h3 id="nota-de-engenharia-o-que-e-esse-impl-true">Nota de Engenharia: O que é esse <code>@impl true</code>?<a class="headerlink" href="#nota-de-engenharia-o-que-e-esse-impl-true" title="Permanent link">&para;</a></h3>
+<h4 id="nota-de-engenharia-o-que-e-esse-impl-true">Nota de Engenharia: O que é esse <code>@impl true</code>?<a class="headerlink" href="#nota-de-engenharia-o-que-e-esse-impl-true" title="Permanent link">&para;</a></h4>
 <p>Você deve ter notado que, antes das funções <code>handle_call</code> e <code>handle_cast</code>, colocamos o atributo <code>@impl true</code>.</p>
 <p>Se você vem do <strong>Java</strong> ou <strong>C#</strong>, isso é exatamente equivalente ao <strong><code>@Override</code></strong>.</p>
-<h3 id="para-que-serve">Para que serve?<a class="headerlink" href="#para-que-serve" title="Permanent link">&para;</a></h3>
+<h4 id="para-que-serve">Para que serve?<a class="headerlink" href="#para-que-serve" title="Permanent link">&para;</a></h4>
 <p>O <code>use GenServer</code> define um <strong>Contrato</strong> (chamado de <em>Behaviour</em> em Elixir). Ele diz: <em>"Quem usar este módulo DEVE ou PODE implementar funções chamadas <code>init</code>, <code>handle_call</code>, <code>handle_cast</code>, etc."</em></p>
 <p>O <code>@impl true</code> serve dois propósitos:</p>
 <ol>
@@ -1952,128 +3165,127 @@ Imagine que você digitou errado o nome da função (escreveu <code>handle_cat</
 <ul>
 <li><strong>SEM <code>@impl</code>:</strong> O Elixir vai achar que você criou uma função nova chamada <code>handle_cat</code> propositalmente. O código compila, mas seu servidor não funciona (as mensagens são ignoradas). Você perde horas debugando.</li>
 <li>
-<p><strong>COM <code>@impl</code>:</strong> O compilador vai gritar:</p>
-<blockquote>
-<p>"Erro: Você marcou handle_cat como uma implementação de GenServer, mas o GenServer não tem nenhuma função com esse nome. Você quis dizer handle_cast?"
-</p>
-</blockquote>
+<p><strong>COM <code>@impl</code>:</strong> O compilador emite um <strong>aviso</strong> (<em>warning</em>) apontando o erro na hora da compilação:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>warning: got "@impl true" for function handle_cat/2 but no behaviour specifies such callback.
+</code></pre></div>
+<p>Não é um erro que impede a compilação, mas é um aviso impossível de ignorar — e ferramentas como <code>mix compile --warnings-as-errors</code> (comum em CI) o transformam em erro.</p>
 </li>
 </ul>
 <p><strong>Regra de Ouro:</strong> Sempre use <code>@impl true</code> nos callbacks (<code>init</code>, <code>handle_call</code>, <code>handle_cast</code>, <code>terminate</code>). É o cinto de segurança do seu código.</p>
-<h3 id="testando-a-versao-genserver">Testando a Versão GenServer<a class="headerlink" href="#testando-a-versao-genserver" title="Permanent link">&para;</a></h3>
+<h4 id="testando-a-versao-genserver">Testando a Versão GenServer<a class="headerlink" href="#testando-a-versao-genserver" title="Permanent link">&para;</a></h4>
 <p>Volte ao terminal (<code>recompile()</code>). Veja como a experiência de uso (Developer Experience) é superior.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 1. Abrir conta</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">abrir_conta</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># 2. Testar Assincronismo (Cast)</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">depositar</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1"># :ok (Retorno imediato)</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># [GenServer] Depósito de R$ 500 recebido. (Log assíncrono)</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="c1"># 3. Testar Sincronismo (Call) - Sem precisar de flush()!</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="c1"># 1500</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="c1"># 4. Testar Lógica de Negócio</span>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">sacar</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="c1"># {:error, "Saldo Insuficiente"}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># 1. Abrir conta</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="p">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">abrir_conta</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># 2. Testar Assincronismo (Cast)</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">depositar</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># :ok (Retorno imediato)</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># [GenServer] Depósito de R$ 500 recebido. (Log assíncrono)</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="c1"># 3. Testar Sincronismo (Call) - Sem precisar de flush()!</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="c1"># 1500</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="c1"># 4. Testar Lógica de Negócio</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">sacar</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="c1"># {:error, "Saldo Insuficiente"}</span>
 </code></pre></div>
 <hr />
-<h2 id="3-reflexao-de-engenharia">3. Reflexão de Engenharia<a class="headerlink" href="#3-reflexao-de-engenharia" title="Permanent link">&para;</a></h2>
+<h3 id="3-reflexao-de-engenharia">3. Reflexão de Engenharia<a class="headerlink" href="#3-reflexao-de-engenharia" title="Permanent link">&para;</a></h3>
 <p>Por que migramos do manual para o GenServer?</p>
 <ol>
 <li><strong>Abstração do Loop:</strong> Não precisamos escrever a recursão manualmente. O retorno <code>{:noreply, novo_estado}</code> cuida disso.</li>
 <li><strong>Abstração da Comunicação:</strong> Não precisamos lidar com PIDs de resposta no <code>handle_call</code>. O GenServer sabe quem chamou e devolve a resposta.</li>
-<li><strong>Tratamento de Erros:</strong> O GenServer captura exceções e evita que um crash leve o sistema todo junto (ele isola a falha).</li>
+<li><strong>Tratamento de Erros:</strong> O GenServer <strong>não</strong> engole exceções: se um callback falhar, o processo morre. Mas, como ele é um processo isolado, a falha não contamina os demais — e, como veremos no próximo módulo, um <strong>Supervisor</strong> pode reiniciá-lo automaticamente. Essa é a filosofia <em>"let it crash"</em>.</li>
 </ol>
 <hr />
 <p><strong>Professor:</strong> Agora temos um sistema funcional e limpo.
 Mas, como engenheiros, devemos ser pessimistas. <strong>E se houver um bug no código?</strong> E se dividirmos por zero? O processo vai morrer. O dinheiro vai sumir.</p>
-<h1 id="modulo-4-supervisores-e-tolerancia-a-falhas">Módulo 4: Supervisores e Tolerância a Falhas<a class="headerlink" href="#modulo-4-supervisores-e-tolerancia-a-falhas" title="Permanent link">&para;</a></h1>
+<h2 id="modulo-4-supervisores-e-tolerancia-a-falhas">Módulo 4: Supervisores e Tolerância a Falhas<a class="headerlink" href="#modulo-4-supervisores-e-tolerancia-a-falhas" title="Permanent link">&para;</a></h2>
 <p><strong>Objetivo:</strong> Transformar nosso processo isolado em uma <strong>Árvore de Supervisão</strong> (Supervision Tree), criando um sistema que se cura sozinho (Self-healing).</p>
-<h2 id="1-teoria-o-supervisor">1. Teoria: O Supervisor<a class="headerlink" href="#1-teoria-o-supervisor" title="Permanent link">&para;</a></h2>
+<h3 id="1-teoria-o-supervisor">1. Teoria: O Supervisor<a class="headerlink" href="#1-teoria-o-supervisor" title="Permanent link">&para;</a></h3>
 <p>Um Supervisor é um processo especial. A única função dele é vigiar outros processos (chamados de <em>children</em> ou filhos).</p>
 <p>Se um filho morre (crash), o Supervisor percebe o sinal de saída (<code>EXIT</code>) e aplica uma estratégia de reinicialização.</p>
-<h3 id="estrategias-comuns">Estratégias Comuns:<a class="headerlink" href="#estrategias-comuns" title="Permanent link">&para;</a></h3>
+<h4 id="estrategias-comuns">Estratégias Comuns:<a class="headerlink" href="#estrategias-comuns" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>:one_for_one (Um por Um):</strong> Se o processo A morrer, reinicie apenas o A. (Mais comum).</li>
 <li><strong>:one_for_all (Um por Todos):</strong> Se o processo A morrer, mate o B e o C, e reinicie todos. (Usado quando os processos dependem estritamente um do outro).</li>
 </ul>
 <hr />
-<h2 id="2-laboratorio-pratico-preparando-o-crash">2. Laboratório Prático: Preparando o Crash<a class="headerlink" href="#2-laboratorio-pratico-preparando-o-crash" title="Permanent link">&para;</a></h2>
+<h3 id="2-laboratorio-pratico-preparando-o-crash">2. Laboratório Prático: Preparando o Crash<a class="headerlink" href="#2-laboratorio-pratico-preparando-o-crash" title="Permanent link">&para;</a></h3>
 <p>Para testar a resiliência, precisamos de uma forma de "quebrar" nossa conta bancária propositalmente.</p>
-<h3 id="passo-1-adicionando-o-botao-de-autodestruicao">Passo 1: Adicionando o Botão de Autodestruição<a class="headerlink" href="#passo-1-adicionando-o-botao-de-autodestruicao" title="Permanent link">&para;</a></h3>
+<h4 id="passo-1-adicionando-o-botao-de-autodestruicao">Passo 1: Adicionando o Botão de Autodestruição<a class="headerlink" href="#passo-1-adicionando-o-botao-de-autodestruicao" title="Permanent link">&para;</a></h4>
 <p>Edite o arquivo <code>lib/conta_bancaria.ex</code>. Vamos adicionar uma função que causa um erro fatal (divisão por zero ou <code>raise</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">GenServer</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span><span class="c1"># ... (Mantenha o código anterior de start_link, init, etc) ...</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">  </span><span class="c1"># Adicione esta função na API do Cliente</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">causar_bug</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="ss">:bug_fatal</span><span class="p">)</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">  </span><span class="c1"># Adicione este callback lá no final</span>
-<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">handle_cast</span><span class="p">(</span><span class="ss">:bug_fatal</span><span class="p">,</span><span class="w"> </span><span class="n">_saldo</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"💣 BOOM! Ocorreu um erro inesperado..."</span><span class="p">)</span>
-<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">    </span><span class="c1"># raise gera uma exceção que mata o processo na hora</span>
-<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="s2">"Erro Fatal Simulada pelo Desenvolvedor"</span>
-<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>
-<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="w">  </span><span class="c1"># ... (Mantenha os outros handle_cast/handle_call) ...</span>
-<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="k">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">GenServer</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="c1"># ... (Mantenha o código anterior de start_link, init, etc) ...</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span><span class="c1"># Adicione esta função na API do Cliente</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">causar_bug</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="ss">:bug_fatal</span><span class="p">)</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">  </span><span class="c1"># Adicione este callback lá no final</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">handle_cast</span><span class="p">(</span><span class="ss">:bug_fatal</span><span class="p">,</span><span class="w"> </span><span class="n">_saldo</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"💣 BOOM! Ocorreu um erro inesperado..."</span><span class="p">)</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">    </span><span class="c1"># raise gera uma exceção que mata o processo na hora</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="s2">"Erro Fatal Simulada pelo Desenvolvedor"</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">  </span><span class="c1"># ... (Mantenha os outros handle_cast/handle_call) ...</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="k">end</span>
 </code></pre></div>
 <hr />
-<h3 id="passo-2-transformando-o-projeto-em-uma-aplicacao">Passo 2: Transformando o Projeto em uma Aplicação<a class="headerlink" href="#passo-2-transformando-o-projeto-em-uma-aplicacao" title="Permanent link">&para;</a></h3>
+<h4 id="passo-2-transformando-o-projeto-em-uma-aplicacao">Passo 2: Transformando o Projeto em uma Aplicação<a class="headerlink" href="#passo-2-transformando-o-projeto-em-uma-aplicacao" title="Permanent link">&para;</a></h4>
 <p>Quando criamos o projeto com <code>mix new lab_concorrencia</code>, ele veio "pelado". Precisamos dizer ao Mix que este projeto tem um ponto de entrada (uma Application Callback).</p>
 <ol>
 <li>Crie o arquivo <code>lib/lab_concorrencia/application.ex</code>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">LabConcorrencia.Application</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="c1"># Transforma este módulo em uma Application (ponto de partida do sistema)</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Application</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="c1"># Lista de filhos que queremos que iniciem junto com o App</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">      </span><span class="c1"># Aqui dizemos: "Supervisor, inicie a ContaBancaria com saldo 1000"</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">      </span><span class="p">{</span><span class="nc">ContaBancaria</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">}</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">    </span><span class="p">]</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">    </span><span class="c1"># Opções:</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">    </span><span class="c1"># strategy: :one_for_one -&gt; Se a conta morrer, reinicia ela.</span>
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">    </span><span class="c1"># name: Nome do Supervisor para referência.</span>
-<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">    </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">]</span>
-<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
-<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"🛡️ Supervisor Iniciado. Vigiando processos..."</span><span class="p">)</span>
-<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">)</span>
-<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="k">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">LabConcorrencia.Application</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="c1"># Transforma este módulo em uma Application (ponto de partida do sistema)</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Application</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">    </span><span class="c1"># Lista de filhos que queremos que iniciem junto com o App</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">      </span><span class="c1"># Aqui dizemos: "Supervisor, inicie a ContaBancaria com saldo 1000"</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">      </span><span class="p">{</span><span class="nc">ContaBancaria</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">}</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">    </span><span class="c1"># Opções:</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">    </span><span class="c1"># strategy: :one_for_one -&gt; Se a conta morrer, reinicia ela.</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">    </span><span class="c1"># name: Nome do Supervisor para referência.</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">    </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">]</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"🛡️ Supervisor Iniciado. Vigiando processos..."</span><span class="p">)</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">)</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="k">end</span>
 </code></pre></div>
 <ol>
 <li><strong>IMPORTANTE:</strong> Precisamos avisar o Mix para carregar esse arquivo.
 Abra o arquivo <code>mix.exs</code> na raiz, procure a função <code>application</code> e altere para:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="p">[</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">      </span><span class="ss">extra_applications</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="ss">:logger</span><span class="p">],</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">      </span><span class="c1"># Adicione esta linha: 'mod' define o módulo de entrada da aplicação</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">      </span><span class="ss">mod</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nc">LabConcorrencia.Application</span><span class="p">,</span><span class="w"> </span><span class="p">[]}</span><span class="w"> </span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="p">]</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span><span class="k">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="p">[</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">      </span><span class="ss">extra_applications</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="ss">:logger</span><span class="p">],</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">      </span><span class="c1"># Adicione esta linha: 'mod' define o módulo de entrada da aplicação</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">      </span><span class="ss">mod</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nc">LabConcorrencia.Application</span><span class="p">,</span><span class="w"> </span><span class="p">[]}</span><span class="w"> </span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="k">end</span>
 </code></pre></div>
 <hr />
-<h3 id="passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato">Passo 3: O Teste de Imortalidade (e a Correção do Contrato)<a class="headerlink" href="#passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato" title="Permanent link">&para;</a></h3>
+<h4 id="passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato">Passo 3: O Teste de Imortalidade (e a Correção do Contrato)<a class="headerlink" href="#passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato" title="Permanent link">&para;</a></h4>
 <p>Agora que configuramos nosso Supervisor no <code>Application.ex</code>, a teoria diz que ele deve iniciar a conta automaticamente. Vamos testar?</p>
 <p><strong>1. O Erro Esperado (A Falha de Contrato)</strong>
 Reinicie o terminal (<code>iex -S mix</code>).
 Ao fazer isso, você provavelmente será recebido por uma mensagem de erro assustadora e o IEx fechará ou mostrará um crash log gigante.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>*<span class="w"> </span><span class="o">(</span>Mix<span class="o">)</span><span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>start<span class="w"> </span>application<span class="w"> </span>lab_concorrencia:<span class="w"> </span>...<span class="w"> </span>**<span class="w"> </span><span class="o">(</span>EXIT<span class="o">)</span><span class="w"> </span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>an<span class="w"> </span>exception<span class="w"> </span>was<span class="w"> </span>raised:<span class="w"> </span>**<span class="w"> </span><span class="o">(</span>UndefinedFunctionError<span class="o">)</span><span class="w"> </span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">function</span><span class="w"> </span>ContaBancaria.start_link/1<span class="w"> </span>is<span class="w"> </span>undefined<span class="w"> </span>or<span class="w"> </span>private
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>*<span class="w"> </span><span class="o">(</span>Mix<span class="o">)</span><span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>start<span class="w"> </span>application<span class="w"> </span>lab_concorrencia:<span class="w"> </span>...<span class="w"> </span>**<span class="w"> </span><span class="o">(</span>EXIT<span class="o">)</span><span class="w"> </span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>an<span class="w"> </span>exception<span class="w"> </span>was<span class="w"> </span>raised:<span class="w"> </span>**<span class="w"> </span><span class="o">(</span>UndefinedFunctionError<span class="o">)</span><span class="w"> </span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">function</span><span class="w"> </span>ContaBancaria.start_link/1<span class="w"> </span>is<span class="w"> </span>undefined<span class="w"> </span>or<span class="w"> </span>private
 </code></pre></div>
 <p><strong>O Diagnóstico de Engenharia:</strong>
 Por que falhou?
@@ -2086,20 +3298,20 @@ Quando dissemos ao Supervisor para cuidar do filho <code>{ContaBancaria, 1000}</
 <p><strong>2. A Solução (Obedecendo a Convenção)</strong>
 Vamos renomear nossa função de inicialização para seguir o padrão da indústria.</p>
 <p>Edite o arquivo <code>lib/conta_bancaria.ex</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">GenServer</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span><span class="c1"># --- API DO CLIENTE ---</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span><span class="c1"># ANTES: def abrir_conta(saldo_inicial \\ 0) do</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">  </span><span class="c1"># DEPOIS: Renomeamos para start_link para o Supervisor encontrar</span>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start_link</span><span class="p">(</span><span class="n">saldo_inicial</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">    </span><span class="c1"># Aproveitamos para adicionar name: __MODULE__ (já prepara para o futuro)</span>
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">saldo_inicial</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
-<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">  </span><span class="c1"># ... mantenha o resto igual ...</span>
-<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="k">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">GenServer</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span><span class="c1"># --- API DO CLIENTE ---</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span><span class="c1"># ANTES: def abrir_conta(saldo_inicial \\ 0) do</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">  </span><span class="c1"># DEPOIS: Renomeamos para start_link para o Supervisor encontrar</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start_link</span><span class="p">(</span><span class="n">saldo_inicial</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">    </span><span class="c1"># Aproveitamos para adicionar name: __MODULE__ (já prepara para o futuro)</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">saldo_inicial</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">  </span><span class="c1"># ... mantenha o resto igual ...</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="k">end</span>
 </code></pre></div>
 <p><strong>3. O Teste de Imortalidade (Agora funciona!)</strong>
 Agora sim. Reinicie o terminal (<code>iex -S mix</code>).
@@ -2107,21 +3319,21 @@ Você deve ver a mensagem: <code>"🛡️ Supervisor Iniciado..."</code>.</p>
 <p>Agora vamos provar que o sistema se cura sozinho.</p>
 <p><strong>A. Encontrando a Vítima:</strong>
 Como o Supervisor iniciou a conta, precisamos descobrir qual PID ele gerou.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># O Supervisor nos diz quem são seus filhos.</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="p">[{</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">pid_da_conta</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">}]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># Verifique se pegou certo:</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="c1"># Ex: #PID&lt;0.155.0&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># O Supervisor nos diz quem são seus filhos.</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="p">[{</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">pid_da_conta</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">}]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># Verifique se pegou certo:</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="c1"># Ex: #PID&lt;0.155.0&gt;</span>
 </code></pre></div>
 <p><strong>B. Verificação de Saúde:</strong>
 Garanta que a conta está funcionando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># 1000 (O valor inicial configurado no Application.ex)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># 1000 (O valor inicial configurado no Application.ex)</span>
 </code></pre></div>
 <p><strong>C. O GRANDE MOMENTO: A Sabotagem:</strong>
 Vamos invocar a função <code>causar_bug</code> que criamos. Prepare-se para o erro vermelho (que agora é sinal de sucesso).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">causar_bug</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">causar_bug</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>O que aconteceu?</strong></p>
 <ol>
@@ -2131,22 +3343,22 @@ Vamos invocar a função <code>causar_bug</code> que criamos. Prepare-se para o 
 </ol>
 <p><strong>D. A Prova da Ressurreição:</strong>
 Tente falar com o PID antigo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nc">Process</span><span class="o">.</span><span class="n">alive?</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="c1"># false (Morto e enterrado)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nc">Process</span><span class="o">.</span><span class="n">alive?</span><span class="p">(</span><span class="n">pid_da_conta</span><span class="p">)</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="c1"># false (Morto e enterrado)</span>
 </code></pre></div>
 <p>Agora, pergunte ao Supervisor quem é o filho dele <strong>agora</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="c1"># Saída: [{ContaBancaria, #PID&lt;0.160.0&gt;, ...}]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="c1"># Saída: [{ContaBancaria, #PID&lt;0.160.0&gt;, ...}]</span>
 </code></pre></div>
 <p><strong>Olhe o PID!</strong> É um número novo (ex: 160).
 O Supervisor limpou a bagunça e subiu uma nova instância. Seu banco digital continua no ar, pronto para receber novos clientes.</p>
 <hr />
-<h2 id="3-reflexao-de-arquitetura-o-pulo-do-gato">3. Reflexão de Arquitetura (O "Pulo do Gato")<a class="headerlink" href="#3-reflexao-de-arquitetura-o-pulo-do-gato" title="Permanent link">&para;</a></h2>
+<h3 id="3-reflexao-de-arquitetura-o-pulo-do-gato">3. Reflexão de Arquitetura (O "Pulo do Gato")<a class="headerlink" href="#3-reflexao-de-arquitetura-o-pulo-do-gato" title="Permanent link">&para;</a></h3>
 <p>Aluno, observe um detalhe crítico:</p>
 <p>Pegue o PID novo e veja o saldo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="p">[{</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">novo_pid</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">}]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">novo_pid</span><span class="p">)</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="c1"># 1000</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">[{</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">novo_pid</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">}]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">    </span><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">novo_pid</span><span class="p">)</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1"># 1000</span>
 </code></pre></div>
 <p>Se você tivesse depositado 500 reais antes do crash, o saldo seria 1500. Após o crash, ele voltou para 1000 (estado inicial).</p>
 <p><strong>Por quê?</strong>
@@ -2166,7 +3378,7 @@ Porque processos guardam estado em <strong>Memória RAM</strong>. Se o processo 
 <p>Isso é a base de sistemas como WhatsApp e Discord.</p>
 <p>Em um sistema real com milhares de processos, nós não ficamos anotando PIDs (<code>#PID&lt;0.155.0&gt;</code>) num caderninho. PIDs são efêmeros; eles mudam toda vez que o processo morre e renasce. Precisamos de um <strong>Nome Fixo</strong> (DNS interno). Vamos resolver isso ?</p>
 <hr />
-<h1 id="processos-nomeados-named-processes">Processos Nomeados (Named Processes)<a class="headerlink" href="#processos-nomeados-named-processes" title="Permanent link">&para;</a></h1>
+<h2 id="processos-nomeados-named-processes">Processos Nomeados (Named Processes)<a class="headerlink" href="#processos-nomeados-named-processes" title="Permanent link">&para;</a></h2>
 <p><strong>O Problema:</strong> Quando o Supervisor reinicia a <code>ContaBancaria</code> após um crash, o PID muda. Se o seu código dependia do PID antigo, ele quebra.</p>
 <p><strong>A Solução:</strong> Registramos o processo com um nome (geralmente um Átomo). Assim, mandamos mensagens para o <strong>Nome</strong>, e o Elixir descobre quem é o PID atual daquele nome.</p>
 <h3 id="passo-1-atualizando-o-codigo">Passo 1: Atualizando o Código<a class="headerlink" href="#passo-1-atualizando-o-codigo" title="Permanent link">&para;</a></h3>
@@ -2175,57 +3387,57 @@ Porque processos guardam estado em <strong>Memória RAM</strong>. Se o processo 
 <li>No <code>start_link</code>, vamos adicionar a opção <code>name</code>.</li>
 <li>Na API do cliente, vamos permitir chamar pelo nome.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">GenServer</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span><span class="c1"># --- API DO CLIENTE ---</span>
-<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>
-<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">  </span><span class="c1"># Alteração 1: name: __MODULE__</span>
-<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">  </span><span class="c1"># Isso registra o processo com o nome "ContaBancaria" (o átomo do módulo).</span>
-<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start_link</span><span class="p">(</span><span class="n">saldo_inicial</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">saldo_inicial</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span>
-<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>
-<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="w">  </span><span class="c1"># Alteração 2: Default para o nome</span>
-<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="w">  </span><span class="c1"># Se o usuário não passar o PID, assumimos que ele quer falar com a conta padrão.</span>
-<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="ss">:mostrar_saldo</span><span class="p">)</span>
-<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
-<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">depositar</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:depositar</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">})</span>
-<a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>
-<a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">sacar</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:sacar</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">})</span>
-<a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a>
-<a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">causar_bug</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="ss">:bug_fatal</span><span class="p">)</span>
-<a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a>
-<a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a><span class="w">  </span><span class="c1"># ... (O resto do código e callbacks continuam IGUAIS) ...</span>
-<a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a><span class="k">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ContaBancaria</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">GenServer</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span><span class="c1"># --- API DO CLIENTE ---</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">  </span><span class="c1"># Alteração 1: name: __MODULE__</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">  </span><span class="c1"># Isso registra o processo com o nome "ContaBancaria" (o átomo do módulo).</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start_link</span><span class="p">(</span><span class="n">saldo_inicial</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">saldo_inicial</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="w">  </span><span class="c1"># Alteração 2: Default para o nome</span>
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="w">  </span><span class="c1"># Se o usuário não passar o PID, assumimos que ele quer falar com a conta padrão.</span>
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="ss">:mostrar_saldo</span><span class="p">)</span>
+<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>
+<a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">depositar</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:depositar</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">})</span>
+<a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a>
+<a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">sacar</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:sacar</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">})</span>
+<a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a>
+<a id="__codelineno-36-26" name="__codelineno-36-26" href="#__codelineno-36-26"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">causar_bug</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-36-27" name="__codelineno-36-27" href="#__codelineno-36-27"></a><span class="w">    </span><span class="nc">GenServer</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pid_ou_nome</span><span class="p">,</span><span class="w"> </span><span class="ss">:bug_fatal</span><span class="p">)</span>
+<a id="__codelineno-36-28" name="__codelineno-36-28" href="#__codelineno-36-28"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-36-29" name="__codelineno-36-29" href="#__codelineno-36-29"></a>
+<a id="__codelineno-36-30" name="__codelineno-36-30" href="#__codelineno-36-30"></a><span class="w">  </span><span class="c1"># ... (O resto do código e callbacks continuam IGUAIS) ...</span>
+<a id="__codelineno-36-31" name="__codelineno-36-31" href="#__codelineno-36-31"></a><span class="k">end</span>
 </code></pre></div>
 <h3 id="passo-2-o-teste-definitivo">Passo 2: O Teste Definitivo<a class="headerlink" href="#passo-2-o-teste-definitivo" title="Permanent link">&para;</a></h3>
 <p>Reinicie seu terminal (<code>iex -S mix</code>) e veja a mágica da <strong>Transparência de Localização</strong>.</p>
 <ol>
 <li>
 <p><strong>Uso direto (Sem PID):</strong>Elixir</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># Não preciso mais buscar PID. Chamo direto pelo nome do módulo.</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">()</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="c1"># 1000</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># Não preciso mais buscar PID. Chamo direto pelo nome do módulo.</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">()</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1"># 1000</span>
 </code></pre></div>
 </li>
 <li>
 <p><strong>Crash e Recuperação Transparente:</strong>Elixir</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># Vamos matar o processo</span>
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">causar_bug</span><span class="p">()</span>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1"># [Log de erro gigante...]</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="c1"># IMEDIATAMENTE tente ver o saldo de novo:</span>
-<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">()</span>
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="c1"># 1000</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># Vamos matar o processo</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">causar_bug</span><span class="p">()</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="c1"># [Log de erro gigante...]</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="c1"># IMEDIATAMENTE tente ver o saldo de novo:</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">()</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="c1"># 1000</span>
 </code></pre></div>
 </li>
 </ol>
@@ -2237,87 +3449,87 @@ Porque processos guardam estado em <strong>Memória RAM</strong>. Se o processo 
 <li>Quando você chamou <code>ver_saldo()</code>, o Elixir mandou a mensagem para o novo PID automaticamente.</li>
 </ol>
 <p>Isso é <strong>Alta Disponibilidade</strong>. O cliente nem percebeu que o servidor caiu e voltou.</p>
-<h1 id="modulo-intermediario-especialistas-agent-e-task">Módulo Intermediário: Especialistas (<code>Agent</code> e <code>Task</code>)<a class="headerlink" href="#modulo-intermediario-especialistas-agent-e-task" title="Permanent link">&para;</a></h1>
+<h2 id="modulo-intermediario-especialistas-agent-e-task">Módulo Intermediário: Especialistas (<code>Agent</code> e <code>Task</code>)<a class="headerlink" href="#modulo-intermediario-especialistas-agent-e-task" title="Permanent link">&para;</a></h2>
 <p>Em alguns casos, ao invés de usar <strong>GenServer</strong> (que faz tudo), podemos usar seus "irmãos menores". Eles são processos especializados:</p>
 <ol>
 <li><strong><code>Agent</code></strong>: Especialista em <strong>Guardar Estado</strong> (Simples).</li>
 <li><strong><code>Task</code></strong>: Especialista em <strong>Processamento Paralelo</strong> (Cálculo).</li>
 </ol>
 <hr />
-<h2 id="1-o-agent-o-cofre-de-estado">1. O <code>Agent</code> (O Cofre de Estado)<a class="headerlink" href="#1-o-agent-o-cofre-de-estado" title="Permanent link">&para;</a></h2>
+<h3 id="1-o-agent-o-cofre-de-estado">1. O <code>Agent</code> (O Cofre de Estado)<a class="headerlink" href="#1-o-agent-o-cofre-de-estado" title="Permanent link">&para;</a></h3>
 <p>Imagine que você só quer guardar um valor (como uma configuração global ou um contador) e ler/atualizar isso de forma segura entre vários processos.
 Criar um <code>GenServer</code> inteiro com <code>handle_call</code> e <code>handle_cast</code> só para isso é "matar formiga com bazuca".</p>
 <p>O <strong>Agent</strong> abstrai tudo isso.</p>
-<h3 id="pratica-o-cofre-do-banco">Prática: O Cofre do Banco<a class="headerlink" href="#pratica-o-cofre-do-banco" title="Permanent link">&para;</a></h3>
+<h4 id="pratica-o-cofre-do-banco">Prática: O Cofre do Banco<a class="headerlink" href="#pratica-o-cofre-do-banco" title="Permanent link">&para;</a></h4>
 <p>Vamos criar um cofre que guarda as reservas totais do banco.
 Crie o arquivo <code>lib/cofre.ex</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Cofre</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">  </span><span class="c1"># Inicia o Agent.</span>
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">  </span><span class="c1"># A função anônima (fn -&gt; ...) define o estado inicial.</span>
-<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start_link</span><span class="p">(</span><span class="n">valor_inicial</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">    </span><span class="nc">Agent</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">valor_inicial</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span>
-<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>
-<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="w">  </span><span class="c1"># Leitura Síncrona</span>
-<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="w">  </span><span class="c1"># O Agent.get pega o estado atual e retorna o que você quiser.</span>
-<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="w">  </span><span class="c1"># Aqui retornamos o próprio saldo (&amp;(&amp;1) é um atalho para fn x -&gt; x end).</span>
-<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">ver_total</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a><span class="w">    </span><span class="nc">Agent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
-<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>
-<a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="w">  </span><span class="c1"># Atualização Síncrona</span>
-<a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a><span class="w">  </span><span class="c1"># O Agent.update altera o estado.</span>
-<a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">depositar</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a><span class="w">    </span><span class="nc">Agent</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
-<a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a><span class="k">end</span>
-</code></pre></div>
-<h3 id="teste-no-terminal-iex-s-mix">Teste no Terminal (<code>iex -S mix</code>)<a class="headerlink" href="#teste-no-terminal-iex-s-mix" title="Permanent link">&para;</a></h3>
-<p>Olhe como é simples (sem callbacks complexos):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># 1. Iniciar com 50 mil reais</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="mi">50_000</span><span class="p">)</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="c1"># 2. Consultar</span>
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">ver_total</span><span class="p">()</span>
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="c1"># 50000</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Cofre</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span><span class="c1"># Inicia o Agent.</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span><span class="c1"># A função anônima (fn -&gt; ...) define o estado inicial.</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">start_link</span><span class="p">(</span><span class="n">valor_inicial</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">    </span><span class="nc">Agent</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">valor_inicial</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p">)</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="w">  </span><span class="k">end</span>
 <a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="c1"># 3. Atualizar</span>
-<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">depositar</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
-<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">ver_total</span><span class="p">()</span>
-<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="c1"># 60000</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">  </span><span class="c1"># Leitura Síncrona</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="w">  </span><span class="c1"># O Agent.get pega o estado atual e retorna o que você quiser.</span>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">  </span><span class="c1"># Aqui retornamos o próprio saldo (&amp;(&amp;1) é um atalho para fn x -&gt; x end).</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">ver_total</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">    </span><span class="nc">Agent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
+<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>
+<a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a><span class="w">  </span><span class="c1"># Atualização Síncrona</span>
+<a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a><span class="w">  </span><span class="c1"># O Agent.update altera o estado.</span>
+<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">depositar</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a><span class="w">    </span><span class="nc">Agent</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
+<a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-39-20" name="__codelineno-39-20" href="#__codelineno-39-20"></a><span class="k">end</span>
+</code></pre></div>
+<h4 id="teste-no-terminal-iex-s-mix">Teste no Terminal (<code>iex -S mix</code>)<a class="headerlink" href="#teste-no-terminal-iex-s-mix" title="Permanent link">&para;</a></h4>
+<p>Olhe como é simples (sem callbacks complexos):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># 1. Iniciar com 50 mil reais</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="mi">50_000</span><span class="p">)</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="c1"># 2. Consultar</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">ver_total</span><span class="p">()</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="c1"># 50000</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="c1"># 3. Atualizar</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">depositar</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="nc">Cofre</span><span class="o">.</span><span class="n">ver_total</span><span class="p">()</span>
+<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="c1"># 60000</span>
 </code></pre></div>
 <p><strong>Conceito de Engenharia:</strong> O <code>Agent</code> garante <strong>Atomicidade</strong>. Se 100 processos tentarem atualizar o cofre ao mesmo tempo, o Agent coloca todos em fila e atende um por um. Não há risco de corromper o dado.</p>
 <hr />
-<h2 id="2-a-task-o-trabalhador-assincrono">2. A <code>Task</code> (O Trabalhador Assíncrono)<a class="headerlink" href="#2-a-task-o-trabalhador-assincrono" title="Permanent link">&para;</a></h2>
+<h3 id="2-a-task-o-trabalhador-assincrono">2. A <code>Task</code> (O Trabalhador Assíncrono)<a class="headerlink" href="#2-a-task-o-trabalhador-assincrono" title="Permanent link">&para;</a></h3>
 <p>E se precisarmos fazer algo demorado (ex: enviar e-mail de confirmação ou gerar PDF) e não quisermos travar o nosso Banco?</p>
-<p>Lembre-se: O Elixir é síncrono por padrão. Se você colocar um <code>sleep(5000)</code> no meio do código, tudo para.
+<p>Lembre-se: O Elixir é síncrono por padrão. Se você colocar um <code>Process.sleep(3000)</code> no meio do código, aquele processo fica parado esperando.
 A <strong>Task</strong> serve para jogar esse trabalho para um processo descartável secundário.</p>
-<h3 id="pratica-o-notificador">Prática: O Notificador<a class="headerlink" href="#pratica-o-notificador" title="Permanent link">&para;</a></h3>
+<h4 id="pratica-o-notificador">Prática: O Notificador<a class="headerlink" href="#pratica-o-notificador" title="Permanent link">&para;</a></h4>
 <p>Crie o arquivo <code>lib/notificador.ex</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Notificador</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">enviar_email</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"📧 Iniciando envio de email para </span><span class="si">#{</span><span class="n">cliente</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>
-<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">    </span><span class="c1"># Simula uma conexão lenta com servidor de email (3 segundos)</span>
-<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">    </span><span class="nc">Process</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
-<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>
-<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"✅ Email enviado com sucesso para </span><span class="si">#{</span><span class="n">cliente</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
-<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="w">  </span><span class="k">end</span>
-<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="k">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Notificador</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">enviar_email</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"📧 Iniciando envio de email para </span><span class="si">#{</span><span class="n">cliente</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="w">    </span><span class="c1"># Simula uma conexão lenta com servidor de email (3 segundos)</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">    </span><span class="nc">Process</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a><span class="w">    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">"✅ Email enviado com sucesso para </span><span class="si">#{</span><span class="n">cliente</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="w">  </span><span class="k">end</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="k">end</span>
 </code></pre></div>
-<h3 id="teste-comparativo-iex">Teste Comparativo (IEx)<a class="headerlink" href="#teste-comparativo-iex" title="Permanent link">&para;</a></h3>
+<h4 id="teste-comparativo-iex">Teste Comparativo (IEx)<a class="headerlink" href="#teste-comparativo-iex" title="Permanent link">&para;</a></h4>
 <p><strong>Cenário A: O jeito travado (Sem Task)</strong>
 Rode isso e veja seu terminal congelar:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nc">Notificador</span><span class="o">.</span><span class="n">enviar_email</span><span class="p">(</span><span class="s2">"Joao"</span><span class="p">)</span>
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="c1"># ... (você não consegue digitar nada por 3 segundos) ...</span>
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="c1"># "✅ Email enviado..."</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nc">Notificador</span><span class="o">.</span><span class="n">enviar_email</span><span class="p">(</span><span class="s2">"Joao"</span><span class="p">)</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="c1"># ... (você não consegue digitar nada por 3 segundos) ...</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="c1"># "✅ Email enviado..."</span>
 </code></pre></div>
 <p><em>Em um servidor web, isso seria desastroso. O usuário ficaria vendo a ampulheta girar.</em></p>
 <p><strong>Cenário B: O jeito fluido (Com Task)</strong>
 Agora vamos usar <code>Task.start/1</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nc">Task</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Notificador</span><span class="o">.</span><span class="n">enviar_email</span><span class="p">(</span><span class="s2">"Maria"</span><span class="p">)</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
-<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="c1"># {:ok, #PID&lt;0.165.0&gt;}</span>
-<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="c1"># O terminal libera IMEDIATAMENTE! Você pode continuar digitando.</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nc">Task</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Notificador</span><span class="o">.</span><span class="n">enviar_email</span><span class="p">(</span><span class="s2">"Maria"</span><span class="p">)</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="c1"># {:ok, #PID&lt;0.165.0&gt;}</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="c1"># O terminal libera IMEDIATAMENTE! Você pode continuar digitando.</span>
 </code></pre></div>
 <p><em>Três segundos depois, a mensagem "✅ Email enviado..." aparece magicamente no meio do que você estiver fazendo.</em></p>
 <p><strong>3. Resumo da Arquitetura: Quando usar o quê?</strong></p>
@@ -2358,7 +3570,7 @@ Agora vamos usar <code>Task.start/1</code>.</p>
 </tbody>
 </table>
 <hr />
-<h1 id="revisao-geral-do-modulo">Revisão Geral do Modulo<a class="headerlink" href="#revisao-geral-do-modulo" title="Permanent link">&para;</a></h1>
+<h2 id="revisao-geral-do-modulo">Revisão Geral do Módulo<a class="headerlink" href="#revisao-geral-do-modulo" title="Permanent link">&para;</a></h2>
 <p>Parabéns, caro aluno. Você completou a jornada fundamental da plataforma BEAM.
 Vamos recapitular o modelo mental que você construiu, pois é isso que importa na sua carreira.</p>
 <h3 id="1-o-paradigma-funcional">1. O Paradigma Funcional<a class="headerlink" href="#1-o-paradigma-funcional" title="Permanent link">&para;</a></h3>
@@ -2396,8 +3608,8 @@ Vamos recapitular o modelo mental que você construiu, pois é isso que importa 
 <li><strong>Broadway/GenStage:</strong> Para processamento de dados em massa (Data Pipelines) com back-pressure.</li>
 </ol>
 <p>Foi uma honra guiá-lo nesta jornada. Você agora tem o mindset de um Engenheiro de Software Concorrente. <strong>Sucesso!</strong></p>
-<h3 id="veja-mais">veja mais<a class="headerlink" href="#veja-mais" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.youtube.com/watch?v=GeGXXfNvdSA">Excelente palestra do Fabia Akita de 2015</a></p>
+<h3 id="veja-mais">Veja mais<a class="headerlink" href="#veja-mais" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.youtube.com/watch?v=GeGXXfNvdSA">Excelente palestra do Fabio Akita de 2015</a></p>
 
 
 

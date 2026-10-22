@@ -1077,10 +1077,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-por-que-escolher-clojure" class="md-nav__link">
+  <a href="#14-por-que-escolher-clojure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3. Por que escolher Clojure?
+        1.4. Por que escolher Clojure?
       
     </span>
   </a>
@@ -1116,10 +1116,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#21-preparando-o-ambiente-de-desenvolvimento" class="md-nav__link">
+  <a href="#22-preparando-o-ambiente-de-desenvolvimento" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Preparando o Ambiente de Desenvolvimento
+        2.2. Preparando o Ambiente de Desenvolvimento
       
     </span>
   </a>
@@ -1127,10 +1127,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-desmistificando-os-parenteses-a-sintaxe-de-clojure" class="md-nav__link">
+  <a href="#23-desmistificando-os-parenteses-a-sintaxe-de-clojure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Desmistificando os Parênteses: A Sintaxe de Clojure
+        2.3. Desmistificando os Parênteses: A Sintaxe de Clojure
       
     </span>
   </a>
@@ -1255,10 +1255,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-o-fundamental" class="md-nav__link">
+  <a href="#51-o-fundamental-if" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1. O Fundamental
+        5.1. O Fundamental: if
       
     </span>
   </a>
@@ -1288,10 +1288,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#54-para-casos-sem-senao" class="md-nav__link">
+  <a href="#54-when-para-casos-sem-senao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4. : Para Casos sem "senão"
+        5.4. when: Para Casos sem "senão"
       
     </span>
   </a>
@@ -1933,10 +1933,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-por-que-escolher-clojure" class="md-nav__link">
+  <a href="#14-por-que-escolher-clojure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3. Por que escolher Clojure?
+        1.4. Por que escolher Clojure?
       
     </span>
   </a>
@@ -1972,10 +1972,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#21-preparando-o-ambiente-de-desenvolvimento" class="md-nav__link">
+  <a href="#22-preparando-o-ambiente-de-desenvolvimento" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Preparando o Ambiente de Desenvolvimento
+        2.2. Preparando o Ambiente de Desenvolvimento
       
     </span>
   </a>
@@ -1983,10 +1983,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-desmistificando-os-parenteses-a-sintaxe-de-clojure" class="md-nav__link">
+  <a href="#23-desmistificando-os-parenteses-a-sintaxe-de-clojure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Desmistificando os Parênteses: A Sintaxe de Clojure
+        2.3. Desmistificando os Parênteses: A Sintaxe de Clojure
       
     </span>
   </a>
@@ -2111,10 +2111,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-o-fundamental" class="md-nav__link">
+  <a href="#51-o-fundamental-if" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1. O Fundamental
+        5.1. O Fundamental: if
       
     </span>
   </a>
@@ -2144,10 +2144,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#54-para-casos-sem-senao" class="md-nav__link">
+  <a href="#54-when-para-casos-sem-senao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4. : Para Casos sem "senão"
+        5.4. when: Para Casos sem "senão"
       
     </span>
   </a>
@@ -2306,7 +2306,7 @@
 <ol>
 <li><strong>Tipagem Dinâmica e Pragmática</strong>: Clojure não realiza checagem de tipos em tempo de compilação da forma estrita do Haskell. Isso confere uma flexibilidade incrível e agilidade de prototipagem.</li>
 <li><strong>Desenvolvimento Focado no REPL</strong>: O REPL (Read-Eval-Print Loop) em Clojure não é apenas um local para testar funções (como o GHCi); ele é o próprio núcleo do desenvolvimento, onde você altera o programa em execução sem precisar reiniciar o processo.</li>
-<li><strong>Código como Dados (Homoiconicidade)</strong>: Em Clojure, a própria sintaxe do código é estruturada como listas e mapas. Isso abre as portas para uma metaprogramação absurdamente poderosa através de <strong>Macros</strong>, algo impossível na sintaxe rígida do Haskell.</li>
+<li><strong>Código como Dados (Homoiconicidade)</strong>: Em Clojure, a própria sintaxe do código é estruturada como listas e mapas. Isso abre as portas para uma metaprogramação absurdamente poderosa através de <strong>Macros</strong>. Em Haskell, gerar código exige uma extensão à parte (o <em>Template Haskell</em>, que usamos rapidamente no <code>$quickCheckAll</code> do capítulo de instalação); em Clojure, é natural, porque o código já é uma estrutura de dados.</li>
 <li><strong>Ambiente Hospedado</strong>: Clojure roda sobre a Java Virtual Machine (JVM), dando acesso nativo ao ecossistema robusto e maduro do Java.</li>
 </ol>
 <p>Prepare-se para abrir sua mente e descobrir uma nova forma de projetar softwares funcionais, preditivos e altamente flexíveis.</p>
@@ -2318,7 +2318,7 @@
 <p>Em Clojure, a imutabilidade é a regra, não a exceção. Isso significa que as estruturas de dados principais, como vetores e mapas, "uma vez criadas, não podem ser alteradas" (<em>Clojure in Action</em>).</p>
 <p>Mas como programamos se não podemos mudar nada? A resposta é simples: quando uma "mudança" é necessária, Clojure não modifica a estrutura de dados original. Em vez disso, ele cria e retorna uma <em>nova</em> estrutura de dados que contém a alteração.</p>
 <p>O principal benefício dessa abordagem é a segurança. O código torna-se imune a uma vasta classe de bugs relacionados à mutação não gerenciada e é inerentemente mais seguro para ser executado em ambientes concorrentes (com múltiplos threads), um desafio comum na programação moderna.</p>
-<h3 id="13-por-que-escolher-clojure">1.3. Por que escolher Clojure?<a class="headerlink" href="#13-por-que-escolher-clojure" title="Permanent link">&para;</a></h3>
+<h3 id="14-por-que-escolher-clojure">1.4. Por que escolher Clojure?<a class="headerlink" href="#14-por-que-escolher-clojure" title="Permanent link">&para;</a></h3>
 <p>Clojure é uma linguagem de propósito geral que combina o melhor de vários mundos, tornando-a uma escolha atraente para uma ampla gama de tarefas.</p>
 <ul>
 <li><strong>Um Lisp Moderno:</strong> Clojure pertence à família de linguagens Lisp, o que lhe confere uma de suas características mais poderosas: a capacidade de metaprogramação através de macros. Isso significa que você pode escrever código que escreve código, estendendo a própria linguagem.</li>
@@ -2330,10 +2330,10 @@
 <p>Uma das melhores partes de aprender Clojure é a interatividade. Você não precisa escrever um programa inteiro para ver os resultados; você pode "conversar" com a linguagem em tempo real.</p>
 <h3 id="21-o-repl-seu-ambiente-interativo">2.1. O REPL: Seu Ambiente Interativo<a class="headerlink" href="#21-o-repl-seu-ambiente-interativo" title="Permanent link">&para;</a></h3>
 <p>O <strong>REPL</strong> (Read-Eval-Print Loop ou Ciclo de Leitura-Avaliação-Impressão) é um ambiente interativo onde você pode digitar código Clojure, executá-lo e ver o resultado instantaneamente. O REPL é uma ferramenta fundamental no fluxo de trabalho de um desenvolvedor Clojure. Ele permite experimentação rápida, desenvolvimento incremental e oferece um feedback imediato, tornando o processo de aprendizado e desenvolvimento muito mais dinâmico e produtivo.</p>
-<p>Podemos usar o <a href="https://tryclojure.org/">https://tryclojure.org/</a> como nossso REPL</p>
+<p>Podemos usar o <a href="https://tryclojure.org/">tryclojure.org</a> como nosso REPL.</p>
 <p><img alt="image.png" src="../img-clojure-fundamentos/image.png" /></p>
-<h3 id="21-preparando-o-ambiente-de-desenvolvimento">2.1. Preparando o Ambiente de Desenvolvimento<a class="headerlink" href="#21-preparando-o-ambiente-de-desenvolvimento" title="Permanent link">&para;</a></h3>
-<p>Para o desenvolvimento de sistemas o REPL online  não será suficiente, nesses casos, vamos precisar instalar na nossa própria máquina.</p>
+<h3 id="22-preparando-o-ambiente-de-desenvolvimento">2.2. Preparando o Ambiente de Desenvolvimento<a class="headerlink" href="#22-preparando-o-ambiente-de-desenvolvimento" title="Permanent link">&para;</a></h3>
+<p>Para o desenvolvimento de sistemas, o REPL online não será suficiente; nesses casos, vamos precisar instalar o Clojure na nossa própria máquina.</p>
 <ol>
 <li>Acesse o site oficial para as instruções de instalação: <code>https://clojure.org/guides/getting_started</code>.</li>
 <li>Siga o processo de acordo com seu sistema operacional:<ul>
@@ -2345,12 +2345,12 @@
 <li>Após a instalação, abra seu terminal e execute o interpretador interativo (REPL).</li>
 <li>Experiência na web https://tryclojure.org/ ou https://onecompiler.com/clojure</li>
 </ol>
-<h3 id="22-desmistificando-os-parenteses-a-sintaxe-de-clojure">2.2. Desmistificando os Parênteses: A Sintaxe de Clojure<a class="headerlink" href="#22-desmistificando-os-parenteses-a-sintaxe-de-clojure" title="Permanent link">&para;</a></h3>
+<h3 id="23-desmistificando-os-parenteses-a-sintaxe-de-clojure">2.3. Desmistificando os Parênteses: A Sintaxe de Clojure<a class="headerlink" href="#23-desmistificando-os-parenteses-a-sintaxe-de-clojure" title="Permanent link">&para;</a></h3>
 <p>À primeira vista, o código Clojure pode parecer estranho por causa dos parênteses. No entanto, essa sintaxe, conhecida como S-expressions (expressões simbólicas), é a fonte de uma simplicidade e poder incríveis.</p>
 <ol>
 <li>A estrutura fundamental é <code>(função argumento1 argumento2 ...)</code>.</li>
 <li>Considere o exemplo <code>(+ 13 3)</code>. Isso é chamado de <strong>notação prefixada</strong>, onde a operação (ou função) vem <em>antes</em> dos operandos (ou argumentos). Em Clojure, <code>+</code> não é um operador especial; é apenas mais uma função. Essa uniformidade torna a linguagem mais simples e consistente.</li>
-<li>Todas as operações seguem essa mesma lógica:</li>
+<li>Todas as operações seguem essa mesma lógica — inclusive imprimir na tela, como no exemplo abaixo.</li>
 <li>Longe de serem um problema, os parênteses são, como afirma <em>Clojure in Action</em>, "uma grande fonte das capacidades de Clojure", pois permitem que o código seja tratado como uma estrutura de dados, algo que exploraremos mais adiante.</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">(</span><span class="nb">println </span><span class="s">"Bem vindo ao sistema de estoque"</span><span class="p">)</span>
@@ -2372,10 +2372,10 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">(</span><span class="k">def </span><span class="nv">nome-global</span><span class="w"> </span><span class="s">"Rosanthony"</span><span class="p">)</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">(</span><span class="nb">println </span><span class="nv">nome-global</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">; =&gt; "Rosanthony"</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">; imprime: Rosanthony   (o valor de retorno de println é nil)</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">nome-local</span><span class="w"> </span><span class="s">"Bloodthunder"</span><span class="p">]</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">(</span><span class="nb">println </span><span class="nv">nome-local</span><span class="p">)</span><span class="w">    </span><span class="c1">; =&gt; "Bloodthunder"</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">(</span><span class="nb">println </span><span class="nv">nome-local</span><span class="p">)</span><span class="w">    </span><span class="c1">; imprime: Bloodthunder</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p">(</span><span class="nb">println </span><span class="nv">nome-global</span><span class="p">))</span><span class="w"> </span><span class="c1">; A variável global ainda é acessível aqui</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">;; A linha abaixo causaria um erro, pois 'nome-local' não existe fora do bloco 'let'.</span>
@@ -2383,7 +2383,7 @@
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>veremos melhor os nomes locais quando criarmos nossas funcoes</p>
+<p>Veremos melhor os nomes locais quando criarmos nossas funções.</p>
 </div>
 <h3 id="33-keywords-etiquetas-eficientes">3.3. Keywords: Etiquetas Eficientes<a class="headerlink" href="#33-keywords-etiquetas-eficientes" title="Permanent link">&para;</a></h3>
 <p>Keywords (palavras-chave) são um tipo de dado único em Clojure. Elas começam com o caractere de dois-pontos (<code>:</code>), como em <code>:mochila</code> ou <code>:autor</code>. Pense nelas como etiquetas ou rótulos permanentes. A principal diferença para uma string é que uma string (ex: <code>"nome"</code>) é um dado que seu programa processa, enquanto uma keyword (ex: <code>:nome</code>) é como uma etiqueta que faz parte da estrutura do seu programa. Elas são extremamente eficientes e são a forma mais comum de usar chaves em mapas, uma das estruturas de dados mais importantes de Clojure.</p>
@@ -2437,16 +2437,16 @@
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p">([</span><span class="nv">x</span><span class="w"> </span><span class="nv">y</span><span class="p">]</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">   </span><span class="p">(</span><span class="nb">str </span><span class="s">"Recebi dois argumentos: "</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="s">" e "</span><span class="w"> </span><span class="nv">y</span><span class="p">)))</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">minha-funcao</span><span class="p">))</span><span class="w">          </span><span class="c1">; =&gt; "Fui chamada sem argumentos!"</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">minha-funcao</span><span class="w"> </span><span class="s">"olá"</span><span class="p">))</span><span class="w">    </span><span class="c1">; =&gt; "Recebi o argumento: olá"</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">minha-funcao</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w">      </span><span class="c1">; =&gt; "Recebi dois argumentos: 1 e 2"</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">minha-funcao</span><span class="p">))</span><span class="w">          </span><span class="c1">; imprime: Fui chamada sem argumentos!</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">minha-funcao</span><span class="w"> </span><span class="s">"olá"</span><span class="p">))</span><span class="w">    </span><span class="c1">; imprime: Recebi o argumento: olá</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">minha-funcao</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w">      </span><span class="c1">; imprime: Recebi dois argumentos: 1 e 2</span>
 </code></pre></div>
 <p>Com a capacidade de criar funções, precisamos agora de ferramentas para controlar o fluxo de execução dentro delas, tomando decisões baseadas em certas condições.</p>
 <p>Podemos testar no onecompiler.com</p>
 <p><img alt="image.png" src="../img-clojure-fundamentos/image%201.png" /></p>
 <h2 id="5-tomando-decisoes-no-codigo">5. Tomando Decisões no Código<a class="headerlink" href="#5-tomando-decisoes-no-codigo" title="Permanent link">&para;</a></h2>
 <p>Lógica condicional é a espinha dorsal de qualquer programa não trivial. Clojure oferece formas simples e poderosas para isso.</p>
-<h3 id="51-o-fundamental">5.1. O Fundamental<a class="headerlink" href="#51-o-fundamental" title="Permanent link">&para;</a></h3>
+<h3 id="51-o-fundamental-if">5.1. O Fundamental: <code>if</code><a class="headerlink" href="#51-o-fundamental-if" title="Permanent link">&para;</a></h3>
 <p>O <code>if</code> em Clojure é uma expressão, o que significa que ele sempre retorna um valor. Sua estrutura é direta:</p>
 <p><code>(if teste-condicional expressao-se-verdadeiro expressao-se-falso)</code></p>
 <p>Se <code>teste-condicional</code> for verdadeiro, ele avalia e retorna <code>expressao-se-verdadeiro</code>. Caso contrário, avalia e retorna <code>expressao-se-falso</code>.</p>
@@ -2484,10 +2484,6 @@
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">(</span><span class="nf">verificar-verdade</span><span class="w"> </span><span class="nv">false</span><span class="p">)</span>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1">;; =&gt; "Isto é tratado como FALSO."</span>
 </code></pre></div>
-<blockquote>
-<p>Excelente para mostrar que 0, "" e [] são considerados verdadeiros em Clojure!
-</p>
-</blockquote>
 <h3 id="53-predicados-e-a-convencao">5.3. Predicados e a Convenção<a class="headerlink" href="#53-predicados-e-a-convencao" title="Permanent link">&para;</a></h3>
 <p>Uma <strong>função predicado</strong> é simplesmente uma função que retorna um valor booleano (<code>true</code> ou <code>false</code>). Por convenção, em Clojure, os nomes dessas funções terminam com um ponto de interrogação (<code>?</code>).</p>
 <p>Exemplos comuns incluem:</p>
@@ -2517,10 +2513,7 @@
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="p">(</span><span class="nb">zero? </span><span class="mi">10</span><span class="p">)</span>
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1">;; =&gt; false</span>
 </code></pre></div>
-<blockquote>
-<p>Esse trecho ajuda a reforçar o uso de predicados e a importância da interrogação ? na convenção de nomes.
-</p>
-</blockquote>
+<p>Uma variação útil é o <code>if-let</code>: ele combina <code>let</code> e <code>if</code>, ligando um nome a um valor e executando o primeiro ramo apenas se esse valor não for <code>nil</code> nem <code>false</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">(</span><span class="kd">defn </span><span class="nv">saudacao</span><span class="w"> </span><span class="p">[</span><span class="nv">nome</span><span class="p">]</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="p">(</span><span class="nb">if-let </span><span class="p">[</span><span class="nv">n</span><span class="w"> </span><span class="nv">nome</span><span class="p">]</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="p">(</span><span class="nb">str </span><span class="s">"Olá, "</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="s">"!"</span><span class="p">)</span>
@@ -2533,13 +2526,8 @@
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">(</span><span class="nf">saudacao</span><span class="w"> </span><span class="nv">nil</span><span class="p">)</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1">;; =&gt; "Olá, visitante!"</span>
 </code></pre></div>
-<blockquote>
-<p>Uma forma elegante de combinar verificação e binding de valor.
-</p>
-</blockquote>
-<h3 id="54-para-casos-sem-senao">5.4. : Para Casos sem "senão"<a class="headerlink" href="#54-para-casos-sem-senao" title="Permanent link">&para;</a></h3>
-<p>Às vezes, você só quer executar uma ação se uma condição for verdadeira, sem se preocupar com o caso "senão". Para isso, Clojure oferece o <code>when</code>, uma forma mais concisa de <code>if</code> sem a cláusula <code>else</code>.</p>
-<p>Com todos esses blocos de construção em mãos — sintaxe, nomes, funções e condicionais — estamos prontos para descobrir o conceito mais poderoso e distintivo de Clojure e da família Lisp.</p>
+<h3 id="54-when-para-casos-sem-senao">5.4. <code>when</code>: Para Casos sem "senão"<a class="headerlink" href="#54-when-para-casos-sem-senao" title="Permanent link">&para;</a></h3>
+<p>Às vezes, você só quer executar uma ação se uma condição for verdadeira, sem se preocupar com o caso "senão". Para isso, Clojure oferece o <code>when</code>, uma forma mais concisa de <code>if</code> sem a cláusula <code>else</code> — e que aceita várias expressões no corpo.</p>
 <p><strong>Exemplo 1 – Imprimir apenas se o número for positivo</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">(</span><span class="kd">defn </span><span class="nv">mostrar-se-positivo</span><span class="w"> </span><span class="p">[</span><span class="nv">n</span><span class="p">]</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="p">(</span><span class="nb">when </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -2566,10 +2554,7 @@
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">(</span><span class="nf">atualizar-nome</span><span class="w"> </span><span class="p">{</span><span class="ss">:idade</span><span class="w"> </span><span class="mi">30</span><span class="p">})</span>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1">;; =&gt; Não imprime nada</span>
 </code></pre></div>
-<blockquote>
-<p>Este exemplo mostra como when permite várias expressões no corpo, como um println, uma possível lógica de atualização, retorno etc.
-</p>
-</blockquote>
+<p>Repare que o corpo do <code>when</code> tem várias expressões (um <code>println</code>, outras ações, o retorno <code>true</code>), algo que o <code>if</code> não permite sem um <code>do</code>.</p>
 <hr />
 <p><strong>Exemplo 3 – Combinar com Predicados</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">(</span><span class="kd">defn </span><span class="nv">alertar-se-vazio</span><span class="w"> </span><span class="p">[</span><span class="nv">colecao</span><span class="p">]</span>
@@ -2588,6 +2573,7 @@
 <li><code>if</code> → usa-se quando há <strong>caso "senão"</strong>.</li>
 <li><code>when</code> → para <strong>executar algo apenas se a condição for verdadeira</strong>, com possibilidade de múltiplas expressões.</li>
 </ul>
+<p>Com todos esses blocos de construção em mãos — sintaxe, nomes, funções e condicionais — estamos prontos para descobrir o conceito mais poderoso e distintivo de Clojure e da família Lisp.</p>
 <h2 id="6-o-superpoder-do-clojure-homoiconicidade-codigo-como-dados">6. O Superpoder do Clojure: Homoiconicidade (Código como Dados)<a class="headerlink" href="#6-o-superpoder-do-clojure-homoiconicidade-codigo-como-dados" title="Permanent link">&para;</a></h2>
 <p>Este é o conceito que, uma vez compreendido, revela a verdadeira magia por trás das linguagens Lisp.</p>
 <h3 id="61-o-que-significa-codigo-como-dados">6.1. O que significa "Código como Dados"?<a class="headerlink" href="#61-o-que-significa-codigo-como-dados" title="Permanent link">&para;</a></h3>
@@ -2621,11 +2607,11 @@
 <p>Estes são os blocos de construção essenciais. Com essa base sólida, você está mais do que preparado(a) para explorar as estruturas de dados de Clojure, seu modelo de concorrência e o vasto ecossistema de bibliotecas à sua disposição. A jornada é desafiadora, mas incrivelmente recompensadora. Continue curioso(a) e continue codificando!</p>
 <h2 id="8-pratica-guiada">8. Prática Guiada<a class="headerlink" href="#8-pratica-guiada" title="Permanent link">&para;</a></h2>
 <h3 id="81-exercicio-1-operacoes-simples-com-simbolos">8.1. Exercício 1: Operações Simples com Símbolos<a class="headerlink" href="#81-exercicio-1-operacoes-simples-com-simbolos" title="Permanent link">&para;</a></h3>
-<p>Vamos reforçar os conceitos de <code>def</code> e notação prefixa.</p>
+<p>Vamos reforçar os conceitos de <code>def</code> e notação prefixada.</p>
 <ol>
 <li><strong>Passo 1:</strong> Defina um símbolo global <code>preco-base</code> com o valor <code>85</code> usando <code>def</code>.</li>
 <li><strong>Passo 2:</strong> Defina outro símbolo global <code>taxa-fixa</code> com o valor <code>15</code> usando <code>def</code>.</li>
-<li><strong>Passo 3:</strong> Use a notação prefixa para somar os dois símbolos e imprima o resultado com <code>println</code>.</li>
+<li><strong>Passo 3:</strong> Use a notação prefixada para somar os dois símbolos e imprima o resultado com <code>println</code>.</li>
 </ol>
 <h3 id="codigo-da-solucao">Código da Solução<a class="headerlink" href="#codigo-da-solucao" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">(</span><span class="k">def </span><span class="nv">preco-base</span><span class="w"> </span><span class="mi">85</span><span class="p">)</span>

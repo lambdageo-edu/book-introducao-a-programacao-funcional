@@ -1334,10 +1334,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-instalacao-e-ambiente-15-min" class="md-nav__link">
+  <a href="#11-instalacao-e-ambiente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 Instalação e Ambiente (15 min)
+        1.1 Instalação e Ambiente
       
     </span>
   </a>
@@ -1345,15 +1345,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-tipos-basicos-25-min" class="md-nav__link">
+  <a href="#12-tipos-basicos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Tipos Básicos (25 min)
+        1.2 Tipos Básicos
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.2 Tipos Básicos (25 min)">
+    <nav class="md-nav" aria-label="1.2 Tipos Básicos">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1748,10 +1748,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-instalacao-e-ambiente-15-min" class="md-nav__link">
+  <a href="#11-instalacao-e-ambiente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 Instalação e Ambiente (15 min)
+        1.1 Instalação e Ambiente
       
     </span>
   </a>
@@ -1759,15 +1759,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-tipos-basicos-25-min" class="md-nav__link">
+  <a href="#12-tipos-basicos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Tipos Básicos (25 min)
+        1.2 Tipos Básicos
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.2 Tipos Básicos (25 min)">
+    <nav class="md-nav" aria-label="1.2 Tipos Básicos">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1982,7 +1982,7 @@
 <ol>
 <li><strong>VM do Erlang (BEAM) vs JVM</strong>: A JVM do Clojure foi desenhada para alta performance de computação bruta em thread pools. A BEAM do Elixir foi desenhada para sistemas distribuídos altamente tolerantes a falhas e concorrentes com milhões de processos leves de baixo consumo de memória.</li>
 <li><strong>Modelo de Atores vs Memória Compartilhada</strong>: Clojure lida com concorrência usando referências de estado imutável com STM (Software Transactional Memory) ou Atoms sobre threads compartilhadas. Elixir utiliza o <strong>Modelo de Atores</strong>, onde processos são totalmente isolados e não compartilham nenhuma memória entre si, comunicando-se exclusivamente via troca de mensagens assíncronas.</li>
-<li><strong>Sintaxe Amigável</strong>: Elixir possui uma sintaxe influenciada por Ruby, muito mais familiar e acessível para desenvolvedores de linguagens imperativas do que as S-expressions do Clojure, mas mantendo a pureza funcional sob o capô.</li>
+<li><strong>Sintaxe Amigável</strong>: Elixir possui uma sintaxe influenciada por Ruby, muito mais familiar e acessível para desenvolvedores de linguagens imperativas do que as S-expressions do Clojure, mas mantendo a semântica funcional (dados imutáveis) sob o capô.</li>
 <li><strong>O Operador Pipe (<code>|&gt;</code>)</strong>: Elixir introduz uma das sintaxes mais elegantes para pipeline de dados, o operador pipe, que permite encadear transformações de dados de forma extremamente legível (similar às threading macros do Clojure, mas integrado na raiz da sintaxe da linguagem).</li>
 </ol>
 <p>Nesta seção, você aprenderá os fundamentos sintáticos e operacionais do Elixir, preparando-se para construir aplicativos web de tempo real com Phoenix LiveView.</p>
@@ -1996,10 +1996,10 @@
 <li>Manipular coleções básicas com <code>Enum</code></li>
 </ul>
 <hr />
-<h2 id="11-instalacao-e-ambiente-15-min"><strong>1.1 Instalação e Ambiente (15 min)</strong><a class="headerlink" href="#11-instalacao-e-ambiente-15-min" title="Permanent link">&para;</a></h2>
-<p>Exisitem diversas maneiras de instalar o elixir, veja mais detalhes em  https://elixir-lang.org/install.html</p>
+<h2 id="11-instalacao-e-ambiente"><strong>1.1 Instalação e Ambiente</strong><a class="headerlink" href="#11-instalacao-e-ambiente" title="Permanent link">&para;</a></h2>
+<p>Existem diversas maneiras de instalar o Elixir; veja mais detalhes em <a href="https://elixir-lang.org/install.html">https://elixir-lang.org/install.html</a>.</p>
 <hr />
-<h2 id="12-tipos-basicos-25-min"><strong>1.2 Tipos Básicos (25 min)</strong><a class="headerlink" href="#12-tipos-basicos-25-min" title="Permanent link">&para;</a></h2>
+<h2 id="12-tipos-basicos"><strong>1.2 Tipos Básicos</strong><a class="headerlink" href="#12-tipos-basicos" title="Permanent link">&para;</a></h2>
 <h3 id="inteiros-e-operacoes-aritmeticas"><strong>Inteiros e Operações Aritméticas</strong><a class="headerlink" href="#inteiros-e-operacoes-aritmeticas" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="mi">42</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="mh">0x1F</span><span class="w">  </span><span class="c1"># hexadecimal -&gt; 31</span>
@@ -2171,7 +2171,7 @@
 </table>
 <p><strong>Resumo:</strong></p>
 <ul>
-<li>Use <strong>mapas</strong> para representar dados estruturados e mutáveis (como registros de pessoas, produtos, etc.).</li>
+<li>Use <strong>mapas</strong> para representar dados estruturados (como registros de pessoas, produtos, etc.).</li>
 <li>Use <strong>keyword lists</strong> para passar <strong>opções ou parâmetros de funções</strong>, especialmente quando a ordem importa.</li>
 </ul>
 <p>Exemplo:</p>
@@ -2220,14 +2220,14 @@
 <hr />
 <h2 id="exercicios-em-sala"><strong>Exercícios em Sala</strong><a class="headerlink" href="#exercicios-em-sala" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Criar uma lista com números de 1 a 5, usar pipe para <strong>dobrar cada número</strong> e filtrar apenas pares.</li>
+<li>Criar uma lista com números de 1 a 10 e, usando pipe, <strong>filtrar apenas os pares</strong> e depois <strong>dobrar cada um</strong> (resultado esperado: <code>[4, 8, 12, 16, 20]</code>). Por que não faria sentido dobrar primeiro e filtrar depois?</li>
 <li>Criar um mapa representando uma pessoa, <strong>adicionar nova chave</strong> usando <code>Map.put</code>.</li>
 </ol>
 <hr />
 <h2 id="tarefa-para-casa"><strong>Tarefa para Casa</strong><a class="headerlink" href="#tarefa-para-casa" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Ler as lições “Basics” do Elixir School em português.</li>
-<li>Fazer exercícios do Exercism: "Hello World", "Two Fer", "Reverse String".</li>
+<li>Fazer exercícios do Exercism: "Hello World", "Two Fer", "Leap".</li>
 <li>Praticar no IEx: criar <strong>10 pipelines diferentes</strong> usando <code>Enum</code>.</li>
 </ol>
 <hr />

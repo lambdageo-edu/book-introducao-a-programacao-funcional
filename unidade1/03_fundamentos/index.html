@@ -2020,7 +2020,7 @@
 </div>
 <hr />
 <h2 id="3-aritmetica-basica-no-ghci">3. Aritmética Básica no GHCi<a class="headerlink" href="#3-aritmetica-basica-no-ghci" title="Permanent link">&para;</a></h2>
-<p>Ao abrir o GHCi executando <code>ghci</code> no seu terminal (ou <code>cabal repl</code>, se estiver dentro de um projeto Cabal — veremos isso no próximo capítulo), você será recebido pelo prompt <code>Prelude&gt;</code> (o módulo base de funções carregadas por padrão). Podemos usar o interpretador diretamente como uma calculadora de alta precisão:</p>
+<p>Ao abrir o GHCi executando <code>ghci</code> no seu terminal (ou <code>cabal repl</code>, se estiver dentro de um projeto Cabal, como vimos no capítulo anterior), você será recebido por um prompt — <code>Prelude&gt;</code> nas versões mais antigas do GHC (o nome do módulo base, carregado por padrão), <code>ghci&gt;</code> nas versões 9.x. Os exemplos deste livro usam as duas formas; o comportamento é o mesmo. Podemos usar o interpretador diretamente como uma calculadora de alta precisão:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">15</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="mi">17</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">49</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span>
@@ -2103,13 +2103,13 @@
 <h3 id="precedencia-de-aplicacao-de-funcoes">Precedência de Aplicação de Funções<a class="headerlink" href="#precedencia-de-aplicacao-de-funcoes" title="Permanent link">&para;</a></h3>
 <p>A aplicação de função em Haskell possui a <strong>maior prioridade de todas</strong>. Isso significa que a expressão <code>f x + 1</code> é avaliada como <code>(f x) + 1</code>, e não como <code>f (x + 1)</code>.</p>
 <p>Se desejarmos passar o resultado de uma operação como argumento para uma função, devemos delimitar explicitamente o argumento com parênteses:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="n">succ</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="mi">7</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">-- Avaliado como: (succ 5) + 1 = 6 + 1 = 7</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="n">succ</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="mi">100</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">-- Avaliado como: (succ 9) * 10 = 10 * 10 = 100</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="n">succ</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="mi">7</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">-- Avaliado como: succ 6 = 7</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="kt">Prelude</span><span class="o">&gt;</span><span class="w"> </span><span class="n">succ</span><span class="w"> </span><span class="p">(</span><span class="mi">9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="mi">91</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">-- Avaliado como: succ 90 = 91</span>
 </code></pre></div>
 <hr />
 <h2 id="6-definicoes-locais-let-e-where">6. Definições Locais: <code>let</code> e <code>where</code><a class="headerlink" href="#6-definicoes-locais-let-e-where" title="Permanent link">&para;</a></h2>
