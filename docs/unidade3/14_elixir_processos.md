@@ -7,11 +7,12 @@
 **1. O Problema da Concorrência Tradicional**
 
 Na engenharia de software clássica (Java, C++, C#), a unidade de concorrência é a **Thread do Sistema Operacional (OS Thread)**.
-• **Peso:** Cada thread consome uma quantidade significativa de memória (geralmente alguns MBs apenas para a stack).
-• **Gerenciamento:** O Kernel do SO é responsável por agendar essas threads (Context Switching). Trocar de contexto no nível do kernel é uma operação custosa (latência).
-• **Memória Compartilhada:** Threads do mesmo processo compartilham o mesmo espaço de memória (Heap).
-    ◦ *O Perigo:* Se a Thread A e a Thread B tentam escrever na variável `x` ao mesmo tempo, ocorre uma **Condição de Corrida (Race Condition)**.
-    ◦ *A Solução (e o problema dela):* Usamos Mutexes, Semáforos e Locks. Isso introduz complexidade e riscos de **Deadlocks**.
+
+- **Peso:** Cada thread consome uma quantidade significativa de memória (geralmente alguns MBs apenas para a stack).
+- **Gerenciamento:** O Kernel do SO é responsável por agendar essas threads (Context Switching). Trocar de contexto no nível do kernel é uma operação custosa (latência).
+- **Memória Compartilhada:** Threads do mesmo processo compartilham o mesmo espaço de memória (Heap).
+    - *O Perigo:* Se a Thread A e a Thread B tentam escrever na variável `x` ao mesmo tempo, ocorre uma **Condição de Corrida (Race Condition)**.
+    - *A Solução (e o problema dela):* Usamos Mutexes, Semáforos e Locks. Isso introduz complexidade e riscos de **Deadlocks**.
 
 **2. A Solução Elixir: O Modelo de Atores e a BEAM**
 
@@ -19,16 +20,17 @@ O Elixir roda sobre a BEAM. A BEAM não utiliza threads do SO diretamente para e
 
 **2.1. O Processo da BEAM**
 
-• **Peso:** Extremamente leve (inicia com cerca de ~300 words ou ~2.5KB). Você pode rodar milhões deles em um laptop.
-• **Isolamento de Memória (Share Nothing):** Cada processo tem sua própria Heap e Stack. O Processo A **não consegue** acessar a memória do Processo B.
-• **Comunicação:** A única forma de interação é através de **Troca de Mensagens** (Message Passing). Os dados são copiados de um processo para outro (com exceção de binários grandes, que usam contagem de referência).
+- **Peso:** Extremamente leve (inicia com cerca de ~300 words ou ~2.5KB). Você pode rodar milhões deles em um laptop.
+- **Isolamento de Memória (Share Nothing):** Cada processo tem sua própria Heap e Stack. O Processo A **não consegue** acessar a memória do Processo B.
+- **Comunicação:** A única forma de interação é através de **Troca de Mensagens** (Message Passing). Os dados são copiados de um processo para outro (com exceção de binários grandes, que usam contagem de referência).
 
 **2.2. O Scheduler da BEAM (Escalonamento)**
 
 Isso é crucial para engenheiros: A BEAM roda, geralmente, uma Thread de SO por Núcleo de CPU.
 Dentro dessas threads, a BEAM roda seus próprios escalonadores (Schedulers).
-• **Escalonamento Preemptivo:** A BEAM atribui a cada processo um número de "reduções" (aproximadamente 2000 chamadas de função). Quando as reduções acabam, a BEAM pausa o processo forçadamente e dá a vez para o próximo.
-    ◦ *Vantagem:* Um processo com loop infinito ou cálculo pesado **não trava o sistema**. Em Node.js (single-thread event loop), um cálculo pesado trava tudo. No Elixir, não.
+
+- **Escalonamento Preemptivo:** A BEAM atribui a cada processo um número de "reduções" (aproximadamente 2000 chamadas de função). Quando as reduções acabam, a BEAM pausa o processo forçadamente e dá a vez para o próximo.
+    - *Vantagem:* Um processo com loop infinito ou cálculo pesado **não trava o sistema**. Em Node.js (single-thread event loop), um cálculo pesado trava tudo. No Elixir, não.
 
 **3. Comparativo Técnico: Elixir vs. Go (Goroutines) vs. Java (Threads)**
 
@@ -57,21 +59,24 @@ Precisamos alinhar o vocabulário para as próximas etapas.
 
 **4.1. Concorrência vs. Paralelismo**
 
-• **Concorrência:** É sobre a **estrutura** do programa. É a capacidade de lidar com muitas coisas ao mesmo tempo. (Ex: Um servidor web aceitando 10 mil conexões).
-• **Paralelismo:** É sobre a **execução** física. É fazer muitas coisas no mesmo instante de tempo. Requer múltiplos núcleos de CPU.
-    ◦ *Em Elixir:* Você escreve código concorrente (muitos processos). A BEAM se encarrega de paralelizar isso automaticamente em todos os núcleos disponíveis.
+- **Concorrência:** É sobre a **estrutura** do programa. É a capacidade de lidar com muitas coisas ao mesmo tempo. (Ex: Um servidor web aceitando 10 mil conexões).
+- **Paralelismo:** É sobre a **execução** física. É fazer muitas coisas no mesmo instante de tempo. Requer múltiplos núcleos de CPU.
+    - *Em Elixir:* Você escreve código concorrente (muitos processos). A BEAM se encarrega de paralelizar isso automaticamente em todos os núcleos disponíveis.
 
 **4.2. Síncrono vs. Assíncrono**
 
 Em sistemas distribuídos (e no Elixir):
-• **Síncrono (Call):** Envio a mensagem e **bloqueio** minha execução até receber a resposta (Request/Response).
-• **Assíncrono (Cast):** Envio a mensagem e sigo minha vida ("Fire and forget"). Não sei se a mensagem chegou ou se foi processada na hora.
+
+- **Síncrono (Call):** Envio a mensagem e **bloqueio** minha execução até receber a resposta (Request/Response).
+- **Assíncrono (Cast):** Envio a mensagem e sigo minha vida ("Fire and forget"). Não sei se a mensagem chegou ou se foi processada na hora.
 
 **4.3. Transparência de Localização (Sistemas Distribuídos)**
 
 Como processos se comunicam apenas por mensagens enviadas para um endereço (PID - Process ID), não importa onde esse processo está.
-• Enviar mensagem para o PID `<0.100.0>` (na mesma máquina).
-• Enviar mensagem para o PID `<50.100.0>` (em um servidor no Japão).
+
+- Enviar mensagem para o PID `<0.100.0>` (na mesma máquina).
+- Enviar mensagem para o PID `<50.100.0>` (em um servidor no Japão).
+
 **O código é exatamente o mesmo.** Isso torna o Elixir uma linguagem naturalmente orientada a sistemas distribuídos (Clusters).
 
 ## Módulo 2: Laboratório de Anatomia de Processos
@@ -134,6 +139,7 @@ Process.alive?(pid_calculadora)
 ```
 
 **O Conceito de Ciclo de Vida:**
+
 Por que ele morreu?
 Diferente de uma Thread Java que pode ficar "idle" (ociosa) gastando recursos, um Processo Elixir é estritamente funcional.
 
@@ -152,30 +158,28 @@ O envio de mensagens em Elixir é **Assíncrono (Non-blocking)**.
 Vamos usar o seu próprio processo do IEx (`self()`) para testar.
 
 1. Armazene seu endereço:
-    
+
     ```elixir
     meu_pid = self()
     ```
-    
+
 2. Envie uma mensagem para si mesmo:
-    
+
     ```elixir
     send(meu_pid, {:ola, "Mundo"})
     # Saída: {:ola, "Mundo"}
     ```
-    
+
     *Observe:* A função retorna a mensagem enviada, mas nada foi impresso na tela como "Recebido". Onde está a mensagem?
-    
-3. Inspecione a memória do processo (Buffer):
-Use a função de debug `flush()`:
-    
+
+3. Inspecione a memória do processo (Buffer). Use a função de debug `flush()`:
+
     ```elixir
     flush()
     # Saída:
     # {:ola, "Mundo"}
     # :ok
     ```
-    
 
 **Análise do Engenheiro:**
 A mensagem ficou armazenada na Heap do processo. O `send` apenas deposita a mensagem e retorna o controle imediatamente para a CPU. O remetente não sabe se a mensagem foi lida. Isso é o fundamento do desacoplamento em sistemas distribuídos.
@@ -274,7 +278,7 @@ Recompile o projeto para ler o arquivo novo:
 recompile()
 ```
 
-ou caso tenha saido:
+ou caso tenha saído:
 
 ```bash
 iex -S mix
@@ -289,45 +293,46 @@ pid = spawn(ProcessoPersistente, :aguardar_mensagem, [])
 
 ---
 
-- Entendendo o `spawn/3`
-    
-    Quando usamos `spawn/3`, estamos usando o padrão **MFA** (Module, Function, Arguments), que é onipresente na máquina virtual do Elixir.
-    
-    O terceiro parâmetro (`[]`) é a **Lista de Argumentos Iniciais** que serão passados para a função quando ela começar.
-    
-    ### 1. Por que está vazio `[]` esse exemplo?
-    
-    Olhe para a definição da função que criamos:
-    
-    ```elixir
-    def aguardar_mensagem do  # <--- Veja: Não recebe nenhum parâmetro aqui
-      receive do
-        # ...
-      end
-    end
-    ```
-    
-    Como a função `aguardar_mensagem/0` não pede nenhum dado para começar, nós passamos uma lista vazia `[]` no `spawn`.
-    
-    ### 2. E se a função precisasse de dados?
-    
-    Imagine que queremos criar um processo que já nasce sabendo o nome do usuário.
-    
-    **A função seria:**
-    
-    ```elixir
-    def cumprimentar(nome, idade) do
-      IO.puts "Olá, eu sou o #{nome} e tenho #{idade} anos."
-    end
-    ```
-    
-    **O Spawn seria:**
-    
-    ```elixir
-    # A lista DEVE ter 2 itens, na mesma ordem dos parâmetros da função
-    spawn(Modulo, :cumprimentar, ["Maria", 30])
-    ```
-    
+#### Entendendo o `spawn/3`
+
+Quando usamos `spawn/3`, estamos usando o padrão **MFA** (Module, Function, Arguments), que é onipresente na máquina virtual do Elixir.
+
+O terceiro parâmetro (`[]`) é a **Lista de Argumentos Iniciais** que serão passados para a função quando ela começar.
+
+**1. Por que está vazio `[]` esse exemplo?**
+
+Olhe para a definição da função que criamos:
+
+```elixir
+def aguardar_mensagem do  # <--- Veja: Não recebe nenhum parâmetro aqui
+  receive do
+    # ...
+  end
+end
+```
+
+Como a função `aguardar_mensagem/0` não pede nenhum dado para começar, nós passamos uma lista vazia `[]` no `spawn`.
+
+**2. E se a função precisasse de dados?**
+
+Imagine que queremos criar um processo que já nasce sabendo o nome do usuário.
+
+**A função seria:**
+
+```elixir
+def cumprimentar(nome, idade) do
+  IO.puts "Olá, eu sou o #{nome} e tenho #{idade} anos."
+end
+```
+
+**O Spawn seria:**
+
+```elixir
+# A lista DEVE ter 2 itens, na mesma ordem dos parâmetros da função
+spawn(Modulo, :cumprimentar, ["Maria", 30])
+```
+
+---
 
 Agora vamos enviar algumas mensagens:
 
@@ -441,6 +446,7 @@ Como engenheiros, analisamos os riscos daquela abordagem manual:
 1. **Boilerplate:** Você teve que escrever a recursão (`loop_do_servidor`) manualmente. Se esquecer uma linha, o servidor morre.
 2. **Timeouts:** Se você mandar uma mensagem e o servidor não responder, seu cliente fica travado para sempre.
 3. **Padronização:** Se cada programador escrever seu próprio loop `receive`, o código do projeto vira uma bagunça imprevisível.
+
 Para resolver isso, a OTP (Open Telecom Platform) nos dá o **GenServer** (Generic Server). Ele abstrai a recursão, o tratamento de erros e o ciclo de vida do processo.
 
 **2.1. Teoria: A Fronteira do Processo (Client vs Server)**
@@ -463,11 +469,12 @@ Em sistemas distribuídos, a forma como enviamos mensagens define a confiabilida
 **3. Laboratório Prático: O Banco Profissional**
 
 Agora vamos refazer nossa conta bancária, mas usando a estrutura que você verá em empresas reais como Discord ou WhatsApp.
-Desafio de Engenharia:
-Implementar o módulo ContaBancaria onde:
-• O **Estado** (Saldo) é gerenciado automaticamente pelo GenServer.
-• **Depósitos** usam `cast` (pois o banco aceita seu dinheiro na hora, sem bloquear).
-• **Saques** e **Consultas** usam `call` (pois você precisa da resposta imediata).
+
+**Desafio de Engenharia:** Implementar o módulo `ContaBancaria` onde:
+
+- O **Estado** (Saldo) é gerenciado automaticamente pelo GenServer.
+- **Depósitos** usam `cast` (pois o banco aceita seu dinheiro na hora, sem bloquear).
+- **Saques** e **Consultas** usam `call` (pois você precisa da resposta imediata).
 
 #### Passo 2: A Implementação Profissional
 
@@ -566,11 +573,11 @@ Imagine que você digitou errado o nome da função (escreveu `handle_cat` em ve
 
 - **SEM `@impl`:** O Elixir vai achar que você criou uma função nova chamada `handle_cat` propositalmente. O código compila, mas seu servidor não funciona (as mensagens são ignoradas). Você perde horas debugando.
 - **COM `@impl`:** O compilador emite um **aviso** (*warning*) apontando o erro na hora da compilação:
-    
+
     ```text
     warning: got "@impl true" for function handle_cat/2 but no behaviour specifies such callback.
     ```
-    
+
     Não é um erro que impede a compilação, mas é um aviso impossível de ignorar — e ferramentas como `mix compile --warnings-as-errors` (comum em CI) o transformam em erro.
 
 **Regra de Ouro:** Sempre use `@impl true` nos callbacks (`init`, `handle_call`, `handle_cast`, `terminate`). É o cinto de segurança do seu código.
@@ -668,42 +675,42 @@ Quando criamos o projeto com `mix new lab_concorrencia`, ele veio "pelado". Prec
 
 1. Crie o arquivo `lib/lab_concorrencia/application.ex`:
 
-```elixir
-defmodule LabConcorrencia.Application do
-  # Transforma este módulo em uma Application (ponto de partida do sistema)
-  use Application
+    ```elixir
+    defmodule LabConcorrencia.Application do
+      # Transforma este módulo em uma Application (ponto de partida do sistema)
+      use Application
 
-  @impl true
-  def start(_type, _args) do
-    # Lista de filhos que queremos que iniciem junto com o App
-    children = [
-      # Aqui dizemos: "Supervisor, inicie a ContaBancaria com saldo 1000"
-      {ContaBancaria, 1000}
-    ]
+      @impl true
+      def start(_type, _args) do
+        # Lista de filhos que queremos que iniciem junto com o App
+        children = [
+          # Aqui dizemos: "Supervisor, inicie a ContaBancaria com saldo 1000"
+          {ContaBancaria, 1000}
+        ]
 
-    # Opções:
-    # strategy: :one_for_one -> Se a conta morrer, reinicia ela.
-    # name: Nome do Supervisor para referência.
-    opts = [strategy: :one_for_one, name: LabConcorrencia.Supervisor]
+        # Opções:
+        # strategy: :one_for_one -> Se a conta morrer, reinicia ela.
+        # name: Nome do Supervisor para referência.
+        opts = [strategy: :one_for_one, name: LabConcorrencia.Supervisor]
 
-    IO.puts("🛡️ Supervisor Iniciado. Vigiando processos...")
-    Supervisor.start_link(children, opts)
-  end
-end
-```
+        IO.puts("🛡️ Supervisor Iniciado. Vigiando processos...")
+        Supervisor.start_link(children, opts)
+      end
+    end
+    ```
 
-1. **IMPORTANTE:** Precisamos avisar o Mix para carregar esse arquivo.
+2. **IMPORTANTE:** Precisamos avisar o Mix para carregar esse arquivo.
 Abra o arquivo `mix.exs` na raiz, procure a função `application` e altere para:
 
-```elixir
-  def application do
-    [
-      extra_applications: [:logger],
-      # Adicione esta linha: 'mod' define o módulo de entrada da aplicação
-      mod: {LabConcorrencia.Application, []} 
-    ]
-  end
-```
+    ```elixir
+      def application do
+        [
+          extra_applications: [:logger],
+          # Adicione esta linha: 'mod' define o módulo de entrada da aplicação
+          mod: {LabConcorrencia.Application, []} 
+        ]
+      end
+    ```
 
 ---
 
@@ -819,7 +826,7 @@ Pegue o PID novo e veja o saldo:
 
 ```elixir
 [{_, novo_pid, _, _}] = Supervisor.which_children(LabConcorrencia.Supervisor)
-	ContaBancaria.ver_saldo(novo_pid)
+ContaBancaria.ver_saldo(novo_pid)
 # 1000
 ```
 
@@ -898,26 +905,25 @@ end
 
 Reinicie seu terminal (`iex -S mix`) e veja a mágica da **Transparência de Localização**.
 
-1. **Uso direto (Sem PID):**Elixir
-    
+1. **Uso direto (Sem PID):**
+
     ```elixir
     # Não preciso mais buscar PID. Chamo direto pelo nome do módulo.
     ContaBancaria.ver_saldo()
     # 1000
     ```
-    
-2. **Crash e Recuperação Transparente:**Elixir
-    
+
+2. **Crash e Recuperação Transparente:**
+
     ```elixir
     # Vamos matar o processo
     ContaBancaria.causar_bug()
     # [Log de erro gigante...]
-    
+
     # IMEDIATAMENTE tente ver o saldo de novo:
     ContaBancaria.ver_saldo()
     # 1000
     ```
-    
 
 **O que aconteceu?**
 
