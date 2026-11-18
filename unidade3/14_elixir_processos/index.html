@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1499,27 +1499,22 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="6. A Persistência: Recursão de Cauda (O Servidor)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-por-que-esta-vazio-esse-exemplo" class="md-nav__link">
+  <a href="#entendendo-o-spawn3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Por que está vazio [] esse exemplo?
+        Entendendo o spawn/3
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2-e-se-a-funcao-precisasse-de-dados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. E se a função precisasse de dados?
-      
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -2181,27 +2176,22 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="6. A Persistência: Recursão de Cauda (O Servidor)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-por-que-esta-vazio-esse-exemplo" class="md-nav__link">
+  <a href="#entendendo-o-spawn3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Por que está vazio [] esse exemplo?
+        Entendendo o spawn/3
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2-e-se-a-funcao-precisasse-de-dados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. E se a função precisasse de dados?
-      
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -2682,23 +2672,33 @@
 <h2 id="modulo-1-fundamentos-de-computacao-concorrente-na-beam">Módulo 1: Fundamentos de Computação Concorrente na BEAM<a class="headerlink" href="#modulo-1-fundamentos-de-computacao-concorrente-na-beam" title="Permanent link">&para;</a></h2>
 <p><strong>Objetivo:</strong> Compreender o modelo de execução da Máquina Virtual Erlang (BEAM) e contrastá-lo com os modelos tradicionais de Threads de SO e Green Threads (Go).</p>
 <p><strong>1. O Problema da Concorrência Tradicional</strong></p>
-<p>Na engenharia de software clássica (Java, C++, C#), a unidade de concorrência é a <strong>Thread do Sistema Operacional (OS Thread)</strong>.
-• <strong>Peso:</strong> Cada thread consome uma quantidade significativa de memória (geralmente alguns MBs apenas para a stack).
-• <strong>Gerenciamento:</strong> O Kernel do SO é responsável por agendar essas threads (Context Switching). Trocar de contexto no nível do kernel é uma operação custosa (latência).
-• <strong>Memória Compartilhada:</strong> Threads do mesmo processo compartilham o mesmo espaço de memória (Heap).
-    ◦ <em>O Perigo:</em> Se a Thread A e a Thread B tentam escrever na variável <code>x</code> ao mesmo tempo, ocorre uma <strong>Condição de Corrida (Race Condition)</strong>.
-    ◦ <em>A Solução (e o problema dela):</em> Usamos Mutexes, Semáforos e Locks. Isso introduz complexidade e riscos de <strong>Deadlocks</strong>.</p>
+<p>Na engenharia de software clássica (Java, C++, C#), a unidade de concorrência é a <strong>Thread do Sistema Operacional (OS Thread)</strong>.</p>
+<ul>
+<li><strong>Peso:</strong> Cada thread consome uma quantidade significativa de memória (geralmente alguns MBs apenas para a stack).</li>
+<li><strong>Gerenciamento:</strong> O Kernel do SO é responsável por agendar essas threads (Context Switching). Trocar de contexto no nível do kernel é uma operação custosa (latência).</li>
+<li><strong>Memória Compartilhada:</strong> Threads do mesmo processo compartilham o mesmo espaço de memória (Heap).<ul>
+<li><em>O Perigo:</em> Se a Thread A e a Thread B tentam escrever na variável <code>x</code> ao mesmo tempo, ocorre uma <strong>Condição de Corrida (Race Condition)</strong>.</li>
+<li><em>A Solução (e o problema dela):</em> Usamos Mutexes, Semáforos e Locks. Isso introduz complexidade e riscos de <strong>Deadlocks</strong>.</li>
+</ul>
+</li>
+</ul>
 <p><strong>2. A Solução Elixir: O Modelo de Atores e a BEAM</strong></p>
 <p>O Elixir roda sobre a BEAM. A BEAM não utiliza threads do SO diretamente para executar sua lógica. Ela utiliza <strong>Processos Leves (Lightweight Processes)</strong>.</p>
 <p><strong>2.1. O Processo da BEAM</strong></p>
-<p>• <strong>Peso:</strong> Extremamente leve (inicia com cerca de ~300 words ou ~2.5KB). Você pode rodar milhões deles em um laptop.
-• <strong>Isolamento de Memória (Share Nothing):</strong> Cada processo tem sua própria Heap e Stack. O Processo A <strong>não consegue</strong> acessar a memória do Processo B.
-• <strong>Comunicação:</strong> A única forma de interação é através de <strong>Troca de Mensagens</strong> (Message Passing). Os dados são copiados de um processo para outro (com exceção de binários grandes, que usam contagem de referência).</p>
+<ul>
+<li><strong>Peso:</strong> Extremamente leve (inicia com cerca de ~300 words ou ~2.5KB). Você pode rodar milhões deles em um laptop.</li>
+<li><strong>Isolamento de Memória (Share Nothing):</strong> Cada processo tem sua própria Heap e Stack. O Processo A <strong>não consegue</strong> acessar a memória do Processo B.</li>
+<li><strong>Comunicação:</strong> A única forma de interação é através de <strong>Troca de Mensagens</strong> (Message Passing). Os dados são copiados de um processo para outro (com exceção de binários grandes, que usam contagem de referência).</li>
+</ul>
 <p><strong>2.2. O Scheduler da BEAM (Escalonamento)</strong></p>
 <p>Isso é crucial para engenheiros: A BEAM roda, geralmente, uma Thread de SO por Núcleo de CPU.
-Dentro dessas threads, a BEAM roda seus próprios escalonadores (Schedulers).
-• <strong>Escalonamento Preemptivo:</strong> A BEAM atribui a cada processo um número de "reduções" (aproximadamente 2000 chamadas de função). Quando as reduções acabam, a BEAM pausa o processo forçadamente e dá a vez para o próximo.
-    ◦ <em>Vantagem:</em> Um processo com loop infinito ou cálculo pesado <strong>não trava o sistema</strong>. Em Node.js (single-thread event loop), um cálculo pesado trava tudo. No Elixir, não.</p>
+Dentro dessas threads, a BEAM roda seus próprios escalonadores (Schedulers).</p>
+<ul>
+<li><strong>Escalonamento Preemptivo:</strong> A BEAM atribui a cada processo um número de "reduções" (aproximadamente 2000 chamadas de função). Quando as reduções acabam, a BEAM pausa o processo forçadamente e dá a vez para o próximo.<ul>
+<li><em>Vantagem:</em> Um processo com loop infinito ou cálculo pesado <strong>não trava o sistema</strong>. Em Node.js (single-thread event loop), um cálculo pesado trava tudo. No Elixir, não.</li>
+</ul>
+</li>
+</ul>
 <p><strong>3. Comparativo Técnico: Elixir vs. Go (Goroutines) vs. Java (Threads)</strong></p>
 <p>Esta é uma dúvida comum de mercado e academia.</p>
 <table>
@@ -2753,18 +2753,26 @@ Dentro dessas threads, a BEAM roda seus próprios escalonadores (Schedulers).
 <p><strong>4. Conceitos Fundamentais</strong></p>
 <p>Precisamos alinhar o vocabulário para as próximas etapas.</p>
 <p><strong>4.1. Concorrência vs. Paralelismo</strong></p>
-<p>• <strong>Concorrência:</strong> É sobre a <strong>estrutura</strong> do programa. É a capacidade de lidar com muitas coisas ao mesmo tempo. (Ex: Um servidor web aceitando 10 mil conexões).
-• <strong>Paralelismo:</strong> É sobre a <strong>execução</strong> física. É fazer muitas coisas no mesmo instante de tempo. Requer múltiplos núcleos de CPU.
-    ◦ <em>Em Elixir:</em> Você escreve código concorrente (muitos processos). A BEAM se encarrega de paralelizar isso automaticamente em todos os núcleos disponíveis.</p>
+<ul>
+<li><strong>Concorrência:</strong> É sobre a <strong>estrutura</strong> do programa. É a capacidade de lidar com muitas coisas ao mesmo tempo. (Ex: Um servidor web aceitando 10 mil conexões).</li>
+<li><strong>Paralelismo:</strong> É sobre a <strong>execução</strong> física. É fazer muitas coisas no mesmo instante de tempo. Requer múltiplos núcleos de CPU.<ul>
+<li><em>Em Elixir:</em> Você escreve código concorrente (muitos processos). A BEAM se encarrega de paralelizar isso automaticamente em todos os núcleos disponíveis.</li>
+</ul>
+</li>
+</ul>
 <p><strong>4.2. Síncrono vs. Assíncrono</strong></p>
-<p>Em sistemas distribuídos (e no Elixir):
-• <strong>Síncrono (Call):</strong> Envio a mensagem e <strong>bloqueio</strong> minha execução até receber a resposta (Request/Response).
-• <strong>Assíncrono (Cast):</strong> Envio a mensagem e sigo minha vida ("Fire and forget"). Não sei se a mensagem chegou ou se foi processada na hora.</p>
+<p>Em sistemas distribuídos (e no Elixir):</p>
+<ul>
+<li><strong>Síncrono (Call):</strong> Envio a mensagem e <strong>bloqueio</strong> minha execução até receber a resposta (Request/Response).</li>
+<li><strong>Assíncrono (Cast):</strong> Envio a mensagem e sigo minha vida ("Fire and forget"). Não sei se a mensagem chegou ou se foi processada na hora.</li>
+</ul>
 <p><strong>4.3. Transparência de Localização (Sistemas Distribuídos)</strong></p>
-<p>Como processos se comunicam apenas por mensagens enviadas para um endereço (PID - Process ID), não importa onde esse processo está.
-• Enviar mensagem para o PID <code>&lt;0.100.0&gt;</code> (na mesma máquina).
-• Enviar mensagem para o PID <code>&lt;50.100.0&gt;</code> (em um servidor no Japão).
-<strong>O código é exatamente o mesmo.</strong> Isso torna o Elixir uma linguagem naturalmente orientada a sistemas distribuídos (Clusters).</p>
+<p>Como processos se comunicam apenas por mensagens enviadas para um endereço (PID - Process ID), não importa onde esse processo está.</p>
+<ul>
+<li>Enviar mensagem para o PID <code>&lt;0.100.0&gt;</code> (na mesma máquina).</li>
+<li>Enviar mensagem para o PID <code>&lt;50.100.0&gt;</code> (em um servidor no Japão).</li>
+</ul>
+<p><strong>O código é exatamente o mesmo.</strong> Isso torna o Elixir uma linguagem naturalmente orientada a sistemas distribuídos (Clusters).</p>
 <h2 id="modulo-2-laboratorio-de-anatomia-de-processos">Módulo 2: Laboratório de Anatomia de Processos<a class="headerlink" href="#modulo-2-laboratorio-de-anatomia-de-processos" title="Permanent link">&para;</a></h2>
 <p><strong>Objetivo:</strong> Manipular as primitivas de concorrência da BEAM (<code>spawn</code>, <code>send</code>, <code>receive</code>) e entender o ciclo de vida de um processo.</p>
 <h3 id="1-preparacao-do-ambiente">1. Preparação do Ambiente<a class="headerlink" href="#1-preparacao-do-ambiente" title="Permanent link">&para;</a></h3>
@@ -2803,8 +2811,8 @@ Isso carrega o ambiente do Mix, que será útil para compilar os módulos que cr
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nc">Process</span><span class="o">.</span><span class="n">alive?</span><span class="p">(</span><span class="n">pid_calculadora</span><span class="p">)</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Saída: false</span>
 </code></pre></div>
-<p><strong>O Conceito de Ciclo de Vida:</strong>
-Por que ele morreu?
+<p><strong>O Conceito de Ciclo de Vida:</strong></p>
+<p>Por que ele morreu?
 Diferente de uma Thread Java que pode ficar "idle" (ociosa) gastando recursos, um Processo Elixir é estritamente funcional.</p>
 <ol>
 <li>Ele nasce.</li>
@@ -2831,8 +2839,7 @@ O envio de mensagens em Elixir é <strong>Assíncrono (Non-blocking)</strong>.</
 <p><em>Observe:</em> A função retorna a mensagem enviada, mas nada foi impresso na tela como "Recebido". Onde está a mensagem?</p>
 </li>
 <li>
-<p>Inspecione a memória do processo (Buffer):
-Use a função de debug <code>flush()</code>:</p>
+<p>Inspecione a memória do processo (Buffer). Use a função de debug <code>flush()</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">flush</span><span class="p">()</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># Saída:</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># {:ola, "Mundo"}</span>
@@ -2907,7 +2914,7 @@ Em linguagens imperativas, usaríamos <code>while(true)</code>. Em Elixir, usamo
 <p>Recompile o projeto para ler o arquivo novo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">recompile</span><span class="p">()</span>
 </code></pre></div>
-<p>ou caso tenha saido:</p>
+<p>ou caso tenha saído:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>iex<span class="w"> </span>-S<span class="w"> </span>mix
 </code></pre></div>
 <p>Teste a persistência:</p>
@@ -2915,12 +2922,10 @@ Em linguagens imperativas, usaríamos <code>while(true)</code>. Em Elixir, usamo
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn</span><span class="p">(</span><span class="nc">ProcessoPersistente</span><span class="p">,</span><span class="w"> </span><span class="ss">:aguardar_mensagem</span><span class="p">,</span><span class="w"> </span><span class="p">[])</span>
 </code></pre></div>
 <hr />
-<ul>
-<li>
-<p>Entendendo o <code>spawn/3</code></p>
+<h4 id="entendendo-o-spawn3">Entendendo o <code>spawn/3</code><a class="headerlink" href="#entendendo-o-spawn3" title="Permanent link">&para;</a></h4>
 <p>Quando usamos <code>spawn/3</code>, estamos usando o padrão <strong>MFA</strong> (Module, Function, Arguments), que é onipresente na máquina virtual do Elixir.</p>
 <p>O terceiro parâmetro (<code>[]</code>) é a <strong>Lista de Argumentos Iniciais</strong> que serão passados para a função quando ela começar.</p>
-<h3 id="1-por-que-esta-vazio-esse-exemplo">1. Por que está vazio <code>[]</code> esse exemplo?<a class="headerlink" href="#1-por-que-esta-vazio-esse-exemplo" title="Permanent link">&para;</a></h3>
+<p><strong>1. Por que está vazio <code>[]</code> esse exemplo?</strong></p>
 <p>Olhe para a definição da função que criamos:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">def</span><span class="w"> </span><span class="n">aguardar_mensagem</span><span class="w"> </span><span class="k">do</span><span class="w">  </span><span class="c1"># &lt;--- Veja: Não recebe nenhum parâmetro aqui</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="k">receive</span><span class="w"> </span><span class="k">do</span>
@@ -2929,7 +2934,7 @@ Em linguagens imperativas, usaríamos <code>while(true)</code>. Em Elixir, usamo
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">end</span>
 </code></pre></div>
 <p>Como a função <code>aguardar_mensagem/0</code> não pede nenhum dado para começar, nós passamos uma lista vazia <code>[]</code> no <code>spawn</code>.</p>
-<h3 id="2-e-se-a-funcao-precisasse-de-dados">2. E se a função precisasse de dados?<a class="headerlink" href="#2-e-se-a-funcao-precisasse-de-dados" title="Permanent link">&para;</a></h3>
+<p><strong>2. E se a função precisasse de dados?</strong></p>
 <p>Imagine que queremos criar um processo que já nasce sabendo o nome do usuário.</p>
 <p><strong>A função seria:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">def</span><span class="w"> </span><span class="n">cumprimentar</span><span class="p">(</span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="n">idade</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
@@ -2940,8 +2945,7 @@ Em linguagens imperativas, usaríamos <code>while(true)</code>. Em Elixir, usamo
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># A lista DEVE ter 2 itens, na mesma ordem dos parâmetros da função</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">spawn</span><span class="p">(</span><span class="nc">Modulo</span><span class="p">,</span><span class="w"> </span><span class="ss">:cumprimentar</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"Maria"</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">])</span>
 </code></pre></div>
-</li>
-</ul>
+<hr />
 <p>Agora vamos enviar algumas mensagens:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># 2. Enviar múltiplas mensagens</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">send</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">:mensagem</span><span class="p">,</span><span class="w"> </span><span class="s2">"Primeiro log"</span><span class="p">})</span>
@@ -3035,9 +3039,9 @@ Como engenheiros, analisamos os riscos daquela abordagem manual:</p>
 <ol>
 <li><strong>Boilerplate:</strong> Você teve que escrever a recursão (<code>loop_do_servidor</code>) manualmente. Se esquecer uma linha, o servidor morre.</li>
 <li><strong>Timeouts:</strong> Se você mandar uma mensagem e o servidor não responder, seu cliente fica travado para sempre.</li>
-<li><strong>Padronização:</strong> Se cada programador escrever seu próprio loop <code>receive</code>, o código do projeto vira uma bagunça imprevisível.
-Para resolver isso, a OTP (Open Telecom Platform) nos dá o <strong>GenServer</strong> (Generic Server). Ele abstrai a recursão, o tratamento de erros e o ciclo de vida do processo.</li>
+<li><strong>Padronização:</strong> Se cada programador escrever seu próprio loop <code>receive</code>, o código do projeto vira uma bagunça imprevisível.</li>
 </ol>
+<p>Para resolver isso, a OTP (Open Telecom Platform) nos dá o <strong>GenServer</strong> (Generic Server). Ele abstrai a recursão, o tratamento de erros e o ciclo de vida do processo.</p>
 <p><strong>2.1. Teoria: A Fronteira do Processo (Client vs Server)</strong></p>
 <p>A maior confusão de quem começa com GenServer é entender <strong>onde</strong> o código está rodando. O módulo do GenServer é dividido em duas partes que rodam em processos diferentes.
 Imagine um <strong>Restaurante</strong>:</p>
@@ -3072,12 +3076,13 @@ Imagine um <strong>Restaurante</strong>:</p>
 </tbody>
 </table>
 <p><strong>3. Laboratório Prático: O Banco Profissional</strong></p>
-<p>Agora vamos refazer nossa conta bancária, mas usando a estrutura que você verá em empresas reais como Discord ou WhatsApp.
-Desafio de Engenharia:
-Implementar o módulo ContaBancaria onde:
-• O <strong>Estado</strong> (Saldo) é gerenciado automaticamente pelo GenServer.
-• <strong>Depósitos</strong> usam <code>cast</code> (pois o banco aceita seu dinheiro na hora, sem bloquear).
-• <strong>Saques</strong> e <strong>Consultas</strong> usam <code>call</code> (pois você precisa da resposta imediata).</p>
+<p>Agora vamos refazer nossa conta bancária, mas usando a estrutura que você verá em empresas reais como Discord ou WhatsApp.</p>
+<p><strong>Desafio de Engenharia:</strong> Implementar o módulo <code>ContaBancaria</code> onde:</p>
+<ul>
+<li>O <strong>Estado</strong> (Saldo) é gerenciado automaticamente pelo GenServer.</li>
+<li><strong>Depósitos</strong> usam <code>cast</code> (pois o banco aceita seu dinheiro na hora, sem bloquear).</li>
+<li><strong>Saques</strong> e <strong>Consultas</strong> usam <code>call</code> (pois você precisa da resposta imediata).</li>
+</ul>
 <h4 id="passo-2-a-implementacao-profissional">Passo 2: A Implementação Profissional<a class="headerlink" href="#passo-2-a-implementacao-profissional" title="Permanent link">&para;</a></h4>
 <p>Vamos criar o módulo <code>ContaBancaria</code> (a versão final) dentro do projeto.</p>
 <p>Crie o arquivo <code>lib/conta_bancaria.ex</code>.
@@ -3241,8 +3246,8 @@ Mas, como engenheiros, devemos ser pessimistas. <strong>E se houver um bug no c�
 <h4 id="passo-2-transformando-o-projeto-em-uma-aplicacao">Passo 2: Transformando o Projeto em uma Aplicação<a class="headerlink" href="#passo-2-transformando-o-projeto-em-uma-aplicacao" title="Permanent link">&para;</a></h4>
 <p>Quando criamos o projeto com <code>mix new lab_concorrencia</code>, ele veio "pelado". Precisamos dizer ao Mix que este projeto tem um ponto de entrada (uma Application Callback).</p>
 <ol>
-<li>Crie o arquivo <code>lib/lab_concorrencia/application.ex</code>:</li>
-</ol>
+<li>
+<p>Crie o arquivo <code>lib/lab_concorrencia/application.ex</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">defmodule</span><span class="w"> </span><span class="nc">LabConcorrencia.Application</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="c1"># Transforma este módulo em uma Application (ponto de partida do sistema)</span>
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Application</span>
@@ -3265,10 +3270,10 @@ Mas, como engenheiros, devemos ser pessimistas. <strong>E se houver um bug no c�
 <a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">  </span><span class="k">end</span>
 <a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="k">end</span>
 </code></pre></div>
-<ol>
-<li><strong>IMPORTANTE:</strong> Precisamos avisar o Mix para carregar esse arquivo.
-Abra o arquivo <code>mix.exs</code> na raiz, procure a função <code>application</code> e altere para:</li>
-</ol>
+</li>
+<li>
+<p><strong>IMPORTANTE:</strong> Precisamos avisar o Mix para carregar esse arquivo.
+Abra o arquivo <code>mix.exs</code> na raiz, procure a função <code>application</code> e altere para:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="p">[</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">      </span><span class="ss">extra_applications</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="ss">:logger</span><span class="p">],</span>
@@ -3277,6 +3282,8 @@ Abra o arquivo <code>mix.exs</code> na raiz, procure a função <code>applicatio
 <a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">    </span><span class="p">]</span>
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="k">end</span>
 </code></pre></div>
+</li>
+</ol>
 <hr />
 <h4 id="passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato">Passo 3: O Teste de Imortalidade (e a Correção do Contrato)<a class="headerlink" href="#passo-3-o-teste-de-imortalidade-e-a-correcao-do-contrato" title="Permanent link">&para;</a></h4>
 <p>Agora que configuramos nosso Supervisor no <code>Application.ex</code>, a teoria diz que ele deve iniciar a conta automaticamente. Vamos testar?</p>
@@ -3357,7 +3364,7 @@ O Supervisor limpou a bagunça e subiu uma nova instância. Seu banco digital co
 <p>Aluno, observe um detalhe crítico:</p>
 <p>Pegue o PID novo e veja o saldo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">[{</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">novo_pid</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">}]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">LabConcorrencia.Supervisor</span><span class="p">)</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">    </span><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">novo_pid</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">(</span><span class="n">novo_pid</span><span class="p">)</span>
 <a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1"># 1000</span>
 </code></pre></div>
 <p>Se você tivesse depositado 500 reais antes do crash, o saldo seria 1500. Após o crash, ele voltou para 1000 (estado inicial).</p>
@@ -3423,14 +3430,14 @@ Porque processos guardam estado em <strong>Memória RAM</strong>. Se o processo 
 <p>Reinicie seu terminal (<code>iex -S mix</code>) e veja a mágica da <strong>Transparência de Localização</strong>.</p>
 <ol>
 <li>
-<p><strong>Uso direto (Sem PID):</strong>Elixir</p>
+<p><strong>Uso direto (Sem PID):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># Não preciso mais buscar PID. Chamo direto pelo nome do módulo.</span>
 <a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">ver_saldo</span><span class="p">()</span>
 <a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1"># 1000</span>
 </code></pre></div>
 </li>
 <li>
-<p><strong>Crash e Recuperação Transparente:</strong>Elixir</p>
+<p><strong>Crash e Recuperação Transparente:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># Vamos matar o processo</span>
 <a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nc">ContaBancaria</span><span class="o">.</span><span class="n">causar_bug</span><span class="p">()</span>
 <a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="c1"># [Log de erro gigante...]</span>
@@ -3667,10 +3674,10 @@ Vamos recapitular o modelo mental que você construiu, pois é isso que importa 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
